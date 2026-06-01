@@ -21,10 +21,21 @@ namespace DentalClinicProject
              try
              {
                  DataStore.Initialize();
-                 LoginForm login = new LoginForm();
-                 if (login.ShowDialog() == DialogResult.OK)
+
+                 while (true)
                  {
-                     Application.Run(new UI.MainShellFormUI());
+                     using (var login = new LoginForm())
+                     {
+                         if (login.ShowDialog() != DialogResult.OK)
+                             break;
+                     }
+
+                     using (var shell = new UI.MainShellFormUI())
+                     {
+                         shell.ShowDialog();
+                         if (!shell.LogoutRequested)
+                             break;
+                     }
                  }
              }
              catch (Exception ex)

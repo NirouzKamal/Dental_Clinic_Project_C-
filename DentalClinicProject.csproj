@@ -108,6 +108,9 @@
     <EmbeddedResource Include="UI\DashboardControlUI.resx">
       <DependentUpon>DashboardControlUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\InvoicePaymentFormUI.resx">
+      <DependentUpon>InvoicePaymentFormUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\PatientRecordsControlUI.resx">
       <DependentUpon>PatientRecordsControlUI.cs</DependentUpon>
     </EmbeddedResource>

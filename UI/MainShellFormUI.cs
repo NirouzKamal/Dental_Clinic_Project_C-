@@ -3,12 +3,16 @@ using System.Drawing;
 using System.Windows.Forms;
 using DentalClinicProject.classes;
 using DentalClinicProject.data;
+using DentalClinicProject.Data;
 
 namespace DentalClinicProject.UI
 {
     public partial class MainShellFormUI : System.Windows.Forms.Form
     {
         private Button currentActiveButton;
+
+        /// <summary>Set on logout so Program can show LoginForm again.</summary>
+        public bool LogoutRequested { get; private set; }
 
         public MainShellFormUI()
         {
@@ -23,6 +27,7 @@ namespace DentalClinicProject.UI
             btnRevenues.Click += NavButton_Click;
             btnStaff.Click += NavButton_Click;
             btnPayroll.Click += NavButton_Click;
+            btnLogout.Click += BtnLogout_Click;
         }
 
         private void MainShellFormUI_Load(object sender, EventArgs e)
@@ -99,6 +104,23 @@ namespace DentalClinicProject.UI
             currentActiveButton = btn;
             currentActiveButton.ForeColor = Color.FromArgb(0, 75, 155); // ThemeManager.PrimaryColor
             currentActiveButton.BackColor = ColorTranslator.FromHtml("#F8F9FA");
+        }
+
+        private void BtnLogout_Click(object sender, EventArgs e)
+        {
+            var confirm = MessageBox.Show(
+                "هل أنت متأكد من أنك تريد تسجيل الخروج؟",
+                "Logout",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirm != DialogResult.Yes)
+                return;
+
+            DataStore.CurrentUser = null;
+            session.CurrentUser = null;
+            LogoutRequested = true;
+            Close();
         }
     }
 }

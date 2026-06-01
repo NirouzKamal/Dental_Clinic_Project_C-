@@ -18,6 +18,7 @@ namespace DentalClinicProject.UI
         private void InitializeComponent()
         {
             this.panelSidebar = new System.Windows.Forms.Panel();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.btnPayroll = new System.Windows.Forms.Button();
             this.btnStaff = new System.Windows.Forms.Button();
             this.btnRevenues = new System.Windows.Forms.Button();
@@ -37,6 +38,7 @@ namespace DentalClinicProject.UI
             // panelSidebar
             // 
             this.panelSidebar.BackColor = System.Drawing.Color.White;
+            this.panelSidebar.Controls.Add(this.btnLogout);
             this.panelSidebar.Controls.Add(this.btnPayroll);
             this.panelSidebar.Controls.Add(this.btnStaff);
             this.panelSidebar.Controls.Add(this.btnRevenues);
@@ -170,6 +172,24 @@ namespace DentalClinicProject.UI
             this.btnPayroll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPayroll.UseVisualStyleBackColor = false;
             // 
+            // btnLogout
+            // 
+            this.btnLogout.BackColor = System.Drawing.Color.White;
+            this.btnLogout.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogout.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnLogout.Location = new System.Drawing.Point(0, 701);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnLogout.Size = new System.Drawing.Size(250, 60);
+            this.btnLogout.TabIndex = 7;
+            this.btnLogout.Text = "تسجيل خروج";
+            this.btnLogout.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLogout.UseVisualStyleBackColor = false;
+            // 
             // panelHeader
             // 
             this.panelHeader.BackColor = System.Drawing.Color.White;
@@ -254,6 +274,7 @@ namespace DentalClinicProject.UI
         private System.Windows.Forms.Button btnRevenues;
         private System.Windows.Forms.Button btnStaff;
         private System.Windows.Forms.Button btnPayroll;
+        private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Panel panelHeader;
         private System.Windows.Forms.Panel panelHeaderBorder;
         private System.Windows.Forms.Label lblUserInfo;
