@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{823C0E22-0D14-4774-9DB3-4F7FC2B9A70F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DentalClinicProject</RootNamespace>
+    <AssemblyName>DentalClinicProject</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="addAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addAppointment.Designer.cs">
+      <DependentUpon>addAppointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddPatient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddPatient.Designer.cs">
+      <DependentUpon>AddPatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminDashboardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminDashboardForm.Designer.cs">
+      <DependentUpon>AdminDashboardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AppointmentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppointmentForm.Designer.cs">
+      <DependentUpon>AppointmentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BillsNot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BillsNot.Designer.cs">
+      <DependentUpon>BillsNot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CaseCreation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CaseCreation.Designer.cs">
+      <DependentUpon>CaseCreation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="classes\Appointment .cs" />
+    <Compile Include="classes\Case.cs" />
+    <Compile Include="classes\Doctor.cs" />
+    <Compile Include="classes\DoctorWorkSchedule.cs" />
+    <Compile Include="classes\Invoice.cs" />
+    <Compile Include="classes\Patient.cs" />
+    <Compile Include="classes\Payment.cs" />
+    <Compile Include="CompletedCasesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompletedCasesForm.Designer.cs">
+      <DependentUpon>CompletedCasesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DashBoardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DashBoardForm.Designer.cs">
+      <DependentUpon>DashBoardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\DataStore.cs" />
+    <Compile Include="DoctorDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoctorDashboard.Designer.cs">
+      <DependentUpon>DoctorDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="financial_administration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="financial_administration.Designer.cs">
+      <DependentUpon>financial_administration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PatientRecordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PatientRecordForm.Designer.cs">
+      <DependentUpon>PatientRecordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="session.cs" />
+    <Compile Include="shortcutsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="shortcutsForm.Designer.cs">
+      <DependentUpon>shortcutsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Shortcuts_Admin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Shortcuts_Admin.Designer.cs">
+      <DependentUpon>Shortcuts_Admin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="classes\User.cs" />
+    <Compile Include="todayAppointmentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="todayAppointmentsForm.Designer.cs">
+      <DependentUpon>todayAppointmentsForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="addAppointment.resx">
+      <DependentUpon>addAppointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddPatient.resx">
+      <DependentUpon>AddPatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminDashboardForm.resx">
+      <DependentUpon>AdminDashboardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppointmentForm.resx">
+      <DependentUpon>AppointmentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BillsNot.resx">
+      <DependentUpon>BillsNot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CaseCreation.resx">
+      <DependentUpon>CaseCreation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompletedCasesForm.resx">
+      <DependentUpon>CompletedCasesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DashBoardForm.resx">
+      <DependentUpon>DashBoardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoctorDashboard.resx">
+      <DependentUpon>DoctorDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="financial_administration.resx">
+      <DependentUpon>financial_administration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PatientRecordForm.resx">
+      <DependentUpon>PatientRecordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="shortcutsForm.resx">
+      <DependentUpon>shortcutsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shortcuts_Admin.resx">
+      <DependentUpon>Shortcuts_Admin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="todayAppointmentsForm.resx">
+      <DependentUpon>todayAppointmentsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photo_2025-12-05_20-27-28-removebg-preview%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photo_2025-12-05_21-58-46.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\456283.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photo_2025-12-05_21-58-46.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\medical-dentist-tools-on-grey-background_6237748-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\medical-dentist-tools-on-grey-background_6237748-removebg-preview%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photo_2026-04-16_15-56-26-removebg-preview-Picsart-AiImageEnhancer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photo_2026-04-16_16-04-52.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photo_2026-04-16_16-04-52-removebg-preview-artguru-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\door.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\door%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dashboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\door_1_-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search-interface-symbol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search%281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\addٍSmaller.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\addٍSmallerMor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendarSmaller.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photo_2026-04-17_23-23-27تانم-removebg-preview%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photo_2026-04-16_16-08-21.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photo_1_2026-04-20_00-27-40.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\planning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\statistical-chart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Napredna-podatkovna-analitika-in-digitalni-marketing-iPROM-Novice-iz-sveta1%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\in-house-web-team-img.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\right-arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\right-arrow_S.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\left-arrow_blue_40Px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\left-arrow_blue_50Px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\right-arrow-angle_50Px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\left-chevron_50PX.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\format.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1c412d28-1b87-4423-9073-128875fb28ee.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\435f04ec-9076-4acf-8951-f03a8e81f635.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\8db2dd88-e017-4cf2-9f64-6d0e14483747.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\20c84c5b-ac92-41b3-8d35-47d369eaf1a9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\all%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\schedule.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notification%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\financial-profit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\left-arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dental-appointment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invoice.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\organization.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\suitcase.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
