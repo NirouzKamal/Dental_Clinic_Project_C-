@@ -67,6 +67,7 @@ namespace DentalClinicProject.UI
             txtDiscount.TextChanged += CalculateFinalPrice;
             txtPrice.KeyPress += AllowOnlyNumbers;
             txtDiscount.KeyPress += AllowOnlyNumbers;
+            txtToothNumber.KeyPress += AllowOnlyNumbers;
             chkDiscount.CheckedChanged += ChkDiscount_CheckedChanged;
             
             btnAddService.Click += BtnAddService_Click;
@@ -115,6 +116,15 @@ namespace DentalClinicProject.UI
             lblFinalPriceValue.Text = $"{finalPrice:F2} د.ل";
         }
 
+        private static int ParseToothNumber(string text)
+        {
+            if (!int.TryParse(text?.Trim(), out int tooth) || tooth < 1)
+                return 1;
+            if (tooth > 32)
+                return 32;
+            return tooth;
+        }
+
         private void AllowOnlyNumbers(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
@@ -161,11 +171,19 @@ namespace DentalClinicProject.UI
             decimal finalPrice = price - discount;
             if (finalPrice < 0) finalPrice = 0;
 
-            dgvServices.Rows.Add(cmbServiceName.Text, $"{price:F2}", $"{discount:F2}", $"{finalPrice:F2}");
+            int toothNumber = ParseToothNumber(txtToothNumber.Text);
+
+            dgvServices.Rows.Add(
+                cmbServiceName.Text,
+                toothNumber.ToString(),
+                $"{price:F2}",
+                $"{discount:F2}",
+                $"{finalPrice:F2}");
             UpdateGrandTotal();
 
             cmbServiceName.SelectedIndex = -1;
             txtPrice.Text = "0";
+            txtToothNumber.Text = "1";
             chkDiscount.Checked = false;
             txtDiscount.Text = "0";
             lblFinalPriceValue.Text = "0.00 د.ل";
@@ -189,6 +207,11 @@ namespace DentalClinicProject.UI
                 decimal.TryParse(row.Cells["colPrice"].Value.ToString(), out decimal price);
                 decimal.TryParse(row.Cells["colDiscount"].Value.ToString(), out decimal discount);
                 decimal.TryParse(row.Cells["colFinalPrice"].Value.ToString(), out decimal finalPrice);
+                int toothCount = 1;
+                if (row.Cells["colToothNumber"].Value != null)
+                    int.TryParse(row.Cells["colToothNumber"].Value.ToString(), out toothCount);
+                if (toothCount < 1) toothCount = 1;
+                if (toothCount > 32) toothCount = 32;
 
                 var newCase = new Case
                 {
@@ -200,7 +223,7 @@ namespace DentalClinicProject.UI
                     DoctorId = _doctorId,
                     DoctorName = doctor?.FullName ?? "",
                     Treatment = serviceType,
-                    ToothCount = 1,
+                    ToothCount = toothCount,
                     Price = price,
                     Discount = discount,
                     Notes = "تم إضافتها من قبل الطبيب",

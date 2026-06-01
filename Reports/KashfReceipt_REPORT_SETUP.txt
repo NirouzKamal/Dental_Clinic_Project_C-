@@ -1,0 +1,27 @@
+Crystal Report file: Reports\KashfReceipt.rpt
+================================================
+
+1) Install "SAP Crystal Reports, developer version for Microsoft Visual Studio"
+   (SP36+ for VS 2022) from SAP Software Downloads.
+
+2) In Visual Studio: Project > Add New Item > Crystal Reports > Blank Report
+   Name: KashfReceipt.rpt
+   Save under: DentalClinicProject\Reports\KashfReceipt.rpt
+
+3) Database Expert > Project Data > ADO.NET (XML) > select Reports\DsKashfReceipt.xsd
+   Add table: KashfReceipt
+
+4) Place fields on the Section Details band (RTL layout):
+   - PatientName   (المريض)
+   - FileNumber    (رقم الملف)
+   - DoctorName    (الطبيب)
+   - VisitType     (نوع الزيارة)
+   - PriceText     (السعر)
+   - PaidAmountText (المدفوع)
+   - VisitDate     (التاريخ)
+
+5) Set report properties: Paper A5 or A4, margins, clinic header text "DentCare".
+
+6) Build Action for KashfReceipt.rpt = Content, Copy to Output Directory = Copy always
+
+The C# class CrystalReceiptPrinter loads this file at runtime.

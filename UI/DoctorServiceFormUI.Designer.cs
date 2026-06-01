@@ -24,7 +24,10 @@ namespace DentalClinicProject.UI
             this.lblDiscount = new System.Windows.Forms.Label();
             this.lblFinalPriceTitle = new System.Windows.Forms.Label();
             this.lblFinalPriceValue = new System.Windows.Forms.Label();
+            this.lblToothNumber = new System.Windows.Forms.Label();
+            this.txtToothNumber = new System.Windows.Forms.TextBox();
             this.btnAddService = new System.Windows.Forms.Button();
+            this.colToothNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
 
             this.txtPatientName = new System.Windows.Forms.TextBox();
             this.lblPatientName = new System.Windows.Forms.Label();
@@ -60,37 +63,52 @@ namespace DentalClinicProject.UI
             this.lblTitle.AutoSize = true; this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold); this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(33, 37, 41); this.lblTitle.Location = new System.Drawing.Point(20, 15); this.lblTitle.Name = "lblTitle"; this.lblTitle.Text = "تسجيل خدمات المريض";
             this.panelHeaderBorder.BackColor = System.Drawing.Color.FromArgb(222, 226, 230); this.panelHeaderBorder.Dock = System.Windows.Forms.DockStyle.Bottom; this.panelHeaderBorder.Name = "panelHeaderBorder"; this.panelHeaderBorder.Size = new System.Drawing.Size(800, 1);
 
-            // panelTop
-            this.panelTop.Controls.Add(this.panelPatientDetails);
-            this.panelTop.Controls.Add(this.grpAddService);
-            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTop.Name = "panelTop";
-            this.panelTop.Padding = new System.Windows.Forms.Padding(20);
-            this.panelTop.Size = new System.Drawing.Size(800, 240);
+            // panelPatientDetails (create before adding to panelTop)
+            this.panelPatientDetails = new System.Windows.Forms.Panel();
+            this.panelPatientDetails.Controls.Add(this.lblPatientName);
+            this.panelPatientDetails.Controls.Add(this.txtPatientName);
+            this.panelPatientDetails.Controls.Add(this.lblFileNumber);
+            this.panelPatientDetails.Controls.Add(this.txtFileNumber);
+            this.panelPatientDetails.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelPatientDetails.Height = 48;
+            this.panelPatientDetails.Name = "panelPatientDetails";
+            this.panelPatientDetails.Padding = new System.Windows.Forms.Padding(0, 8, 0, 0);
 
-            // grpAddService
-            this.grpAddService.Controls.Add(this.tlpAddService);
-            this.grpAddService.Dock = System.Windows.Forms.DockStyle.Top;
-            this.grpAddService.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.grpAddService.Name = "grpAddService";
-            this.grpAddService.Padding = new System.Windows.Forms.Padding(10);
-            this.grpAddService.Size = new System.Drawing.Size(760, 200);
-            this.grpAddService.Text = "إضافة خدمة جديدة";
+            this.lblPatientName.Text = "اسم المريض:";
+            this.lblPatientName.AutoSize = true;
+            this.lblPatientName.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            this.lblPatientName.Location = new System.Drawing.Point(670, 15);
+            this.txtPatientName.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            this.txtPatientName.Location = new System.Drawing.Point(400, 12);
+            this.txtPatientName.ReadOnly = true;
+            this.txtPatientName.Size = new System.Drawing.Size(260, 23);
+            this.lblFileNumber.Text = "رقم الملف:";
+            this.lblFileNumber.AutoSize = true;
+            this.lblFileNumber.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            this.lblFileNumber.Location = new System.Drawing.Point(320, 15);
+            this.txtFileNumber.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            this.txtFileNumber.Location = new System.Drawing.Point(120, 12);
+            this.txtFileNumber.ReadOnly = true;
+            this.txtFileNumber.Size = new System.Drawing.Size(180, 23);
 
-            // tlpAddService
+            // tlpAddService (create and populate before adding to group box)
             this.tlpAddService = new System.Windows.Forms.TableLayoutPanel();
             this.tlpAddService.ColumnCount = 4;
             this.tlpAddService.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F)); // Labels
             this.tlpAddService.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F)); // Inputs
             this.tlpAddService.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F)); // Checkbox
             this.tlpAddService.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F)); // Empty/FinalPrice
-            this.tlpAddService.RowCount = 5;
+            this.tlpAddService.RowCount = 6;
+            this.tlpAddService.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tlpAddService.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tlpAddService.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tlpAddService.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tlpAddService.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tlpAddService.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
             this.tlpAddService.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpAddService.Name = "tlpAddService";
+            this.tlpAddService.MinimumSize = new System.Drawing.Size(0, 220);
+            this.tlpAddService.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
 
             // Row 1
             this.lblServiceName.Text = "نوع الخدمة:"; this.lblServiceName.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -106,39 +124,50 @@ namespace DentalClinicProject.UI
             this.tlpAddService.Controls.Add(this.txtPrice, 1, 1);
             this.tlpAddService.SetColumnSpan(this.txtPrice, 3);
 
-            // Row 3
+            // Row 3 — رقم السن
+            this.lblToothNumber.Text = "رقم السن:"; this.lblToothNumber.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.txtToothNumber.Dock = System.Windows.Forms.DockStyle.Fill; this.txtToothNumber.Text = "1"; this.txtToothNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tlpAddService.Controls.Add(this.lblToothNumber, 0, 2);
+            this.tlpAddService.Controls.Add(this.txtToothNumber, 1, 2);
+            this.tlpAddService.SetColumnSpan(this.txtToothNumber, 3);
+
+            // Row 4 — الخصم
             this.lblDiscount.Text = "الخصم:"; this.lblDiscount.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.chkDiscount.Text = "يوجد خصم"; this.chkDiscount.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.txtDiscount.Dock = System.Windows.Forms.DockStyle.Fill; this.txtDiscount.Text = "0"; this.txtDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right; this.txtDiscount.Enabled = false;
-            this.tlpAddService.Controls.Add(this.lblDiscount, 0, 2);
-            this.tlpAddService.Controls.Add(this.chkDiscount, 2, 2);
-            this.tlpAddService.Controls.Add(this.txtDiscount, 1, 2);
+            this.tlpAddService.Controls.Add(this.lblDiscount, 0, 3);
+            this.tlpAddService.Controls.Add(this.chkDiscount, 2, 3);
+            this.tlpAddService.Controls.Add(this.txtDiscount, 1, 3);
 
-            // Row 4
+            // Row 5 — السعر النهائي
             this.lblFinalPriceTitle.Text = "السعر لهذه الخدمة:"; this.lblFinalPriceTitle.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblFinalPriceValue.Text = "0.00 د.ل"; this.lblFinalPriceValue.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold); this.lblFinalPriceValue.ForeColor = System.Drawing.Color.FromArgb(0, 75, 155); this.lblFinalPriceValue.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.tlpAddService.Controls.Add(this.lblFinalPriceTitle, 0, 3);
-            this.tlpAddService.Controls.Add(this.lblFinalPriceValue, 1, 3);
+            this.tlpAddService.Controls.Add(this.lblFinalPriceTitle, 0, 4);
+            this.tlpAddService.Controls.Add(this.lblFinalPriceValue, 1, 4);
+            this.tlpAddService.SetColumnSpan(this.lblFinalPriceValue, 3);
 
-            // Row 5
-            this.btnAddService.Text = "إضافة الخدمة"; this.btnAddService.BackColor = System.Drawing.Color.FromArgb(0, 75, 155); this.btnAddService.ForeColor = System.Drawing.Color.White; this.btnAddService.FlatStyle = System.Windows.Forms.FlatStyle.Flat; this.btnAddService.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpAddService.Controls.Add(this.btnAddService, 0, 4);
+            // Row 6 — إضافة
+            this.btnAddService.Text = "إضافة"; this.btnAddService.BackColor = System.Drawing.Color.FromArgb(0, 75, 155); this.btnAddService.ForeColor = System.Drawing.Color.White; this.btnAddService.FlatStyle = System.Windows.Forms.FlatStyle.Flat; this.btnAddService.FlatAppearance.BorderSize = 0; this.btnAddService.Cursor = System.Windows.Forms.Cursors.Hand; this.btnAddService.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpAddService.Controls.Add(this.btnAddService, 0, 5);
             this.tlpAddService.SetColumnSpan(this.btnAddService, 4);
 
-            // Patient details (below GroupBox)
-            this.panelPatientDetails = new System.Windows.Forms.Panel();
-            this.panelPatientDetails.Controls.Add(this.lblPatientName);
-            this.panelPatientDetails.Controls.Add(this.txtPatientName);
-            this.panelPatientDetails.Controls.Add(this.lblFileNumber);
-            this.panelPatientDetails.Controls.Add(this.txtFileNumber);
-            this.panelPatientDetails.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelPatientDetails.Height = 40;
-            this.panelPatientDetails.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            // grpAddService
+            this.grpAddService.Controls.Add(this.tlpAddService);
+            this.grpAddService.Dock = System.Windows.Forms.DockStyle.Top;
+            this.grpAddService.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.grpAddService.Name = "grpAddService";
+            this.grpAddService.Padding = new System.Windows.Forms.Padding(10);
+            this.grpAddService.Size = new System.Drawing.Size(760, 260);
+            this.grpAddService.MinimumSize = new System.Drawing.Size(0, 260);
+            this.grpAddService.Text = "إضافة خدمة جديدة";
 
-            this.lblPatientName.Text = "اسم المريض:"; this.lblPatientName.AutoSize = true; this.lblPatientName.Location = new System.Drawing.Point(670, 15);
-            this.txtPatientName.Location = new System.Drawing.Point(400, 12); this.txtPatientName.ReadOnly = true; this.txtPatientName.Size = new System.Drawing.Size(260, 23);
-            this.lblFileNumber.Text = "رقم الملف:"; this.lblFileNumber.AutoSize = true; this.lblFileNumber.Location = new System.Drawing.Point(320, 15);
-            this.txtFileNumber.Location = new System.Drawing.Point(120, 12); this.txtFileNumber.ReadOnly = true; this.txtFileNumber.Size = new System.Drawing.Size(180, 23);
+            // panelTop — add grp first, then patient row (patient docks to top)
+            this.panelTop.Controls.Add(this.grpAddService);
+            this.panelTop.Controls.Add(this.panelPatientDetails);
+            this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTop.Name = "panelTop";
+            this.panelTop.Padding = new System.Windows.Forms.Padding(20);
+            this.panelTop.Size = new System.Drawing.Size(800, 320);
 
             // panelGridArea
             this.panelGridArea.Controls.Add(this.grpServices);
@@ -155,8 +184,9 @@ namespace DentalClinicProject.UI
 
             // dgvServices
             this.dgvServices.AllowUserToAddRows = false; this.dgvServices.AllowUserToDeleteRows = true; this.dgvServices.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill; this.dgvServices.BackgroundColor = System.Drawing.Color.White; this.dgvServices.BorderStyle = System.Windows.Forms.BorderStyle.None; this.dgvServices.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal; this.dgvServices.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None; this.dgvServices.ColumnHeadersHeight = 40; this.dgvServices.Dock = System.Windows.Forms.DockStyle.Fill; this.dgvServices.EnableHeadersVisualStyles = false; this.dgvServices.GridColor = System.Drawing.Color.FromArgb(222, 226, 230); this.dgvServices.Name = "dgvServices"; this.dgvServices.ReadOnly = true; this.dgvServices.RightToLeft = System.Windows.Forms.RightToLeft.Yes; this.dgvServices.RowHeadersVisible = false; this.dgvServices.RowTemplate.Height = 40; this.dgvServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.colName, this.colPrice, this.colDiscount, this.colFinalPrice });
+            this.dgvServices.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { this.colName, this.colToothNumber, this.colPrice, this.colDiscount, this.colFinalPrice });
             this.colName.HeaderText = "نوع الخدمة"; this.colName.Name = "colName";
+            this.colToothNumber.HeaderText = "رقم السن"; this.colToothNumber.Name = "colToothNumber";
             this.colPrice.HeaderText = "التكلفة"; this.colPrice.Name = "colPrice";
             this.colDiscount.HeaderText = "الخصم"; this.colDiscount.Name = "colDiscount";
             this.colFinalPrice.HeaderText = "السعر النهائي"; this.colFinalPrice.Name = "colFinalPrice";
@@ -201,7 +231,7 @@ namespace DentalClinicProject.UI
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "تسجيل خدمات المريض";
             this.panelHeader.ResumeLayout(false); this.panelHeader.PerformLayout();
-            this.panelTop.ResumeLayout(false); this.panelTop.PerformLayout();
+            this.panelTop.ResumeLayout(false);
             this.grpAddService.ResumeLayout(false); this.grpAddService.PerformLayout();
             this.panelGridArea.ResumeLayout(false);
             this.grpServices.ResumeLayout(false);
@@ -226,6 +256,8 @@ namespace DentalClinicProject.UI
         private System.Windows.Forms.Label lblDiscount;
         private System.Windows.Forms.Label lblFinalPriceTitle;
         private System.Windows.Forms.Label lblFinalPriceValue;
+        private System.Windows.Forms.Label lblToothNumber;
+        private System.Windows.Forms.TextBox txtToothNumber;
         private System.Windows.Forms.Button btnAddService;
         private System.Windows.Forms.TextBox txtPatientName;
         private System.Windows.Forms.Label lblPatientName;
@@ -235,6 +267,7 @@ namespace DentalClinicProject.UI
         private System.Windows.Forms.GroupBox grpServices;
         private System.Windows.Forms.DataGridView dgvServices;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colToothNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDiscount;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFinalPrice;

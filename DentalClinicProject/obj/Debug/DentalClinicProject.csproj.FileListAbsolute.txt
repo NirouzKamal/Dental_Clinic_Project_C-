@@ -102,3 +102,7 @@ C:\Users\Abdurahman\Desktop\lastMidtermUpdate\DentalClinicProject\DentalClinicPr
 C:\Users\Abdurahman\Desktop\lastMidtermUpdate\DentalClinicProject\DentalClinicProject\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.csproj.CoreCompileInputs.cache
 C:\Users\Abdurahman\Desktop\lastMidtermUpdate\DentalClinicProject\DentalClinicProject\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.exe
 C:\Users\Abdurahman\Desktop\lastMidtermUpdate\DentalClinicProject\DentalClinicProject\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.pdb
+c:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.csproj.AssemblyReference.cache
+c:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.exe.config
+c:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.exe
+c:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.pdb

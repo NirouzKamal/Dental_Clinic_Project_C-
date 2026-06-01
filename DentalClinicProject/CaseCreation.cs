@@ -19,6 +19,9 @@ namespace DentalClinicProject
     }
     public partial class CaseCreation : Form
     {
+        private const string VisitKashf = "كشف";
+        private const string VisitMoraja = "مراجعة";
+
         private Case currentCase;
         private CaseFormMode currentMode = CaseFormMode.Create;
         private Invoice _invoice;
@@ -41,10 +44,10 @@ namespace DentalClinicProject
 
         // ─── قائمة العلاجات / أنواع الحالات (عدّليها حسب العيادة) ──────────
 
-        private readonly string[] _treatmentList =
+        private readonly string[] _visitTypeList = { VisitKashf, VisitMoraja };
+
+        private readonly string[] _procedureList =
        {
-            "كشف",
-            "مراجعة",
             "حشو عادي",
              "حشوة تجميلية",
             "خلع عادي",
@@ -99,8 +102,8 @@ namespace DentalClinicProject
                 "dddd ، dd MMMM yyyy",
                 new System.Globalization.CultureInfo("ar-LY"));
 
-            // ── رقم الحالة التلقائي ────────────────────────────────────
-            GenerateCaseNumber();
+            // ── رقم الحالة (يُعبّأ عند اختيار المريض) ─────────────────
+            InitializeCaseNumberDisplay();
 
             // ── تحميل المرضى في الكومبو ───────────────────────────────
             LoadPatients();
@@ -109,9 +112,9 @@ namespace DentalClinicProject
             LoadDoctors();
 
 
-            // ── تحميل التشخيصات ───────────────────────────────────────
-            cmbTreatment.Items.Clear();
-            cmbTreatment.Items.AddRange(_treatmentList);
+            LoadVisitTypes();
+            LoadProcedureTreatments();
+            ConfigureVisitTypeSection();
 
             //--------------------------------------------------------------
             if (currentMode != CaseFormMode.Create)
@@ -142,25 +145,121 @@ namespace DentalClinicProject
             cmbPaymentType.Items.Add("دفع كامل");
             cmbPaymentType.Items.Add("دفعة من الحساب");
 
-            cmbTreatment.SelectedIndexChanged +=
-             cmbTreatment_SelectedIndexChanged;
+            cmbTreatment.SelectedIndexChanged += cmbTreatment_SelectedIndexChanged;
+            cmbVisitType.SelectedIndexChanged += cmbVisitType_SelectedIndexChanged;
 
-            cmbPaymentType.SelectedIndexChanged +=
-    CmbPaymentType_Changed;
+            cmbPaymentType.SelectedIndexChanged += CmbPaymentType_Changed;
 
-
+            if (currentMode == CaseFormMode.Create)
+                ApplyVisitTypeUi();
         }
 
         // ══════════════════════════════════════════════════════════════════
         //  HELPERS — تحميل البيانات
         // ══════════════════════════════════════════════════════════════════
 
-        /// <summary>رقم الحالة بصيغة CASE-YYYY-XXXX</summary>
-        private void GenerateCaseNumber()
+        /// <summary>رقم الحالة المحفوظ — من txtCaseNumber (قاعدة البيانات) أو رقم الملف مؤقتاً.</summary>
+        private string ResolveCaseNumberForSave(Patient patient)
         {
-            int next = DataStore.Cases.Count + 1001;
-            txtCaseNumber.Text = $"CASE-{DateTime.Now.Year}-{next}";
+            if (!string.IsNullOrWhiteSpace(txtCaseNumber.Text))
+                return txtCaseNumber.Text.Trim();
+            if (patient == null) return "";
+            return patient.FileNumber ?? "";
+        }
+
+        private void InitializeCaseNumberDisplay()
+        {
             txtCaseNumber.ReadOnly = true;
+            txtCaseNumber.Text = "";
+            LoadCaseNumberFromDatabase();
+        }
+
+        /// <summary>يُستبدل لاحقاً باستعلام من قاعدة البيانات.</summary>
+        private void LoadCaseNumberFromDatabase()
+        {
+            // TODO: SELECT CaseNumber FROM Cases WHERE ... when database is connected.
+            txtCaseNumber.Text = "";
+        }
+
+        private void LoadVisitTypes()
+        {
+            cmbVisitType.Items.Clear();
+            cmbVisitType.Items.AddRange(_visitTypeList);
+            cmbVisitType.SelectedIndex = -1;
+        }
+
+        private void LoadProcedureTreatments()
+        {
+            cmbTreatment.Items.Clear();
+            cmbTreatment.Items.AddRange(_procedureList);
+            cmbTreatment.SelectedIndex = -1;
+        }
+
+        private void ConfigureVisitTypeSection()
+        {
+            bool isCreate = currentMode == CaseFormMode.Create;
+            lblVisitType.Visible = isCreate;
+            cmbVisitType.Visible = isCreate;
+            cmbTreatment.Visible = !isCreate;
+            patientGenderLabel.Visible = !isCreate;
+        }
+
+        private bool IsFollowUpVisit()
+        {
+            return cmbVisitType.Text == VisitMoraja;
+        }
+
+        private void ApplyVisitTypeUi()
+        {
+            if (currentMode != CaseFormMode.Create)
+                return;
+
+            bool showPriceSection = !IsFollowUpVisit() && cmbVisitType.SelectedIndex >= 0;
+            SetPriceSectionVisible(showPriceSection);
+
+            if (cmbVisitType.SelectedIndex < 0)
+                return;
+
+            if (IsFollowUpVisit())
+            {
+                txtPrice.Text = "0";
+                txtDiscount.Text = "0";
+                txtAmount.Text = "0";
+                txtPrice.ReadOnly = true;
+                txtAmount.ReadOnly = true;
+                cmbPaymentType.Enabled = false;
+                cmbPaymentType.SelectedIndex = -1;
+            }
+            else
+            {
+                txtPrice.Text = ClinicServicePricing.GetPrice(VisitKashf).ToString("0.##");
+                txtPrice.ReadOnly = true;
+                txtAmount.ReadOnly = false;
+                cmbPaymentType.Enabled = true;
+            }
+
+            UpdateFinalPrice();
+        }
+
+        private void SetPriceSectionVisible(bool visible)
+        {
+            label1.Visible = visible;
+            txtPrice.Visible = visible;
+            label2.Visible = visible;
+            txtDiscount.Visible = visible;
+            LblAmount.Visible = visible;
+            txtAmount.Visible = visible;
+            label5.Visible = visible;
+            lblFinalPrice.Visible = visible;
+            LabelPaymentType.Visible = visible;
+            cmbPaymentType.Visible = visible;
+        }
+
+        private string GetTreatmentForSave()
+        {
+            if (currentMode == CaseFormMode.Create)
+                return cmbVisitType.Text;
+            return cmbTreatment.Text;
         }
 
         /// <summary>تحميل المرضى: يعرض الاسم ويحفظ الـ Patient كـ Tag</summary>
@@ -203,9 +302,9 @@ namespace DentalClinicProject
 
             if (patient != null)
             {
-                // أظهر رقم الملف في الـ label أو TextBox المخصص
                 txtFileNumber.Text = patient.FileNumber;
                 txtFileNumber.ReadOnly = true;
+                LoadCaseNumberFromDatabase();
                 // تحديث ليبل الديون (الذي يظهر في الصورة بـ 150.00 د.ل)
                 decimal previousDebt = GetPatientTotalDebt(selectedId);
                 lblTotalDebt.Text = $"د.ل {previousDebt:F2}";
@@ -258,17 +357,38 @@ namespace DentalClinicProject
                 cmbDoctor.Focus();
                 return;
             }
-            if (cmbTreatment.SelectedIndex == -1)
+            if (currentMode == CaseFormMode.Create)
+            {
+                if (cmbVisitType.SelectedIndex == -1)
+                {
+                    ShowError("الرجاء اختيار نوع الزيارة");
+                    cmbVisitType.Focus();
+                    return;
+                }
+            }
+            else if (cmbTreatment.SelectedIndex == -1)
             {
                 ShowError("الرجاء اختيار نوع الحالة / العلاج");
                 cmbTreatment.Focus();
                 return;
             }
 
-            decimal price = ParseDecimal(txtPrice.Text);
-            decimal discount = ParseDecimal(txtDiscount.Text);
+            string treatmentForSave = GetTreatmentForSave();
+            decimal price;
+            decimal discount;
 
-            if (price <= 0 && cmbTreatment.Text != "مراجعة")
+            if (currentMode == CaseFormMode.Create && IsFollowUpVisit())
+            {
+                price = 0;
+                discount = 0;
+            }
+            else
+            {
+                price = ParseDecimal(txtPrice.Text);
+                discount = ParseDecimal(txtDiscount.Text);
+            }
+
+            if (price <= 0 && treatmentForSave != VisitMoraja)
             {
                 ShowError("الرجاء إدخال سعر صحيح");
                 txtPrice.Focus();
@@ -346,13 +466,13 @@ namespace DentalClinicProject
             var newCase = new Case
             {
                 CaseId = DataStore.NextCaseId(),
-                CaseNumber = txtCaseNumber.Text,
+                CaseNumber = ResolveCaseNumberForSave(patient),
                 PatientId = patientId,
                 PatientFileNumber = patient?.FileNumber ?? "",
                 PatientName = patient?.FullName ?? "",
                 DoctorId = doctorId,
                 DoctorName = doctor?.FullName ?? "",
-                Treatment = cmbTreatment.Text,
+                Treatment = treatmentForSave,
                 ToothCount = (int)numToothCount.Value,
                 Price = price,
                 Discount = discount,
@@ -379,8 +499,9 @@ namespace DentalClinicProject
 
             DataStore.Invoices.Add(invoice);
 
-            // تسجيل الدفع إذا كان هناك مبلغ مدفوع
-            decimal paidAmount = ParseDecimal(txtAmount.Text);
+            decimal paidAmount = currentMode == CaseFormMode.Create && IsFollowUpVisit()
+                ? 0
+                : ParseDecimal(txtAmount.Text);
 
             if (paidAmount > 0)
             {
@@ -494,6 +615,9 @@ namespace DentalClinicProject
             cmbDoctor.SelectedValue = currentCase.DoctorId;
 
             cmbTreatment.Text = currentCase.Treatment;
+
+            if (currentCase.Treatment == VisitKashf || currentCase.Treatment == VisitMoraja)
+                cmbVisitType.Text = currentCase.Treatment;
 
             numToothCount.Value = currentCase.ToothCount;
 
@@ -716,22 +840,24 @@ namespace DentalClinicProject
 
         }
 
+        private void cmbVisitType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ApplyVisitTypeUi();
+        }
+
         private void cmbTreatment_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (currentMode == CaseFormMode.Create)
+                return;
+
             string treatment = cmbTreatment.Text;
 
-            // تعبئة السعر تلقائي
             if (treatmentPrices.ContainsKey(treatment))
-            {
-                txtPrice.Text =
-                    treatmentPrices[treatment].ToString();
-            }
+                txtPrice.Text = treatmentPrices[treatment].ToString();
 
-            // المراجعة مجانية
-            if (treatment == "مراجعة")
+            if (treatment == VisitMoraja)
             {
                 txtPrice.Text = "0";
-
                 cmbPaymentType.Enabled = false;
                 cmbPaymentType.Text = "";
             }
@@ -739,7 +865,6 @@ namespace DentalClinicProject
             {
                 cmbPaymentType.Enabled = true;
             }
-
         }
         private decimal GetPatientTotalDebt(int patientId)
         {
@@ -818,4 +943,4 @@ namespace DentalClinicProject
         //    }
         //}
     }
-    }
+}

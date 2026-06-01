@@ -47,6 +47,9 @@
             this.numToothCount = new System.Windows.Forms.NumericUpDown();
             this.cmbPatient = new System.Windows.Forms.ComboBox();
             this.txtCaseNumber = new System.Windows.Forms.TextBox();
+            this.lblCaseNumber = new System.Windows.Forms.Label();
+            this.cmbVisitType = new System.Windows.Forms.ComboBox();
+            this.lblVisitType = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label19 = new System.Windows.Forms.Label();
@@ -200,8 +203,11 @@
             this.panel2.Controls.Add(this.LabelPaymentType);
             this.panel2.Controls.Add(this.cmbPaymentType);
             this.panel2.Controls.Add(this.numToothCount);
+            this.panel2.Controls.Add(this.cmbVisitType);
+            this.panel2.Controls.Add(this.lblVisitType);
             this.panel2.Controls.Add(this.cmbPatient);
             this.panel2.Controls.Add(this.txtCaseNumber);
+            this.panel2.Controls.Add(this.lblCaseNumber);
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.label19);
@@ -320,15 +326,51 @@
             // 
             // txtCaseNumber
             // 
-            this.txtCaseNumber.BackColor = System.Drawing.Color.White;
-            this.txtCaseNumber.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCaseNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
+            this.txtCaseNumber.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0));
             this.txtCaseNumber.Location = new System.Drawing.Point(929, 45);
             this.txtCaseNumber.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.txtCaseNumber.Multiline = true;
             this.txtCaseNumber.Name = "txtCaseNumber";
+            this.txtCaseNumber.ReadOnly = true;
             this.txtCaseNumber.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtCaseNumber.Size = new System.Drawing.Size(475, 66);
             this.txtCaseNumber.TabIndex = 57;
+            // 
+            // lblCaseNumber
+            // 
+            this.lblCaseNumber.AutoSize = true;
+            this.lblCaseNumber.Font = new System.Drawing.Font("Times New Roman", 14.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCaseNumber.Location = new System.Drawing.Point(1421, 64);
+            this.lblCaseNumber.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblCaseNumber.Name = "lblCaseNumber";
+            this.lblCaseNumber.Size = new System.Drawing.Size(173, 53);
+            this.lblCaseNumber.TabIndex = 66;
+            this.lblCaseNumber.Text = "رقم الحالة";
+            // 
+            // cmbVisitType
+            // 
+            this.cmbVisitType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbVisitType.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbVisitType.FormattingEnabled = true;
+            this.cmbVisitType.Location = new System.Drawing.Point(480, 260);
+            this.cmbVisitType.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.cmbVisitType.Name = "cmbVisitType";
+            this.cmbVisitType.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.cmbVisitType.Size = new System.Drawing.Size(535, 54);
+            this.cmbVisitType.TabIndex = 68;
+            this.cmbVisitType.SelectedIndexChanged += new System.EventHandler(this.cmbVisitType_SelectedIndexChanged);
+            // 
+            // lblVisitType
+            // 
+            this.lblVisitType.AutoSize = true;
+            this.lblVisitType.Font = new System.Drawing.Font("Times New Roman", 14.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVisitType.Location = new System.Drawing.Point(1048, 264);
+            this.lblVisitType.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblVisitType.Name = "lblVisitType";
+            this.lblVisitType.Size = new System.Drawing.Size(167, 53);
+            this.lblVisitType.TabIndex = 67;
+            this.lblVisitType.Text = "نوع الزيارة";
             // 
             // label15
             // 
@@ -340,6 +382,7 @@
             this.label15.Size = new System.Drawing.Size(209, 53);
             this.label15.TabIndex = 56;
             this.label15.Text = "رقم الايصال";
+            this.label15.Visible = false;
             // 
             // panel4
             // 
@@ -700,6 +743,9 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtCaseNumber;
+        private System.Windows.Forms.Label lblCaseNumber;
+        private System.Windows.Forms.ComboBox cmbVisitType;
+        private System.Windows.Forms.Label lblVisitType;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox cmbPatient;
         private System.Windows.Forms.NumericUpDown numToothCount;

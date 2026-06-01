@@ -31,7 +31,6 @@ namespace DentalClinicProject.UI
             this.lblTodayRevenueValue = new System.Windows.Forms.Label();
             this.lblTodayRevenueTitle = new System.Windows.Forms.Label();
             this.panelActionBar = new System.Windows.Forms.Panel();
-            this.txtSearch = new System.Windows.Forms.TextBox();
             this.panelLeftSpacer2 = new System.Windows.Forms.Panel();
             this.cmbDoctor = new System.Windows.Forms.ComboBox();
             this.panelLeftSpacer = new System.Windows.Forms.Panel();
@@ -235,7 +234,6 @@ namespace DentalClinicProject.UI
             // 
             // panelActionBar
             // 
-            this.panelActionBar.Controls.Add(this.txtSearch);
             this.panelActionBar.Controls.Add(this.panelLeftSpacer2);
             this.panelActionBar.Controls.Add(this.cmbDoctor);
             this.panelActionBar.Controls.Add(this.panelLeftSpacer);
@@ -251,19 +249,6 @@ namespace DentalClinicProject.UI
             this.panelActionBar.Padding = new System.Windows.Forms.Padding(53, 48, 53, 24);
             this.panelActionBar.Size = new System.Drawing.Size(2491, 167);
             this.panelActionBar.TabIndex = 1;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSearch.Dock = System.Windows.Forms.DockStyle.Left;
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
-            this.txtSearch.Location = new System.Drawing.Point(686, 48);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(663, 52);
-            this.txtSearch.TabIndex = 4;
-            this.txtSearch.Text = "ابحث...";
             // 
             // panelLeftSpacer2
             // 
@@ -362,7 +347,7 @@ namespace DentalClinicProject.UI
             this.btnAssignPatient.Name = "btnAssignPatient";
             this.btnAssignPatient.Size = new System.Drawing.Size(400, 95);
             this.btnAssignPatient.TabIndex = 0;
-            this.btnAssignPatient.Text = "تعيين مريض لطبيب";
+            this.btnAssignPatient.Text = "إنشاء حالة";
             this.btnAssignPatient.UseVisualStyleBackColor = false;
             // 
             // panelGridArea
@@ -515,7 +500,6 @@ namespace DentalClinicProject.UI
         private System.Windows.Forms.Panel panelLeftSpacer;
         private System.Windows.Forms.ComboBox cmbDoctor;
         private System.Windows.Forms.Panel panelLeftSpacer2;
-        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Panel panelGridArea;
         private System.Windows.Forms.DataGridView dgvTodayAppointments;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFileNum;

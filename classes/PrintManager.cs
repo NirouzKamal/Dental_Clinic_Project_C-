@@ -4,6 +4,7 @@ using System.Drawing.Printing;
 using System.Linq;
 using System.Windows.Forms;
 using DentalClinicProject.data;
+using DentalClinicProject.Reports;
 
 namespace DentalClinicProject.classes
 {
@@ -110,6 +111,68 @@ namespace DentalClinicProject.classes
             y += 50;
 
             g.DrawString("شكراً لزيارتكم! مع تمنياتنا بالشفاء العاجل.", normalFont, Brushes.Black, new RectangleF(0, y, width, 30), centerFormat);
+        }
+
+        // --- Kashf receipt (fallback when Crystal is unavailable) ---
+        public static void PrintKashfReceipt(KashfReceiptPrintModel model, bool showPreview = true)
+        {
+            if (model == null) return;
+
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += (sender, e) => PrintKashfReceiptPage(e, model);
+
+            if (!showPreview)
+            {
+                pd.Print();
+                return;
+            }
+
+            using (var preview = new PrintPreviewDialog
+            {
+                Document = pd,
+                Width = 600,
+                Height = 800,
+                ShowIcon = false,
+                Text = "معاينة إيصال الكشف"
+            })
+            {
+                preview.ShowDialog();
+            }
+        }
+
+        private static void PrintKashfReceiptPage(PrintPageEventArgs e, KashfReceiptPrintModel model)
+        {
+            Graphics g = e.Graphics;
+            int y = 20;
+            int width = e.PageBounds.Width;
+            int margin = 40;
+
+            g.DrawString("عيادة DentCare للأسنان", headerFont, Brushes.Black, new RectangleF(0, y, width, 40), centerFormat);
+            y += 40;
+            g.DrawString("إيصال كشف", subHeaderFont, Brushes.Black, new RectangleF(0, y, width, 30), centerFormat);
+            y += 40;
+            g.DrawLine(Pens.Black, margin, y, width - margin, y);
+            y += 20;
+
+            g.DrawString($"التاريخ والوقت: {model.VisitDateTime:yyyy-MM-dd HH:mm}", normalFont, Brushes.Black, new RectangleF(margin, y, width - (2 * margin), 25), rtlFormat);
+            y += 28;
+            g.DrawString($"رقم الملف: {model.FileNumber}", normalFont, Brushes.Black, new RectangleF(margin, y, width - (2 * margin), 25), rtlFormat);
+            y += 28;
+            g.DrawString($"المريض: {model.PatientName}", boldFont, Brushes.Black, new RectangleF(margin, y, width - (2 * margin), 25), rtlFormat);
+            y += 28;
+            g.DrawString($"الطبيب: {model.DoctorName}", normalFont, Brushes.Black, new RectangleF(margin, y, width - (2 * margin), 25), rtlFormat);
+            y += 28;
+            g.DrawString($"نوع الزيارة: {model.VisitType}", normalFont, Brushes.Black, new RectangleF(margin, y, width - (2 * margin), 25), rtlFormat);
+            y += 36;
+            g.DrawLine(Pens.Black, margin, y, width - margin, y);
+            y += 20;
+
+            g.DrawString($"السعر: {model.Price:N2} د.ل", boldFont, Brushes.Black, new RectangleF(margin, y, width - (2 * margin), 25), rtlFormat);
+            y += 28;
+            g.DrawString($"المدفوع: {model.PaidAmount:N2} د.ل", boldFont, Brushes.Black, new RectangleF(margin, y, width - (2 * margin), 25), rtlFormat);
+            y += 40;
+
+            g.DrawString("شكراً لزيارتكم", normalFont, Brushes.Black, new RectangleF(0, y, width, 30), centerFormat);
         }
 
         // --- Patient Report Printing ---

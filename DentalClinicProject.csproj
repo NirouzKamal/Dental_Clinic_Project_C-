@@ -57,15 +57,19 @@
   <ItemGroup>
     <Compile Include="classes\Appointment .cs" />
     <Compile Include="classes\Case.cs" />
+    <Compile Include="classes\CaseFormMode.cs" />
     <Compile Include="classes\Doctor.cs" />
     <Compile Include="classes\DoctorWorkSchedule.cs" />
     <Compile Include="classes\Invoice.cs" />
     <Compile Include="classes\Patient.cs" />
     <Compile Include="classes\PayrollRecord.cs" />
     <Compile Include="classes\PrintManager.cs" />
+    <Compile Include="classes\CrystalReceiptPrinter.cs" />
+    <Compile Include="Reports\KashfReceiptPrintModel.cs" />
     <Compile Include="classes\Payment.cs" />
     <Compile Include="classes\ThemeManager.cs" />
     <Compile Include="Data\DataStore.cs" />
+    <Compile Include="Data\ClinicServicePricing.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,8 +102,14 @@
     <EmbeddedResource Include="UI\AssignPatientFormUI.resx">
       <DependentUpon>AssignPatientFormUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\CaseCreationFormUI.resx">
+      <DependentUpon>CaseCreationFormUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\DashboardControlUI.resx">
       <DependentUpon>DashboardControlUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PatientRecordsControlUI.resx">
+      <DependentUpon>PatientRecordsControlUI.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
@@ -378,6 +388,14 @@
     <None Include="Resources\suitcase.png" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <None Include="Reports\DsKashfReceipt.xsd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Reports\KashfReceipt_REPORT_SETUP.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <ItemGroup>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

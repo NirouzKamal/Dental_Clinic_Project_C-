@@ -47,10 +47,6 @@ namespace DentalClinicProject.UI
             };
 
             cmbDoctor.SelectedIndexChanged += (s, e) => LoadTodayAppointments();
-            txtSearch.TextChanged += (s, e) => FilterGrid();
-            
-            txtSearch.Enter += (s, e) => { if (txtSearch.Text == "ابحث...") txtSearch.Text = ""; };
-            txtSearch.Leave += (s, e) => { if (string.IsNullOrWhiteSpace(txtSearch.Text)) txtSearch.Text = "ابحث..."; };
 
             btnAssignPatient.Click += (s, e) => {
                 new UI.AssignPatientFormUI().ShowDialog();
@@ -141,28 +137,6 @@ namespace DentalClinicProject.UI
             }
 
             CalculateKPIs(todayAppointments);
-        }
-
-        private void FilterGrid()
-        {
-            string search = txtSearch.Text.Trim();
-            if (search == "ابحث...") search = "";
-
-            foreach (DataGridViewRow row in dgvTodayAppointments.Rows)
-            {
-                if (row.IsNewRow) continue;
-
-                bool visible = true;
-                if (!string.IsNullOrEmpty(search))
-                {
-                    string patientName = row.Cells["colPatientName"].Value?.ToString() ?? "";
-                    string fileNum = row.Cells["colFileNum"].Value?.ToString() ?? "";
-                    
-                    visible = patientName.Contains(search) || fileNum.Contains(search);
-                }
-                
-                row.Visible = visible;
-            }
         }
 
         private void CalculateKPIs(List<Appointment> todayAppointments)

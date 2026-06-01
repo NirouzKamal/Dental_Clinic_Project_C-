@@ -13,24 +13,34 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelHeaderBorder = new System.Windows.Forms.Panel();
             this.panelBottomBar = new System.Windows.Forms.Panel();
-            this.btnAssign = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.panelBottomBorder = new System.Windows.Forms.Panel();
-            this.panelInputArea = new System.Windows.Forms.Panel();
+            this.panelContent = new System.Windows.Forms.Panel();
+            this.panelMain = new System.Windows.Forms.Panel();
             this.tlpInputs = new System.Windows.Forms.TableLayoutPanel();
-            this.lblPatient = new System.Windows.Forms.Label();
+            this.lblFileNumber = new System.Windows.Forms.Label();
+            this.txtFileNumber = new System.Windows.Forms.TextBox();
+            this.lblPatientName = new System.Windows.Forms.Label();
             this.cmbPatient = new System.Windows.Forms.ComboBox();
-            this.lblDoctor = new System.Windows.Forms.Label();
+            this.lblDoctorName = new System.Windows.Forms.Label();
             this.cmbDoctor = new System.Windows.Forms.ComboBox();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.dtpDate = new System.Windows.Forms.DateTimePicker();
-            this.lblTime = new System.Windows.Forms.Label();
-            this.cmbTime = new System.Windows.Forms.ComboBox();
-            this.lblNotes = new System.Windows.Forms.Label();
-            this.txtNotes = new System.Windows.Forms.TextBox();
+            this.lblVisitType = new System.Windows.Forms.Label();
+            this.cmbVisitType = new System.Windows.Forms.ComboBox();
+            this.lblPrice = new System.Windows.Forms.Label();
+            this.txtPrice = new System.Windows.Forms.TextBox();
+            this.lblPaid = new System.Windows.Forms.Label();
+            this.txtPaid = new System.Windows.Forms.TextBox();
+            this.panelSide = new System.Windows.Forms.Panel();
+            this.panelSideBorder = new System.Windows.Forms.Panel();
+            this.lblTotalDebt = new System.Windows.Forms.Label();
+            this.txtTotalDebt = new System.Windows.Forms.TextBox();
+            this.btnPatientRecords = new System.Windows.Forms.Button();
             this.panelHeader.SuspendLayout();
             this.panelBottomBar.SuspendLayout();
-            this.panelInputArea.SuspendLayout();
+            this.panelContent.SuspendLayout();
+            this.panelMain.SuspendLayout();
             this.tlpInputs.SuspendLayout();
+            this.panelSide.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelHeader
@@ -39,9 +49,9 @@
             this.panelHeader.Controls.Add(this.panelHeaderBorder);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
-            this.panelHeader.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.panelHeader.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1467, 119);
+            this.panelHeader.Size = new System.Drawing.Size(1659, 69);
             this.panelHeader.TabIndex = 2;
             // 
             // lblTitle
@@ -49,259 +59,387 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.lblTitle.Location = new System.Drawing.Point(53, 36);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.lblTitle.Location = new System.Drawing.Point(38, 17);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(352, 54);
+            this.lblTitle.Size = new System.Drawing.Size(290, 54);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "تعيين مريض لطبيب";
+            this.lblTitle.Text = "إنشاء حالة جديدة";
             // 
             // panelHeaderBorder
             // 
             this.panelHeaderBorder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(226)))), ((int)(((byte)(230)))));
             this.panelHeaderBorder.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelHeaderBorder.Location = new System.Drawing.Point(0, 117);
-            this.panelHeaderBorder.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.panelHeaderBorder.Location = new System.Drawing.Point(0, 68);
+            this.panelHeaderBorder.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.panelHeaderBorder.Name = "panelHeaderBorder";
-            this.panelHeaderBorder.Size = new System.Drawing.Size(1467, 2);
+            this.panelHeaderBorder.Size = new System.Drawing.Size(1659, 1);
             this.panelHeaderBorder.TabIndex = 1;
             // 
             // panelBottomBar
             // 
-            this.panelBottomBar.Controls.Add(this.btnAssign);
+            this.panelBottomBar.Controls.Add(this.btnSave);
             this.panelBottomBar.Controls.Add(this.panelBottomBorder);
             this.panelBottomBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottomBar.Location = new System.Drawing.Point(0, 859);
-            this.panelBottomBar.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.panelBottomBar.Location = new System.Drawing.Point(0, 655);
+            this.panelBottomBar.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.panelBottomBar.Name = "panelBottomBar";
-            this.panelBottomBar.Padding = new System.Windows.Forms.Padding(27, 24, 27, 24);
-            this.panelBottomBar.Size = new System.Drawing.Size(1467, 143);
+            this.panelBottomBar.Padding = new System.Windows.Forms.Padding(26, 15, 26, 15);
+            this.panelBottomBar.Size = new System.Drawing.Size(1659, 89);
             this.panelBottomBar.TabIndex = 1;
             // 
-            // btnAssign
+            // btnSave
             // 
-            this.btnAssign.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(155)))));
-            this.btnAssign.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAssign.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnAssign.FlatAppearance.BorderSize = 0;
-            this.btnAssign.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAssign.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnAssign.ForeColor = System.Drawing.Color.White;
-            this.btnAssign.Location = new System.Drawing.Point(1120, 26);
-            this.btnAssign.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.btnAssign.Name = "btnAssign";
-            this.btnAssign.Size = new System.Drawing.Size(320, 93);
-            this.btnAssign.TabIndex = 0;
-            this.btnAssign.Text = "تعيين";
-            this.btnAssign.UseVisualStyleBackColor = false;
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(155)))));
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(1313, 16);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(320, 58);
+            this.btnSave.TabIndex = 0;
+            this.btnSave.Text = "إنشاء الحالة";
+            this.btnSave.UseVisualStyleBackColor = false;
             // 
             // panelBottomBorder
             // 
             this.panelBottomBorder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(226)))), ((int)(((byte)(230)))));
             this.panelBottomBorder.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelBottomBorder.Location = new System.Drawing.Point(27, 24);
-            this.panelBottomBorder.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.panelBottomBorder.Location = new System.Drawing.Point(26, 15);
+            this.panelBottomBorder.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.panelBottomBorder.Name = "panelBottomBorder";
-            this.panelBottomBorder.Size = new System.Drawing.Size(1413, 2);
+            this.panelBottomBorder.Size = new System.Drawing.Size(1607, 1);
             this.panelBottomBorder.TabIndex = 1;
             // 
-            // panelInputArea
+            // panelContent
             // 
-            this.panelInputArea.Controls.Add(this.tlpInputs);
-            this.panelInputArea.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelInputArea.Location = new System.Drawing.Point(0, 119);
-            this.panelInputArea.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.panelInputArea.Name = "panelInputArea";
-            this.panelInputArea.Padding = new System.Windows.Forms.Padding(80, 72, 80, 72);
-            this.panelInputArea.Size = new System.Drawing.Size(1467, 740);
-            this.panelInputArea.TabIndex = 0;
+            this.panelContent.Controls.Add(this.panelMain);
+            this.panelContent.Controls.Add(this.panelSide);
+            this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContent.Location = new System.Drawing.Point(0, 69);
+            this.panelContent.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.panelContent.Name = "panelContent";
+            this.panelContent.Size = new System.Drawing.Size(1659, 586);
+            this.panelContent.TabIndex = 0;
+            // 
+            // panelMain
+            // 
+            this.panelMain.Controls.Add(this.tlpInputs);
+            this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelMain.Location = new System.Drawing.Point(0, 0);
+            this.panelMain.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.panelMain.Name = "panelMain";
+            this.panelMain.Padding = new System.Windows.Forms.Padding(38, 20, 26, 20);
+            this.panelMain.Size = new System.Drawing.Size(1359, 586);
+            this.panelMain.TabIndex = 1;
             // 
             // tlpInputs
             // 
             this.tlpInputs.ColumnCount = 2;
-            this.tlpInputs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 347F));
+            this.tlpInputs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 320F));
             this.tlpInputs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpInputs.Controls.Add(this.lblPatient, 0, 0);
-            this.tlpInputs.Controls.Add(this.cmbPatient, 1, 0);
-            this.tlpInputs.Controls.Add(this.lblDoctor, 0, 1);
-            this.tlpInputs.Controls.Add(this.cmbDoctor, 1, 1);
-            this.tlpInputs.Controls.Add(this.lblDate, 0, 2);
-            this.tlpInputs.Controls.Add(this.dtpDate, 1, 2);
-            this.tlpInputs.Controls.Add(this.lblTime, 0, 3);
-            this.tlpInputs.Controls.Add(this.cmbTime, 1, 3);
-            this.tlpInputs.Controls.Add(this.lblNotes, 0, 4);
-            this.tlpInputs.Controls.Add(this.txtNotes, 1, 4);
+            this.tlpInputs.Controls.Add(this.lblFileNumber, 0, 0);
+            this.tlpInputs.Controls.Add(this.txtFileNumber, 1, 0);
+            this.tlpInputs.Controls.Add(this.lblPatientName, 0, 1);
+            this.tlpInputs.Controls.Add(this.cmbPatient, 1, 1);
+            this.tlpInputs.Controls.Add(this.lblDoctorName, 0, 2);
+            this.tlpInputs.Controls.Add(this.cmbDoctor, 1, 2);
+            this.tlpInputs.Controls.Add(this.lblVisitType, 0, 3);
+            this.tlpInputs.Controls.Add(this.cmbVisitType, 1, 3);
+            this.tlpInputs.Controls.Add(this.lblPrice, 0, 4);
+            this.tlpInputs.Controls.Add(this.txtPrice, 1, 4);
+            this.tlpInputs.Controls.Add(this.lblPaid, 0, 5);
+            this.tlpInputs.Controls.Add(this.txtPaid, 1, 5);
             this.tlpInputs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpInputs.Location = new System.Drawing.Point(80, 72);
-            this.tlpInputs.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.tlpInputs.Location = new System.Drawing.Point(38, 20);
+            this.tlpInputs.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.tlpInputs.Name = "tlpInputs";
-            this.tlpInputs.RowCount = 5;
-            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tlpInputs.Size = new System.Drawing.Size(1307, 596);
+            this.tlpInputs.RowCount = 6;
+            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tlpInputs.Size = new System.Drawing.Size(1295, 546);
             this.tlpInputs.TabIndex = 0;
             // 
-            // lblPatient
+            // lblFileNumber
             // 
-            this.lblPatient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblPatient.AutoSize = true;
-            this.lblPatient.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblPatient.Location = new System.Drawing.Point(968, 36);
-            this.lblPatient.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.lblPatient.Name = "lblPatient";
-            this.lblPatient.Size = new System.Drawing.Size(331, 46);
-            this.lblPatient.TabIndex = 0;
-            this.lblPatient.Text = "المريض";
-            this.lblPatient.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblFileNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblFileNumber.AutoSize = true;
+            this.lblFileNumber.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblFileNumber.Location = new System.Drawing.Point(980, 22);
+            this.lblFileNumber.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblFileNumber.Name = "lblFileNumber";
+            this.lblFileNumber.Size = new System.Drawing.Size(310, 46);
+            this.lblFileNumber.TabIndex = 0;
+            this.lblFileNumber.Text = "رقم الملف";
+            this.lblFileNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtFileNumber
+            // 
+            this.txtFileNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
+            this.txtFileNumber.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtFileNumber.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtFileNumber.Location = new System.Drawing.Point(13, 7);
+            this.txtFileNumber.Margin = new System.Windows.Forms.Padding(13, 7, 13, 7);
+            this.txtFileNumber.Name = "txtFileNumber";
+            this.txtFileNumber.ReadOnly = true;
+            this.txtFileNumber.Size = new System.Drawing.Size(949, 52);
+            this.txtFileNumber.TabIndex = 1;
+            // 
+            // lblPatientName
+            // 
+            this.lblPatientName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPatientName.AutoSize = true;
+            this.lblPatientName.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblPatientName.Location = new System.Drawing.Point(980, 113);
+            this.lblPatientName.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblPatientName.Name = "lblPatientName";
+            this.lblPatientName.Size = new System.Drawing.Size(310, 46);
+            this.lblPatientName.TabIndex = 2;
+            this.lblPatientName.Text = "اسم المريض";
+            this.lblPatientName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cmbPatient
             // 
+            this.cmbPatient.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.cmbPatient.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbPatient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPatient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.cmbPatient.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbPatient.Location = new System.Drawing.Point(27, 24);
-            this.cmbPatient.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
+            this.cmbPatient.Location = new System.Drawing.Point(13, 98);
+            this.cmbPatient.Margin = new System.Windows.Forms.Padding(13, 7, 13, 7);
             this.cmbPatient.Name = "cmbPatient";
-            this.cmbPatient.Size = new System.Drawing.Size(906, 53);
-            this.cmbPatient.TabIndex = 1;
+            this.cmbPatient.Size = new System.Drawing.Size(949, 53);
+            this.cmbPatient.TabIndex = 3;
             // 
-            // lblDoctor
+            // lblDoctorName
             // 
-            this.lblDoctor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDoctor.AutoSize = true;
-            this.lblDoctor.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblDoctor.Location = new System.Drawing.Point(968, 155);
-            this.lblDoctor.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.lblDoctor.Name = "lblDoctor";
-            this.lblDoctor.Size = new System.Drawing.Size(331, 46);
-            this.lblDoctor.TabIndex = 2;
-            this.lblDoctor.Text = "الطبيب";
-            this.lblDoctor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblDoctorName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDoctorName.AutoSize = true;
+            this.lblDoctorName.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblDoctorName.Location = new System.Drawing.Point(980, 204);
+            this.lblDoctorName.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblDoctorName.Name = "lblDoctorName";
+            this.lblDoctorName.Size = new System.Drawing.Size(310, 46);
+            this.lblDoctorName.TabIndex = 4;
+            this.lblDoctorName.Text = "اسم الطبيب";
+            this.lblDoctorName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cmbDoctor
             // 
             this.cmbDoctor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbDoctor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDoctor.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbDoctor.Location = new System.Drawing.Point(27, 143);
-            this.cmbDoctor.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
+            this.cmbDoctor.Location = new System.Drawing.Point(13, 189);
+            this.cmbDoctor.Margin = new System.Windows.Forms.Padding(13, 7, 13, 7);
             this.cmbDoctor.Name = "cmbDoctor";
-            this.cmbDoctor.Size = new System.Drawing.Size(906, 53);
-            this.cmbDoctor.TabIndex = 3;
+            this.cmbDoctor.Size = new System.Drawing.Size(949, 53);
+            this.cmbDoctor.TabIndex = 5;
             // 
-            // lblDate
+            // lblVisitType
             // 
-            this.lblDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDate.AutoSize = true;
-            this.lblDate.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblDate.Location = new System.Drawing.Point(968, 274);
-            this.lblDate.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(331, 46);
-            this.lblDate.TabIndex = 4;
-            this.lblDate.Text = "التاريخ";
-            this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblVisitType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblVisitType.AutoSize = true;
+            this.lblVisitType.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblVisitType.Location = new System.Drawing.Point(980, 295);
+            this.lblVisitType.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblVisitType.Name = "lblVisitType";
+            this.lblVisitType.Size = new System.Drawing.Size(310, 46);
+            this.lblVisitType.TabIndex = 6;
+            this.lblVisitType.Text = "نوع الزيارة";
+            this.lblVisitType.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // dtpDate
+            // cmbVisitType
             // 
-            this.dtpDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtpDate.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDate.Location = new System.Drawing.Point(27, 262);
-            this.dtpDate.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
-            this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(906, 52);
-            this.dtpDate.TabIndex = 5;
+            this.cmbVisitType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbVisitType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbVisitType.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbVisitType.Location = new System.Drawing.Point(13, 280);
+            this.cmbVisitType.Margin = new System.Windows.Forms.Padding(13, 7, 13, 7);
+            this.cmbVisitType.Name = "cmbVisitType";
+            this.cmbVisitType.Size = new System.Drawing.Size(949, 53);
+            this.cmbVisitType.TabIndex = 7;
             // 
-            // lblTime
+            // lblPrice
             // 
-            this.lblTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTime.AutoSize = true;
-            this.lblTime.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblTime.Location = new System.Drawing.Point(968, 393);
-            this.lblTime.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(331, 46);
-            this.lblTime.TabIndex = 6;
-            this.lblTime.Text = "الوقت";
-            this.lblTime.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPrice.AutoSize = true;
+            this.lblPrice.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblPrice.Location = new System.Drawing.Point(980, 386);
+            this.lblPrice.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblPrice.Name = "lblPrice";
+            this.lblPrice.Size = new System.Drawing.Size(310, 46);
+            this.lblPrice.TabIndex = 8;
+            this.lblPrice.Text = "السعر";
+            this.lblPrice.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // cmbTime
+            // txtPrice
             // 
-            this.cmbTime.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTime.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbTime.Location = new System.Drawing.Point(27, 381);
-            this.cmbTime.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
-            this.cmbTime.Name = "cmbTime";
-            this.cmbTime.Size = new System.Drawing.Size(906, 53);
-            this.cmbTime.TabIndex = 7;
+            this.txtPrice.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtPrice.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtPrice.Location = new System.Drawing.Point(13, 371);
+            this.txtPrice.Margin = new System.Windows.Forms.Padding(13, 7, 13, 7);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(949, 52);
+            this.txtPrice.TabIndex = 9;
             // 
-            // lblNotes
+            // lblPaid
             // 
-            this.lblNotes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblNotes.AutoSize = true;
-            this.lblNotes.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblNotes.Location = new System.Drawing.Point(968, 513);
-            this.lblNotes.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.lblNotes.Name = "lblNotes";
-            this.lblNotes.Size = new System.Drawing.Size(331, 46);
-            this.lblNotes.TabIndex = 8;
-            this.lblNotes.Text = "ملاحظات";
-            this.lblNotes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblPaid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPaid.AutoSize = true;
+            this.lblPaid.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblPaid.Location = new System.Drawing.Point(980, 477);
+            this.lblPaid.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblPaid.Name = "lblPaid";
+            this.lblPaid.Size = new System.Drawing.Size(310, 46);
+            this.lblPaid.TabIndex = 10;
+            this.lblPaid.Text = "المبلغ المدفوع";
+            this.lblPaid.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txtNotes
+            // txtPaid
             // 
-            this.txtNotes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNotes.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtNotes.Location = new System.Drawing.Point(27, 500);
-            this.txtNotes.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
-            this.txtNotes.Name = "txtNotes";
-            this.txtNotes.Size = new System.Drawing.Size(906, 52);
-            this.txtNotes.TabIndex = 9;
+            this.txtPaid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtPaid.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtPaid.Location = new System.Drawing.Point(13, 462);
+            this.txtPaid.Margin = new System.Windows.Forms.Padding(13, 7, 13, 7);
+            this.txtPaid.Name = "txtPaid";
+            this.txtPaid.Size = new System.Drawing.Size(949, 52);
+            this.txtPaid.TabIndex = 11;
+            // 
+            // panelSide
+            // 
+            this.panelSide.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(249)))), ((int)(((byte)(250)))));
+            this.panelSide.Controls.Add(this.panelSideBorder);
+            this.panelSide.Controls.Add(this.lblTotalDebt);
+            this.panelSide.Controls.Add(this.txtTotalDebt);
+            this.panelSide.Controls.Add(this.btnPatientRecords);
+            this.panelSide.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelSide.Location = new System.Drawing.Point(1359, 0);
+            this.panelSide.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.panelSide.Name = "panelSide";
+            this.panelSide.Padding = new System.Windows.Forms.Padding(26, 20, 26, 20);
+            this.panelSide.Size = new System.Drawing.Size(300, 586);
+            this.panelSide.TabIndex = 0;
+            // 
+            // panelSideBorder
+            // 
+            this.panelSideBorder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(226)))), ((int)(((byte)(230)))));
+            this.panelSideBorder.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelSideBorder.Location = new System.Drawing.Point(26, 20);
+            this.panelSideBorder.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.panelSideBorder.Name = "panelSideBorder";
+            this.panelSideBorder.Size = new System.Drawing.Size(2, 546);
+            this.panelSideBorder.TabIndex = 0;
+            // 
+            // lblTotalDebt
+            // 
+            this.lblTotalDebt.AutoSize = true;
+            this.lblTotalDebt.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblTotalDebt.Location = new System.Drawing.Point(26, 30);
+            this.lblTotalDebt.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblTotalDebt.Name = "lblTotalDebt";
+            this.lblTotalDebt.Size = new System.Drawing.Size(306, 46);
+            this.lblTotalDebt.TabIndex = 3;
+            this.lblTotalDebt.Text = "رصيد الديون المتبقي";
+            // 
+            // txtTotalDebt
+            // 
+            this.txtTotalDebt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTotalDebt.BackColor = System.Drawing.Color.White;
+            this.txtTotalDebt.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.txtTotalDebt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txtTotalDebt.Location = new System.Drawing.Point(26, 79);
+            this.txtTotalDebt.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.txtTotalDebt.Name = "txtTotalDebt";
+            this.txtTotalDebt.ReadOnly = true;
+            this.txtTotalDebt.Size = new System.Drawing.Size(248, 56);
+            this.txtTotalDebt.TabIndex = 4;
+            this.txtTotalDebt.Text = "0.00 د.ل";
+            this.txtTotalDebt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // btnPatientRecords
+            // 
+            this.btnPatientRecords.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPatientRecords.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(155)))));
+            this.btnPatientRecords.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPatientRecords.FlatAppearance.BorderSize = 0;
+            this.btnPatientRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPatientRecords.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPatientRecords.ForeColor = System.Drawing.Color.White;
+            this.btnPatientRecords.Location = new System.Drawing.Point(26, 160);
+            this.btnPatientRecords.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnPatientRecords.Name = "btnPatientRecords";
+            this.btnPatientRecords.Size = new System.Drawing.Size(248, 60);
+            this.btnPatientRecords.TabIndex = 7;
+            this.btnPatientRecords.Text = "سجل المريض";
+            this.btnPatientRecords.UseVisualStyleBackColor = false;
             // 
             // AssignPatientFormUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1467, 1002);
-            this.Controls.Add(this.panelInputArea);
+            this.ClientSize = new System.Drawing.Size(1659, 744);
+            this.Controls.Add(this.panelContent);
             this.Controls.Add(this.panelBottomBar);
             this.Controls.Add(this.panelHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AssignPatientFormUI";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "تعيين مريض لطبيب";
+            this.Text = "إنشاء حالة جديدة";
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             this.panelBottomBar.ResumeLayout(false);
-            this.panelInputArea.ResumeLayout(false);
+            this.panelContent.ResumeLayout(false);
+            this.panelMain.ResumeLayout(false);
             this.tlpInputs.ResumeLayout(false);
             this.tlpInputs.PerformLayout();
+            this.panelSide.ResumeLayout(false);
+            this.panelSide.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panelHeader; private System.Windows.Forms.Label lblTitle; private System.Windows.Forms.Panel panelHeaderBorder;
-        private System.Windows.Forms.Panel panelBottomBar; private System.Windows.Forms.Button btnAssign; private System.Windows.Forms.Panel panelBottomBorder;
-        private System.Windows.Forms.Panel panelInputArea; private System.Windows.Forms.TableLayoutPanel tlpInputs;
-        private System.Windows.Forms.Label lblPatient; private System.Windows.Forms.ComboBox cmbPatient;
-        private System.Windows.Forms.Label lblDoctor; private System.Windows.Forms.ComboBox cmbDoctor;
-        private System.Windows.Forms.Label lblDate; private System.Windows.Forms.DateTimePicker dtpDate;
-        private System.Windows.Forms.Label lblTime; private System.Windows.Forms.ComboBox cmbTime;
-        private System.Windows.Forms.Label lblNotes; private System.Windows.Forms.TextBox txtNotes;
+        private System.Windows.Forms.Panel panelHeader;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Panel panelHeaderBorder;
+        private System.Windows.Forms.Panel panelBottomBar;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Panel panelBottomBorder;
+        private System.Windows.Forms.Panel panelContent;
+        private System.Windows.Forms.Panel panelMain;
+        private System.Windows.Forms.TableLayoutPanel tlpInputs;
+        private System.Windows.Forms.Label lblFileNumber;
+        private System.Windows.Forms.TextBox txtFileNumber;
+        private System.Windows.Forms.Label lblPatientName;
+        private System.Windows.Forms.ComboBox cmbPatient;
+        private System.Windows.Forms.Label lblDoctorName;
+        private System.Windows.Forms.ComboBox cmbDoctor;
+        private System.Windows.Forms.Label lblVisitType;
+        private System.Windows.Forms.ComboBox cmbVisitType;
+        private System.Windows.Forms.Label lblPrice;
+        private System.Windows.Forms.TextBox txtPrice;
+        private System.Windows.Forms.Label lblPaid;
+        private System.Windows.Forms.TextBox txtPaid;
+        private System.Windows.Forms.Panel panelSide;
+        private System.Windows.Forms.Panel panelSideBorder;
+        private System.Windows.Forms.Label lblTotalDebt;
+        private System.Windows.Forms.TextBox txtTotalDebt;
+        private System.Windows.Forms.Button btnPatientRecords;
     }
 }
-
-

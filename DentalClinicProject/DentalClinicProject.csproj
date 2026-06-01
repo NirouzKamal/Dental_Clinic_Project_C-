@@ -105,6 +105,7 @@
       <DependentUpon>DashBoardForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\DataStore.cs" />
+    <Compile Include="Data\ClinicServicePricing.cs" />
     <Compile Include="DoctorDashboard.cs">
       <SubType>Form</SubType>
     </Compile>

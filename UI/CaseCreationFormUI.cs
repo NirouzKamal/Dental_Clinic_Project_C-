@@ -2,19 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using DentalClinicProject;
 using DentalClinicProject.classes;
 using DentalClinicProject.data;
-
-namespace DentalClinicProject
-{
-    public enum CaseFormMode
-    {
-        Create,
-        DoctorEdit,
-        Payment,
-        NewCase
-    }
-}
 
 namespace DentalClinicProject.UI
 {

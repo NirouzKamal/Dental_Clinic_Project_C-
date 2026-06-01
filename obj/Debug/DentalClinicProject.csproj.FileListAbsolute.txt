@@ -130,3 +130,7 @@ C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicPr
 C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.UI.AddStaffFormUI.resources
 C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.UI.AssignPatientFormUI.resources
 C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.UI.DashboardControlUI.resources
+C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.UI.CaseCreationFormUI.resources
+C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\bin\Debug\Reports\DsKashfReceipt.xsd
+C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\bin\Debug\Reports\KashfReceipt_REPORT_SETUP.txt
+C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.UI.PatientRecordsControlUI.resources

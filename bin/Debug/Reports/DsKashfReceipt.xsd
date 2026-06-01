@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DsKashfReceipt" targetNamespace="http://tempuri.org/DsKashfReceipt.xsd" xmlns:mstns="http://tempuri.org/DsKashfReceipt.xsd" xmlns="http://tempuri.org/DsKashfReceipt.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:element name="DsKashfReceipt" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="KashfReceipt">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PatientName" type="xs:string" minOccurs="0" />
+              <xs:element name="FileNumber" type="xs:string" minOccurs="0" />
+              <xs:element name="DoctorName" type="xs:string" minOccurs="0" />
+              <xs:element name="VisitType" type="xs:string" minOccurs="0" />
+              <xs:element name="Price" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PaidAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="VisitDate" type="xs:string" minOccurs="0" />
+              <xs:element name="VisitDateTime" type="xs:string" minOccurs="0" />
+              <xs:element name="PriceText" type="xs:string" minOccurs="0" />
+              <xs:element name="PaidAmountText" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
