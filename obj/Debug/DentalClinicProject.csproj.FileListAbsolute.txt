@@ -142,3 +142,31 @@ C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicPr
 C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.UI.MyPatientsFormUI.resources
 C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.UI.AppointmentsControlUI.resources
 C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.UI.DebtsManagementForm.resources
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\bin\Debug\Reports\DsKashfReceipt.xsd
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\bin\Debug\Reports\DsPaymentReceipt.xsd
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\bin\Debug\Reports\KashfReceipt_REPORT_SETUP.txt
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\bin\Debug\Reports\PaymentReceipt_REPORT_SETUP.txt
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\bin\Debug\DentalClinicProject.exe.config
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\bin\Debug\DentalClinicProject.exe
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\bin\Debug\DentalClinicProject.pdb
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\obj\Debug\DentalClinicProject.csproj.AssemblyReference.cache
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\obj\Debug\DentalClinicProject.LoginForm.resources
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\obj\Debug\DentalClinicProject.Properties.Resources.resources
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\obj\Debug\DentalClinicProject.UI.AddAppointmentFormUI.resources
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\obj\Debug\DentalClinicProject.UI.AddStaffFormUI.resources
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\obj\Debug\DentalClinicProject.UI.AppointmentsControlUI.resources
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\obj\Debug\DentalClinicProject.UI.AssignPatientFormUI.resources
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\obj\Debug\DentalClinicProject.UI.CaseCreationFormUI.resources
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\obj\Debug\DentalClinicProject.UI.DashboardControlUI.resources
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\obj\Debug\DentalClinicProject.UI.DebtsManagementForm.resources
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\obj\Debug\DentalClinicProject.UI.DoctorServiceFormUI.resources
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\obj\Debug\DentalClinicProject.UI.InvoicePaymentFormUI.resources
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\obj\Debug\DentalClinicProject.UI.MyPatientsFormUI.resources
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\obj\Debug\DentalClinicProject.UI.PatientRecordsControlUI.resources
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\obj\Debug\DentalClinicProject.UI.PendingInvoicesFormUI.resources
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\obj\Debug\DentalClinicProject.csproj.GenerateResource.cache
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\obj\Debug\DentalClinicProject.csproj.CoreCompileInputs.cache
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\obj\Debug\DentalClinicProject.exe
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\obj\Debug\DentalClinicProject.pdb
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\obj\Debug\DentalClinicProject.UI.DailyRevenueControl.resources
+C:\Users\hp\Desktop\C#_Github\Dental_Clinic_Project_C-\obj\Debug\DentalClinicProject.exe.config

@@ -24,6 +24,9 @@ namespace DentalClinicProject.data
         // المستخدم الحالي بعد اللوجن
         public static User CurrentUser { get; set; }
 
+        /// <summary>تواريخ تم فيها تأكيد إغلاق إيرادات اليوم (جلسة التشغيل الحالية).</summary>
+        public static HashSet<DateTime> DailyRevenueClosedDates = new HashSet<DateTime>();
+
         // ====== Auto-increment IDs ======
         private static int _patientFileCounter = 1;
 

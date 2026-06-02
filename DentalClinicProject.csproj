@@ -7,6 +7,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -110,6 +111,9 @@
     <EmbeddedResource Include="UI\CaseCreationFormUI.resx">
       <DependentUpon>CaseCreationFormUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\DailyRevenueControl.resx">
+      <DependentUpon>DailyRevenueControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\DashboardControlUI.resx">
       <DependentUpon>DashboardControlUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -176,6 +180,12 @@
     </Compile>
     <Compile Include="UI\RevenuesControlUI.Designer.cs">
       <DependentUpon>RevenuesControlUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\DailyRevenueControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\DailyRevenueControl.Designer.cs">
+      <DependentUpon>DailyRevenueControl.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\StaffManagementControlUI.cs">
       <SubType>UserControl</SubType>

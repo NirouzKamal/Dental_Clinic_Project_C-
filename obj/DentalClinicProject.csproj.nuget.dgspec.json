@@ -1,26 +1,22 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kamal\\Downloads\\Telegram Desktop\\DentalClinicProject (7)\\DentalClinicProject\\DentalClinicProject\\DentalClinicProject.csproj": {}
+    "C:\\Users\\hp\\Desktop\\C#_Github\\Dental_Clinic_Project_C-\\DentalClinicProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kamal\\Downloads\\Telegram Desktop\\DentalClinicProject (7)\\DentalClinicProject\\DentalClinicProject\\DentalClinicProject.csproj": {
+    "C:\\Users\\hp\\Desktop\\C#_Github\\Dental_Clinic_Project_C-\\DentalClinicProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kamal\\Downloads\\Telegram Desktop\\DentalClinicProject (7)\\DentalClinicProject\\DentalClinicProject\\DentalClinicProject.csproj",
+        "projectUniqueName": "C:\\Users\\hp\\Desktop\\C#_Github\\Dental_Clinic_Project_C-\\DentalClinicProject.csproj",
         "projectName": "DentalClinicProject",
-        "projectPath": "C:\\Users\\Kamal\\Downloads\\Telegram Desktop\\DentalClinicProject (7)\\DentalClinicProject\\DentalClinicProject\\DentalClinicProject.csproj",
-        "packagesPath": "C:\\Users\\Kamal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kamal\\Downloads\\Telegram Desktop\\DentalClinicProject (7)\\DentalClinicProject\\DentalClinicProject\\obj\\",
+        "projectPath": "C:\\Users\\hp\\Desktop\\C#_Github\\Dental_Clinic_Project_C-\\DentalClinicProject.csproj",
+        "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hp\\Desktop\\C#_Github\\Dental_Clinic_Project_C-\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "UsingMicrosoftNETSdk": false,
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Kamal\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

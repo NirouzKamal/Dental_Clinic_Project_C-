@@ -68,7 +68,12 @@ namespace DentalClinicProject.UI
             else if (clickedButton == btnRecords)
                 LoadControl(new PatientRecordsControlUI());
             else if (clickedButton == btnRevenues)
-                LoadControl(new RevenuesControlUI());
+            {
+                if (DataStore.CurrentUser != null && DataStore.CurrentUser.Role == UserRole.Receptionist)
+                    LoadControl(new DailyRevenueControl());
+                else
+                    LoadControl(new RevenuesControlUI());
+            }
             else if (clickedButton == btnStaff)
                 LoadControl(new StaffManagementControlUI());
         }
@@ -81,9 +86,12 @@ namespace DentalClinicProject.UI
 
             btnStaff.Visible = isAdmin;
             btnPayroll.Visible = isAdmin;
-            btnRevenues.Visible = isAdmin;
+            btnRevenues.Visible = isAdmin || isReceptionist;
             btnDebts.Visible = isAdmin;
             btnAddPatient.Visible = isAdmin || isReceptionist;
+
+            if (isReceptionist)
+                btnRevenues.Text = "إغلاق إيرادات اليوم";
 
             if (isDoctor)
             {
