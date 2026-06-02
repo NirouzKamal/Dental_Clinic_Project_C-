@@ -1,4 +1,4 @@
-﻿namespace DentalClinicProject.UI
+namespace DentalClinicProject.UI
 {
     partial class PatientRecordsControlUI
     {
@@ -53,7 +53,7 @@
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.lblTitle.Location = new System.Drawing.Point(930, 48);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
@@ -75,7 +75,7 @@
             // 
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearch.Dock = System.Windows.Forms.DockStyle.Left;
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtSearch.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
             this.txtSearch.Location = new System.Drawing.Point(53, 48);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
@@ -91,7 +91,7 @@
             this.btnPrint.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnPrint.FlatAppearance.BorderSize = 0;
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrint.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnPrint.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnPrint.ForeColor = System.Drawing.Color.White;
             this.btnPrint.Location = new System.Drawing.Point(1585, 48);
             this.btnPrint.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
@@ -117,7 +117,7 @@
             this.btnEdit.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnEdit.FlatAppearance.BorderSize = 0;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnEdit.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.btnEdit.Location = new System.Drawing.Point(2038, 48);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);

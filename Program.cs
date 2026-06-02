@@ -17,7 +17,8 @@ namespace DentalClinicProject
         {
             
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            Application.SetCompatibleTextRenderingDefault(true);
+            UiFont.Install();
              try
              {
                  DataStore.Initialize();

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DentalClinicProject;
 using DentalClinicProject.classes;
 using DentalClinicProject.data;
 
@@ -25,7 +26,7 @@ namespace DentalClinicProject.UI
 
         private void SetupSchedulePanel()
         {
-            var lblTitle = new Label { Text = "أوقات الدوام (للطبيب)", Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold), AutoSize = true, Dock = DockStyle.Top, Padding = new Padding(0,0,0,10) };
+            var lblTitle = new Label { Text = "أوقات الدوام (للطبيب)", Font = UiFont.Bold, AutoSize = true, Dock = DockStyle.Top, Padding = new Padding(0,0,0,10) };
             
             var tlpSchedule = new TableLayoutPanel { Dock = DockStyle.Top, AutoSize = true, RowCount = 7, ColumnCount = 3 };
             tlpSchedule.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100));
@@ -40,9 +41,9 @@ namespace DentalClinicProject.UI
             {
                 tlpSchedule.RowStyles.Add(new RowStyle(SizeType.Absolute, 40));
                 
-                var chk = new CheckBox { Text = dayNames[i], Font = new System.Drawing.Font("Segoe UI", 10F), Dock = DockStyle.Fill };
-                var lblShift = new Label { Text = "الوردية:", TextAlign = System.Drawing.ContentAlignment.MiddleCenter, Font = new System.Drawing.Font("Segoe UI", 10F), Dock = DockStyle.Fill };
-                var cmbShift = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList, Font = new System.Drawing.Font("Segoe UI", 10F), Dock = DockStyle.Fill, Enabled = false };
+                var chk = new CheckBox { Text = dayNames[i], Font = UiFont.Regular, Dock = DockStyle.Fill };
+                var lblShift = new Label { Text = "الوردية:", TextAlign = System.Drawing.ContentAlignment.MiddleCenter, Font = UiFont.Regular, Dock = DockStyle.Fill };
+                var cmbShift = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList, Font = UiFont.Regular, Dock = DockStyle.Fill, Enabled = false };
                 cmbShift.Items.AddRange(shifts);
                 cmbShift.SelectedIndex = 0;
 

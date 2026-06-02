@@ -1,4 +1,4 @@
-﻿namespace DentalClinicProject.UI
+namespace DentalClinicProject.UI
 {
     partial class StaffManagementControlUI
     {
@@ -42,7 +42,7 @@
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(33, 37, 41);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Text = "إدارة الموظفين";
@@ -57,7 +57,7 @@
             // 
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearch.Dock = System.Windows.Forms.DockStyle.Left;
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtSearch.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.txtSearch.ForeColor = System.Drawing.Color.FromArgb(108, 117, 125);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(300, 25);
@@ -70,7 +70,7 @@
             this.btnAddStaff.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnAddStaff.FlatAppearance.BorderSize = 0;
             this.btnAddStaff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddStaff.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnAddStaff.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnAddStaff.ForeColor = System.Drawing.Color.White;
             this.btnAddStaff.Name = "btnAddStaff";
             this.btnAddStaff.Size = new System.Drawing.Size(150, 40);

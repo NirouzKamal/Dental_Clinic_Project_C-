@@ -10,10 +10,10 @@ namespace DentalClinicProject.classes
 {
     public static class PrintManager
     {
-        private static Font headerFont = new Font("Segoe UI", 16, FontStyle.Bold);
-        private static Font subHeaderFont = new Font("Segoe UI", 12, FontStyle.Bold);
-        private static Font normalFont = new Font("Segoe UI", 10, FontStyle.Regular);
-        private static Font boldFont = new Font("Segoe UI", 10, FontStyle.Bold);
+        private static Font headerFont = new Font(UiFont.FamilyName, UiFont.DefaultSize, FontStyle.Bold);
+        private static Font subHeaderFont = UiFont.Bold;
+        private static Font normalFont = UiFont.Regular;
+        private static Font boldFont = UiFont.Bold;
 
         private static StringFormat rtlFormat = new StringFormat
         {

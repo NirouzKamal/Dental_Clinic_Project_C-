@@ -1,4 +1,4 @@
-﻿namespace DentalClinicProject.UI
+namespace DentalClinicProject.UI
 {
     partial class AddAppointmentFormUI
     {
@@ -50,7 +50,7 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(33, 37, 41);
             this.lblTitle.Location = new System.Drawing.Point(24, 16);
             this.lblTitle.Name = "lblTitle";
@@ -79,7 +79,7 @@
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnSave.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(140, 40);
@@ -128,7 +128,7 @@
             // 
             this.lblPatient.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblPatient.AutoSize = true;
-            this.lblPatient.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblPatient.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblPatient.Name = "lblPatient";
             this.lblPatient.Text = "المريض";
             this.lblPatient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -137,7 +137,7 @@
             // 
             this.cmbPatient.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbPatient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPatient.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbPatient.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.cmbPatient.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
             this.cmbPatient.Name = "cmbPatient";
             // 
@@ -145,7 +145,7 @@
             // 
             this.lblDoctor.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblDoctor.AutoSize = true;
-            this.lblDoctor.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblDoctor.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblDoctor.Name = "lblDoctor";
             this.lblDoctor.Text = "الطبيب";
             this.lblDoctor.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -154,7 +154,7 @@
             // 
             this.cmbDoctor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbDoctor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDoctor.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbDoctor.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.cmbDoctor.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
             this.cmbDoctor.Name = "cmbDoctor";
             // 
@@ -162,7 +162,7 @@
             // 
             this.lblDate.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblDate.AutoSize = true;
-            this.lblDate.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblDate.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblDate.Name = "lblDate";
             this.lblDate.Text = "تاريخ الموعد";
             this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -170,7 +170,7 @@
             // dtpDate
             // 
             this.dtpDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dtpDate.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.dtpDate.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDate.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
             this.dtpDate.Name = "dtpDate";
@@ -179,7 +179,7 @@
             // 
             this.lblTimeSlots.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblTimeSlots.AutoSize = true;
-            this.lblTimeSlots.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblTimeSlots.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblTimeSlots.Name = "lblTimeSlots";
             this.lblTimeSlots.Text = "الوقت المتاح";
             this.lblTimeSlots.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -189,7 +189,7 @@
             this.cmbTimeSlots.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbTimeSlots.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTimeSlots.Enabled = false;
-            this.cmbTimeSlots.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbTimeSlots.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.cmbTimeSlots.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
             this.cmbTimeSlots.Name = "cmbTimeSlots";
             // 
@@ -197,7 +197,7 @@
             // 
             this.lblVisitType.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblVisitType.AutoSize = true;
-            this.lblVisitType.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblVisitType.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblVisitType.Name = "lblVisitType";
             this.lblVisitType.Text = "نوع الزيارة";
             this.lblVisitType.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -206,7 +206,7 @@
             // 
             this.cmbVisitType.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbVisitType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbVisitType.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbVisitType.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.cmbVisitType.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
             this.cmbVisitType.Name = "cmbVisitType";
             // 
@@ -219,7 +219,7 @@
             this.Controls.Add(this.panelInputArea);
             this.Controls.Add(this.panelBottomBar);
             this.Controls.Add(this.panelHeader);
-            this.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

@@ -1,4 +1,4 @@
-﻿namespace DentalClinicProject.UI
+namespace DentalClinicProject.UI
 {
     partial class CaseCreationFormUI
     {
@@ -49,7 +49,7 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.lblTitle.Location = new System.Drawing.Point(53, 36);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
@@ -87,7 +87,7 @@
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnSave.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(1173, 26);
             this.btnSave.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
@@ -153,7 +153,7 @@
             // 
             this.lblPatient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPatient.AutoSize = true;
-            this.lblPatient.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblPatient.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblPatient.Location = new System.Drawing.Point(1101, 42);
             this.lblPatient.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblPatient.Name = "lblPatient";
@@ -166,7 +166,7 @@
             // 
             this.cmbPatient.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbPatient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPatient.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbPatient.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.cmbPatient.Location = new System.Drawing.Point(27, 24);
             this.cmbPatient.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
             this.cmbPatient.Name = "cmbPatient";
@@ -177,7 +177,7 @@
             // 
             this.lblDoctor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDoctor.AutoSize = true;
-            this.lblDoctor.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblDoctor.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblDoctor.Location = new System.Drawing.Point(1101, 172);
             this.lblDoctor.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblDoctor.Name = "lblDoctor";
@@ -190,7 +190,7 @@
             // 
             this.cmbDoctor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbDoctor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDoctor.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbDoctor.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.cmbDoctor.Location = new System.Drawing.Point(27, 154);
             this.cmbDoctor.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
             this.cmbDoctor.Name = "cmbDoctor";
@@ -201,7 +201,7 @@
             // 
             this.lblService.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblService.AutoSize = true;
-            this.lblService.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblService.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblService.Location = new System.Drawing.Point(1101, 302);
             this.lblService.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblService.Name = "lblService";
@@ -214,7 +214,7 @@
             // 
             this.cmbService.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbService.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbService.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbService.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.cmbService.Location = new System.Drawing.Point(27, 284);
             this.cmbService.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
             this.cmbService.Name = "cmbService";
@@ -225,7 +225,7 @@
             // 
             this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblTotal.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblTotal.Location = new System.Drawing.Point(1101, 432);
             this.lblTotal.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblTotal.Name = "lblTotal";
@@ -237,7 +237,7 @@
             // txtTotal
             // 
             this.txtTotal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtTotal.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtTotal.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.txtTotal.Location = new System.Drawing.Point(27, 414);
             this.txtTotal.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
             this.txtTotal.Name = "txtTotal";
@@ -248,7 +248,7 @@
             // 
             this.lblPaid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPaid.AutoSize = true;
-            this.lblPaid.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblPaid.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblPaid.Location = new System.Drawing.Point(1101, 562);
             this.lblPaid.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblPaid.Name = "lblPaid";
@@ -260,7 +260,7 @@
             // txtPaid
             // 
             this.txtPaid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPaid.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtPaid.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.txtPaid.Location = new System.Drawing.Point(27, 544);
             this.txtPaid.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
             this.txtPaid.Name = "txtPaid";
@@ -272,7 +272,7 @@
             // 
             this.lblNotes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNotes.AutoSize = true;
-            this.lblNotes.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblNotes.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblNotes.Location = new System.Drawing.Point(1101, 695);
             this.lblNotes.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblNotes.Name = "lblNotes";
@@ -284,7 +284,7 @@
             // txtNotes
             // 
             this.txtNotes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtNotes.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtNotes.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.txtNotes.Location = new System.Drawing.Point(27, 674);
             this.txtNotes.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
             this.txtNotes.Name = "txtNotes";

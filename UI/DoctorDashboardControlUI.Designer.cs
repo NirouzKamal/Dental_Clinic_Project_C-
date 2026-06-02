@@ -67,7 +67,7 @@ namespace DentalClinicProject.UI
             // lblTotalTodayTitle
             // 
             this.lblTotalTodayTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblTotalTodayTitle.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblTotalTodayTitle.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblTotalTodayTitle.ForeColor = System.Drawing.Color.FromArgb(108, 117, 125);
             this.lblTotalTodayTitle.Name = "lblTotalTodayTitle";
             this.lblTotalTodayTitle.Size = new System.Drawing.Size(400, 30);
@@ -77,7 +77,7 @@ namespace DentalClinicProject.UI
             // lblTotalTodayValue
             // 
             this.lblTotalTodayValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTotalTodayValue.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.lblTotalTodayValue.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.lblTotalTodayValue.ForeColor = System.Drawing.Color.FromArgb(0, 75, 155);
             this.lblTotalTodayValue.Name = "lblTotalTodayValue";
             this.lblTotalTodayValue.Text = "0";
@@ -95,7 +95,7 @@ namespace DentalClinicProject.UI
             // lblWaitingTitle
             // 
             this.lblWaitingTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblWaitingTitle.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblWaitingTitle.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblWaitingTitle.ForeColor = System.Drawing.Color.FromArgb(108, 117, 125);
             this.lblWaitingTitle.Name = "lblWaitingTitle";
             this.lblWaitingTitle.Size = new System.Drawing.Size(400, 30);
@@ -105,7 +105,7 @@ namespace DentalClinicProject.UI
             // lblWaitingValue
             // 
             this.lblWaitingValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblWaitingValue.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.lblWaitingValue.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.lblWaitingValue.ForeColor = System.Drawing.Color.FromArgb(0, 75, 155);
             this.lblWaitingValue.Name = "lblWaitingValue";
             this.lblWaitingValue.Text = "0";
@@ -125,7 +125,7 @@ namespace DentalClinicProject.UI
             // txtSearch
             // 
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtSearch.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.txtSearch.Location = new System.Drawing.Point(550, 22);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(250, 29);
@@ -139,7 +139,7 @@ namespace DentalClinicProject.UI
             this.btnMyPatients.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnMyPatients.FlatAppearance.BorderSize = 0;
             this.btnMyPatients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMyPatients.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnMyPatients.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnMyPatients.ForeColor = System.Drawing.Color.White;
             this.btnMyPatients.Name = "btnMyPatients";
             this.btnMyPatients.Size = new System.Drawing.Size(120, 40);
@@ -149,7 +149,7 @@ namespace DentalClinicProject.UI
             // 
             this.btnMyPatients.FlatAppearance.BorderSize = 0;
             this.btnMyPatients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMyPatients.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnMyPatients.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnMyPatients.ForeColor = System.Drawing.Color.White;
             this.btnMyPatients.Name = "btnMyPatients";
             this.btnMyPatients.Size = new System.Drawing.Size(120, 40);

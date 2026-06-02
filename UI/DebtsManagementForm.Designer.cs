@@ -51,7 +51,7 @@ namespace DentalClinicProject.UI
             // 
             this.lblSummary.AutoSize = true;
             this.lblSummary.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lblSummary.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.lblSummary.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.lblSummary.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.lblSummary.Location = new System.Drawing.Point(719, 12);
             this.lblSummary.Name = "lblSummary";
@@ -130,7 +130,7 @@ namespace DentalClinicProject.UI
             this.btnClose.AutoSize = true;
             this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnClose.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnClose.Location = new System.Drawing.Point(0, 3);
             this.btnClose.Margin = new System.Windows.Forms.Padding(8, 3, 0, 3);
             this.btnClose.Name = "btnClose";
@@ -144,7 +144,7 @@ namespace DentalClinicProject.UI
             this.btnRefresh.AutoSize = true;
             this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnRefresh.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnRefresh.Location = new System.Drawing.Point(117, 3);
             this.btnRefresh.Margin = new System.Windows.Forms.Padding(8, 3, 0, 3);
             this.btnRefresh.Name = "btnRefresh";
@@ -160,7 +160,7 @@ namespace DentalClinicProject.UI
             this.btnRegisterPayment.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRegisterPayment.FlatAppearance.BorderSize = 0;
             this.btnRegisterPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegisterPayment.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnRegisterPayment.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.btnRegisterPayment.ForeColor = System.Drawing.Color.White;
             this.btnRegisterPayment.Location = new System.Drawing.Point(249, 3);
             this.btnRegisterPayment.Margin = new System.Windows.Forms.Padding(8, 3, 0, 3);
@@ -221,7 +221,7 @@ namespace DentalClinicProject.UI
             this.Controls.Add(this.panelGrid);
             this.Controls.Add(this.panelBottom);
             this.Controls.Add(this.panelSummary);
-            this.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

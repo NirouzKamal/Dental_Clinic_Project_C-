@@ -70,6 +70,7 @@
     <Compile Include="Reports\PaymentReceiptPrintModel.cs" />
     <Compile Include="classes\Payment.cs" />
     <Compile Include="classes\ThemeManager.cs" />
+    <Compile Include="classes\UiFont.cs" />
     <Compile Include="Data\DataStore.cs" />
     <Compile Include="Data\ClinicServicePricing.cs" />
     <Compile Include="LoginForm.cs">
@@ -121,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\InvoicePaymentFormUI.resx">
       <DependentUpon>InvoicePaymentFormUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MainShellFormUI.resx">
+      <DependentUpon>MainShellFormUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\MyPatientsFormUI.resx">
       <DependentUpon>MyPatientsFormUI.cs</DependentUpon>

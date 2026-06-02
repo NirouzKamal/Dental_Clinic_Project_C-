@@ -1,4 +1,4 @@
-﻿namespace DentalClinicProject.UI
+namespace DentalClinicProject.UI
 {
     partial class InvoicePaymentFormUI
     {
@@ -47,7 +47,7 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.lblTitle.Location = new System.Drawing.Point(53, 36);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
@@ -85,7 +85,7 @@
             this.btnConfirm.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnConfirm.FlatAppearance.BorderSize = 0;
             this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfirm.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnConfirm.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.btnConfirm.ForeColor = System.Drawing.Color.White;
             this.btnConfirm.Location = new System.Drawing.Point(986, 26);
             this.btnConfirm.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
@@ -148,7 +148,7 @@
             // 
             this.lblPatient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPatient.AutoSize = true;
-            this.lblPatient.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblPatient.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblPatient.Location = new System.Drawing.Point(861, 31);
             this.lblPatient.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblPatient.Name = "lblPatient";
@@ -160,7 +160,7 @@
             // txtPatient
             // 
             this.txtPatient.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPatient.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtPatient.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.txtPatient.Location = new System.Drawing.Point(27, 24);
             this.txtPatient.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
             this.txtPatient.Name = "txtPatient";
@@ -172,7 +172,7 @@
             // 
             this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblTotal.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblTotal.Location = new System.Drawing.Point(861, 140);
             this.lblTotal.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblTotal.Name = "lblTotal";
@@ -184,7 +184,7 @@
             // txtTotal
             // 
             this.txtTotal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtTotal.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtTotal.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.txtTotal.Location = new System.Drawing.Point(27, 133);
             this.txtTotal.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
             this.txtTotal.Name = "txtTotal";
@@ -196,7 +196,7 @@
             // 
             this.lblPaid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPaid.AutoSize = true;
-            this.lblPaid.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblPaid.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblPaid.Location = new System.Drawing.Point(861, 249);
             this.lblPaid.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblPaid.Name = "lblPaid";
@@ -208,7 +208,7 @@
             // txtPaid
             // 
             this.txtPaid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPaid.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtPaid.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.txtPaid.Location = new System.Drawing.Point(27, 242);
             this.txtPaid.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
             this.txtPaid.Name = "txtPaid";
@@ -219,7 +219,7 @@
             // 
             this.lblRemaining.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRemaining.AutoSize = true;
-            this.lblRemaining.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblRemaining.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblRemaining.Location = new System.Drawing.Point(861, 358);
             this.lblRemaining.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblRemaining.Name = "lblRemaining";
@@ -231,7 +231,7 @@
             // txtRemaining
             // 
             this.txtRemaining.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtRemaining.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtRemaining.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.txtRemaining.Location = new System.Drawing.Point(27, 351);
             this.txtRemaining.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
             this.txtRemaining.Name = "txtRemaining";
@@ -243,7 +243,7 @@
             // 
             this.lblMethod.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMethod.AutoSize = true;
-            this.lblMethod.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblMethod.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblMethod.Location = new System.Drawing.Point(861, 469);
             this.lblMethod.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblMethod.Name = "lblMethod";
@@ -256,7 +256,7 @@
             // 
             this.cmbMethod.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMethod.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbMethod.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.cmbMethod.Location = new System.Drawing.Point(27, 460);
             this.cmbMethod.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
             this.cmbMethod.Name = "cmbMethod";

@@ -21,8 +21,8 @@ namespace DentalClinicProject
         public static readonly Color WarningColor = ColorTranslator.FromHtml("#FFC107"); // Soft Yellow/Orange
 
         // ─── TYPOGRAPHY ─────────────────────────────────────────────────────
-        public static readonly Font PrimaryFont = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        public static readonly Font HeaderFont = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        public static readonly Font PrimaryFont = UiFont.Regular;
+        public static readonly Font HeaderFont = UiFont.Bold;
 
         // ─── STYLING HELPER METHODS ─────────────────────────────────────────
 
@@ -73,7 +73,7 @@ namespace DentalClinicProject
             dgv.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dgv.ColumnHeadersDefaultCellStyle.BackColor = AppBackgroundColor;
             dgv.ColumnHeadersDefaultCellStyle.ForeColor = TextMuted;
-            dgv.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dgv.ColumnHeadersDefaultCellStyle.Font = UiFont.Bold;
             dgv.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgv.ColumnHeadersHeight = 40;
 

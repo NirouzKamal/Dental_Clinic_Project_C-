@@ -52,7 +52,7 @@ namespace DentalClinicProject.UI
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.lblTitle.Location = new System.Drawing.Point(53, 36);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
@@ -90,7 +90,7 @@ namespace DentalClinicProject.UI
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnSave.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(1253, 26);
             this.btnSave.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
@@ -173,7 +173,7 @@ namespace DentalClinicProject.UI
             // 
             this.lblFullName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFullName.AutoSize = true;
-            this.lblFullName.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblFullName.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblFullName.Location = new System.Drawing.Point(1101, 36);
             this.lblFullName.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblFullName.Name = "lblFullName";
@@ -185,7 +185,7 @@ namespace DentalClinicProject.UI
             // txtFullName
             // 
             this.txtFullName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtFullName.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtFullName.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.txtFullName.Location = new System.Drawing.Point(27, 24);
             this.txtFullName.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
             this.txtFullName.Name = "txtFullName";
@@ -196,7 +196,7 @@ namespace DentalClinicProject.UI
             // 
             this.lblUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblUsername.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblUsername.Location = new System.Drawing.Point(1101, 155);
             this.lblUsername.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblUsername.Name = "lblUsername";
@@ -208,7 +208,7 @@ namespace DentalClinicProject.UI
             // txtUsername
             // 
             this.txtUsername.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtUsername.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.txtUsername.Location = new System.Drawing.Point(27, 143);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
             this.txtUsername.Name = "txtUsername";
@@ -219,7 +219,7 @@ namespace DentalClinicProject.UI
             // 
             this.lblPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblPassword.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblPassword.Location = new System.Drawing.Point(1101, 274);
             this.lblPassword.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblPassword.Name = "lblPassword";
@@ -231,7 +231,7 @@ namespace DentalClinicProject.UI
             // txtPassword
             // 
             this.txtPassword.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtPassword.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.txtPassword.Location = new System.Drawing.Point(27, 262);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
             this.txtPassword.Name = "txtPassword";
@@ -243,7 +243,7 @@ namespace DentalClinicProject.UI
             // 
             this.lblRole.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRole.AutoSize = true;
-            this.lblRole.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblRole.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblRole.Location = new System.Drawing.Point(1101, 393);
             this.lblRole.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblRole.Name = "lblRole";
@@ -256,7 +256,7 @@ namespace DentalClinicProject.UI
             // 
             this.cmbRole.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cmbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbRole.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbRole.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.cmbRole.Location = new System.Drawing.Point(27, 381);
             this.cmbRole.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
             this.cmbRole.Name = "cmbRole";
@@ -267,7 +267,7 @@ namespace DentalClinicProject.UI
             // 
             this.lblPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPhone.AutoSize = true;
-            this.lblPhone.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblPhone.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblPhone.Location = new System.Drawing.Point(1101, 512);
             this.lblPhone.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblPhone.Name = "lblPhone";
@@ -279,7 +279,7 @@ namespace DentalClinicProject.UI
             // txtPhone
             // 
             this.txtPhone.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtPhone.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.txtPhone.Location = new System.Drawing.Point(27, 500);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
             this.txtPhone.Name = "txtPhone";
@@ -290,7 +290,7 @@ namespace DentalClinicProject.UI
             // 
             this.lblSalary.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSalary.AutoSize = true;
-            this.lblSalary.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblSalary.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblSalary.Location = new System.Drawing.Point(1101, 631);
             this.lblSalary.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblSalary.Name = "lblSalary";
@@ -302,7 +302,7 @@ namespace DentalClinicProject.UI
             // txtSalary
             // 
             this.txtSalary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSalary.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtSalary.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.txtSalary.Location = new System.Drawing.Point(27, 619);
             this.txtSalary.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
             this.txtSalary.Name = "txtSalary";
@@ -314,7 +314,7 @@ namespace DentalClinicProject.UI
             // 
             this.lblCommission.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCommission.AutoSize = true;
-            this.lblCommission.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblCommission.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblCommission.Location = new System.Drawing.Point(1101, 751);
             this.lblCommission.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblCommission.Name = "lblCommission";
@@ -326,7 +326,7 @@ namespace DentalClinicProject.UI
             // txtCommission
             // 
             this.txtCommission.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCommission.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtCommission.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.txtCommission.Location = new System.Drawing.Point(27, 738);
             this.txtCommission.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
             this.txtCommission.Name = "txtCommission";

@@ -41,7 +41,7 @@ namespace DentalClinicProject.UI
             this.panelHeader.Size = new System.Drawing.Size(584, 50);
             // lblTitle
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(33, 37, 41);
             this.lblTitle.Location = new System.Drawing.Point(20, 15);
             this.lblTitle.Name = "lblTitle";
@@ -67,7 +67,7 @@ namespace DentalClinicProject.UI
             this.btnBookAppointment.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnBookAppointment.FlatAppearance.BorderSize = 0;
             this.btnBookAppointment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBookAppointment.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnBookAppointment.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.btnBookAppointment.ForeColor = System.Drawing.Color.White;
             this.btnBookAppointment.Margin = new System.Windows.Forms.Padding(8, 0, 0, 0);
             this.btnBookAppointment.Name = "btnBookAppointment";
@@ -80,7 +80,7 @@ namespace DentalClinicProject.UI
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnSave.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Margin = new System.Windows.Forms.Padding(8, 0, 0, 0);
             this.btnSave.Name = "btnSave";
@@ -123,15 +123,15 @@ namespace DentalClinicProject.UI
             this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             // Labels
-            this.lblName.Text = "الاسم الكامل"; this.lblName.AutoSize = true; this.lblName.Anchor = System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Left; this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft; this.lblName.Font = new System.Drawing.Font("Segoe UI", 10F); this.lblName.Name = "lblName";
-            this.lblPhone.Text = "رقم الهاتف"; this.lblPhone.AutoSize = true; this.lblPhone.Anchor = System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Left; this.lblPhone.TextAlign = System.Drawing.ContentAlignment.MiddleLeft; this.lblPhone.Font = new System.Drawing.Font("Segoe UI", 10F); this.lblPhone.Name = "lblPhone";
-            this.lblAge.Text = "العمر"; this.lblAge.AutoSize = true; this.lblAge.Anchor = System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Left; this.lblAge.TextAlign = System.Drawing.ContentAlignment.MiddleLeft; this.lblAge.Font = new System.Drawing.Font("Segoe UI", 10F); this.lblAge.Name = "lblAge";
-            this.lblGender.Text = "الجنس"; this.lblGender.AutoSize = true; this.lblGender.Anchor = System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Left; this.lblGender.TextAlign = System.Drawing.ContentAlignment.MiddleLeft; this.lblGender.Font = new System.Drawing.Font("Segoe UI", 10F); this.lblGender.Name = "lblGender";
+            this.lblName.Text = "الاسم الكامل"; this.lblName.AutoSize = true; this.lblName.Anchor = System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Left; this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft; this.lblName.Font = new System.Drawing.Font("Times New Roman", 12F); this.lblName.Name = "lblName";
+            this.lblPhone.Text = "رقم الهاتف"; this.lblPhone.AutoSize = true; this.lblPhone.Anchor = System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Left; this.lblPhone.TextAlign = System.Drawing.ContentAlignment.MiddleLeft; this.lblPhone.Font = new System.Drawing.Font("Times New Roman", 12F); this.lblPhone.Name = "lblPhone";
+            this.lblAge.Text = "العمر"; this.lblAge.AutoSize = true; this.lblAge.Anchor = System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Left; this.lblAge.TextAlign = System.Drawing.ContentAlignment.MiddleLeft; this.lblAge.Font = new System.Drawing.Font("Times New Roman", 12F); this.lblAge.Name = "lblAge";
+            this.lblGender.Text = "الجنس"; this.lblGender.AutoSize = true; this.lblGender.Anchor = System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Left; this.lblGender.TextAlign = System.Drawing.ContentAlignment.MiddleLeft; this.lblGender.Font = new System.Drawing.Font("Times New Roman", 12F); this.lblGender.Name = "lblGender";
             // TextBoxes & Comboboxes
-            this.txtName.Dock = System.Windows.Forms.DockStyle.Fill; this.txtName.Font = new System.Drawing.Font("Segoe UI", 10F); this.txtName.Margin = new System.Windows.Forms.Padding(10); this.txtName.Name = "txtName";
-            this.txtPhone.Dock = System.Windows.Forms.DockStyle.Fill; this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 10F); this.txtPhone.Margin = new System.Windows.Forms.Padding(10); this.txtPhone.Name = "txtPhone";
-            this.txtAge.Dock = System.Windows.Forms.DockStyle.Fill; this.txtAge.Font = new System.Drawing.Font("Segoe UI", 10F); this.txtAge.Margin = new System.Windows.Forms.Padding(10); this.txtAge.Name = "txtAge";
-            this.cmbGender.Dock = System.Windows.Forms.DockStyle.Fill; this.cmbGender.Font = new System.Drawing.Font("Segoe UI", 10F); this.cmbGender.Margin = new System.Windows.Forms.Padding(10); this.cmbGender.Name = "cmbGender"; this.cmbGender.Items.AddRange(new object[] { "ذكر", "أنثى" }); this.cmbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txtName.Dock = System.Windows.Forms.DockStyle.Fill; this.txtName.Font = new System.Drawing.Font("Times New Roman", 12F); this.txtName.Margin = new System.Windows.Forms.Padding(10); this.txtName.Name = "txtName";
+            this.txtPhone.Dock = System.Windows.Forms.DockStyle.Fill; this.txtPhone.Font = new System.Drawing.Font("Times New Roman", 12F); this.txtPhone.Margin = new System.Windows.Forms.Padding(10); this.txtPhone.Name = "txtPhone";
+            this.txtAge.Dock = System.Windows.Forms.DockStyle.Fill; this.txtAge.Font = new System.Drawing.Font("Times New Roman", 12F); this.txtAge.Margin = new System.Windows.Forms.Padding(10); this.txtAge.Name = "txtAge";
+            this.cmbGender.Dock = System.Windows.Forms.DockStyle.Fill; this.cmbGender.Font = new System.Drawing.Font("Times New Roman", 12F); this.cmbGender.Margin = new System.Windows.Forms.Padding(10); this.cmbGender.Name = "cmbGender"; this.cmbGender.Items.AddRange(new object[] { "ذكر", "أنثى" }); this.cmbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // AddPatientFormUI
             // 

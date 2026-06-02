@@ -57,7 +57,7 @@ namespace DentalClinicProject.UI
             this.btnPaySelected.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnPaySelected.FlatAppearance.BorderSize = 0;
             this.btnPaySelected.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPaySelected.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnPaySelected.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnPaySelected.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.btnPaySelected.Location = new System.Drawing.Point(630, 20);
             this.btnPaySelected.Name = "btnPaySelected";
@@ -70,7 +70,7 @@ namespace DentalClinicProject.UI
             // 
             this.lblMonth.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMonth.AutoSize = true;
-            this.lblMonth.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblMonth.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblMonth.Location = new System.Drawing.Point(580, 25);
             this.lblMonth.Name = "lblMonth";
             this.lblMonth.Size = new System.Drawing.Size(43, 19);
@@ -91,7 +91,7 @@ namespace DentalClinicProject.UI
             // 
             this.lblYear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblYear.AutoSize = true;
-            this.lblYear.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblYear.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblYear.Location = new System.Drawing.Point(440, 25);
             this.lblYear.Name = "lblYear";
             this.lblYear.Size = new System.Drawing.Size(43, 19);
@@ -115,7 +115,7 @@ namespace DentalClinicProject.UI
             this.btnCalculate.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnCalculate.FlatAppearance.BorderSize = 0;
             this.btnCalculate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCalculate.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnCalculate.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnCalculate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.btnCalculate.Location = new System.Drawing.Point(20, 20);
             this.btnCalculate.Name = "btnCalculate";
@@ -138,7 +138,7 @@ namespace DentalClinicProject.UI
             // 
             this.lblTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.lblTitle.Location = new System.Drawing.Point(680, 15);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(200, 25);
@@ -167,7 +167,7 @@ namespace DentalClinicProject.UI
             this.dgvPayroll.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(249)))), ((int)(((byte)(250)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -183,7 +183,7 @@ namespace DentalClinicProject.UI
             this.colStatus});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 12F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(155)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;

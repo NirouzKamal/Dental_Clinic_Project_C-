@@ -1,6 +1,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using DentalClinicProject;
 using DentalClinicProject.classes;
 using DentalClinicProject.data;
 using DentalClinicProject.Data;
@@ -17,7 +18,8 @@ namespace DentalClinicProject.UI
         public MainShellFormUI()
         {
             InitializeComponent();
-            
+            UiFont.ApplyTo(this);
+
             // Attach event handlers
             this.Load += MainShellFormUI_Load;
             
@@ -119,6 +121,7 @@ namespace DentalClinicProject.UI
         {
             panelMainContent.Controls.Clear();
             control.Dock = DockStyle.Fill;
+            UiFont.ApplyTo(control);
             panelMainContent.Controls.Add(control);
         }
 
@@ -150,6 +153,11 @@ namespace DentalClinicProject.UI
             session.CurrentUser = null;
             LogoutRequested = true;
             Close();
+        }
+
+        private void lblLogo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

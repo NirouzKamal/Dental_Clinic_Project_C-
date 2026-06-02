@@ -95,7 +95,7 @@ namespace DentalClinicProject.UI
             // lblTotalAppointmentsValue
             // 
             this.lblTotalAppointmentsValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTotalAppointmentsValue.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.lblTotalAppointmentsValue.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.lblTotalAppointmentsValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(155)))));
             this.lblTotalAppointmentsValue.Location = new System.Drawing.Point(0, 72);
             this.lblTotalAppointmentsValue.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
@@ -108,7 +108,7 @@ namespace DentalClinicProject.UI
             // lblTotalAppointmentsTitle
             // 
             this.lblTotalAppointmentsTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblTotalAppointmentsTitle.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblTotalAppointmentsTitle.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblTotalAppointmentsTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
             this.lblTotalAppointmentsTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTotalAppointmentsTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
@@ -133,7 +133,7 @@ namespace DentalClinicProject.UI
             // lblWaitingCasesValue
             // 
             this.lblWaitingCasesValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblWaitingCasesValue.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.lblWaitingCasesValue.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.lblWaitingCasesValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(155)))));
             this.lblWaitingCasesValue.Location = new System.Drawing.Point(0, 72);
             this.lblWaitingCasesValue.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
@@ -146,7 +146,7 @@ namespace DentalClinicProject.UI
             // lblWaitingCasesTitle
             // 
             this.lblWaitingCasesTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblWaitingCasesTitle.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblWaitingCasesTitle.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblWaitingCasesTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
             this.lblWaitingCasesTitle.Location = new System.Drawing.Point(0, 0);
             this.lblWaitingCasesTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
@@ -171,7 +171,7 @@ namespace DentalClinicProject.UI
             // lblCompletedCasesValue
             // 
             this.lblCompletedCasesValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCompletedCasesValue.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.lblCompletedCasesValue.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.lblCompletedCasesValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(155)))));
             this.lblCompletedCasesValue.Location = new System.Drawing.Point(0, 72);
             this.lblCompletedCasesValue.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
@@ -184,7 +184,7 @@ namespace DentalClinicProject.UI
             // lblCompletedCasesTitle
             // 
             this.lblCompletedCasesTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblCompletedCasesTitle.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblCompletedCasesTitle.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblCompletedCasesTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
             this.lblCompletedCasesTitle.Location = new System.Drawing.Point(0, 0);
             this.lblCompletedCasesTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
@@ -209,7 +209,7 @@ namespace DentalClinicProject.UI
             // lblTodayRevenueValue
             // 
             this.lblTodayRevenueValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTodayRevenueValue.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.lblTodayRevenueValue.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold);
             this.lblTodayRevenueValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(155)))));
             this.lblTodayRevenueValue.Location = new System.Drawing.Point(0, 72);
             this.lblTodayRevenueValue.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
@@ -222,7 +222,7 @@ namespace DentalClinicProject.UI
             // lblTodayRevenueTitle
             // 
             this.lblTodayRevenueTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblTodayRevenueTitle.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblTodayRevenueTitle.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.lblTodayRevenueTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
             this.lblTodayRevenueTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTodayRevenueTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
@@ -264,7 +264,7 @@ namespace DentalClinicProject.UI
             this.cmbDoctor.Dock = System.Windows.Forms.DockStyle.Left;
             this.cmbDoctor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDoctor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbDoctor.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbDoctor.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.cmbDoctor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.cmbDoctor.Location = new System.Drawing.Point(106, 48);
             this.cmbDoctor.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
@@ -288,9 +288,9 @@ namespace DentalClinicProject.UI
             this.btnMyPatients.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnMyPatients.FlatAppearance.BorderSize = 0;
             this.btnMyPatients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMyPatients.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnMyPatients.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnMyPatients.ForeColor = System.Drawing.Color.White;
-            this.btnMyPatients.Location = new System.Drawing.Point(1317, 48);
+            this.btnMyPatients.Location = new System.Drawing.Point(1164, 48);
             this.btnMyPatients.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.btnMyPatients.Name = "btnMyPatients";
             this.btnMyPatients.Size = new System.Drawing.Size(320, 95);
@@ -301,7 +301,7 @@ namespace DentalClinicProject.UI
             // panelBtnSpacer2
             // 
             this.panelBtnSpacer2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelBtnSpacer2.Location = new System.Drawing.Point(1637, 48);
+            this.panelBtnSpacer2.Location = new System.Drawing.Point(1484, 48);
             this.panelBtnSpacer2.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.panelBtnSpacer2.Name = "panelBtnSpacer2";
             this.panelBtnSpacer2.Size = new System.Drawing.Size(27, 95);
@@ -314,9 +314,9 @@ namespace DentalClinicProject.UI
             this.btnPendingInvoices.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnPendingInvoices.FlatAppearance.BorderSize = 0;
             this.btnPendingInvoices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPendingInvoices.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnPendingInvoices.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnPendingInvoices.ForeColor = System.Drawing.Color.Black;
-            this.btnPendingInvoices.Location = new System.Drawing.Point(1664, 48);
+            this.btnPendingInvoices.Location = new System.Drawing.Point(1511, 48);
             this.btnPendingInvoices.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.btnPendingInvoices.Name = "btnPendingInvoices";
             this.btnPendingInvoices.Size = new System.Drawing.Size(500, 95);
@@ -341,7 +341,7 @@ namespace DentalClinicProject.UI
             this.btnAssignPatient.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnAssignPatient.FlatAppearance.BorderSize = 0;
             this.btnAssignPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAssignPatient.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnAssignPatient.Font = new System.Drawing.Font("Times New Roman", 12F);
             this.btnAssignPatient.ForeColor = System.Drawing.Color.White;
             this.btnAssignPatient.Location = new System.Drawing.Point(2038, 48);
             this.btnAssignPatient.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);

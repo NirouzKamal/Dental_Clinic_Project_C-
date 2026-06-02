@@ -18,6 +18,7 @@ namespace DentalClinicProject
         public LoginForm()
         {
             InitializeComponent();
+            UiFont.ApplyTo(this);
         }
 
         private void LoginForm_Load(object sender, EventArgs e)

@@ -191,7 +191,7 @@ namespace DentalClinicProject.UI
                 RightToLeft = RightToLeft.Yes;
                 RightToLeftLayout = true;
                 ClientSize = new Size(420, 220);
-                Font = new Font("Segoe UI", 10F);
+                Font = UiFont.Regular;
 
                 var lblAmount = new Label
                 {
@@ -263,6 +263,8 @@ namespace DentalClinicProject.UI
 
                 AcceptButton = btnOk;
                 CancelButton = btnCancel;
+
+                UiFont.ApplyTo(this);
             }
         }
     }
