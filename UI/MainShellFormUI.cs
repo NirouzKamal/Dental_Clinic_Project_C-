@@ -26,29 +26,20 @@ namespace DentalClinicProject.UI
             btnRecords.Click += NavButton_Click;
             btnRevenues.Click += NavButton_Click;
             btnStaff.Click += NavButton_Click;
-            btnPayroll.Click += NavButton_Click;
+            btnPayroll.Click += BtnPayroll_Click;
+            btnDebts.Click += BtnDebts_Click;
+            btnAddPatient.Click += BtnAddPatient_Click;
             btnLogout.Click += BtnLogout_Click;
         }
 
         private void MainShellFormUI_Load(object sender, EventArgs e)
         {
+            ApplyRoleBasedMenuVisibility();
+
             if (DataStore.CurrentUser != null && DataStore.CurrentUser.Role == UserRole.Doctor)
-            {
-                btnStaff.Visible = false;
-                btnPayroll.Visible = false;
-                btnRevenues.Visible = false;
                 lblUserInfo.Text = $"مرحباً: د. {DataStore.CurrentUser.FullName ?? DataStore.CurrentUser.Username}";
-            }
-            else if (DataStore.CurrentUser != null && DataStore.CurrentUser.Role == UserRole.Receptionist)
-            {
-                btnStaff.Visible = false;
-                btnPayroll.Visible = false;
-                lblUserInfo.Text = $"مرحباً: {DataStore.CurrentUser.FullName ?? DataStore.CurrentUser.Username}";
-            }
             else if (DataStore.CurrentUser != null)
-            {
                 lblUserInfo.Text = $"مرحباً: {DataStore.CurrentUser.FullName ?? DataStore.CurrentUser.Username}";
-            }
 
             // Update Date
             lblDate.Text = DateTime.Now.ToString("dddd ، dd MMMM yyyy", new System.Globalization.CultureInfo("ar-LY"));
@@ -80,9 +71,47 @@ namespace DentalClinicProject.UI
                 LoadControl(new RevenuesControlUI());
             else if (clickedButton == btnStaff)
                 LoadControl(new StaffManagementControlUI());
-            else if (clickedButton == btnPayroll)
+        }
+
+        private void ApplyRoleBasedMenuVisibility()
+        {
+            bool isAdmin = DataStore.CurrentUser?.Role == UserRole.Admin;
+            bool isReceptionist = DataStore.CurrentUser?.Role == UserRole.Receptionist;
+            bool isDoctor = DataStore.CurrentUser?.Role == UserRole.Doctor;
+
+            btnStaff.Visible = isAdmin;
+            btnPayroll.Visible = isAdmin;
+            btnRevenues.Visible = isAdmin;
+            btnDebts.Visible = isAdmin;
+            btnAddPatient.Visible = isAdmin || isReceptionist;
+
+            if (isDoctor)
             {
-                new PayrollManagementFormUI().ShowDialog();
+                btnStaff.Visible = false;
+                btnPayroll.Visible = false;
+                btnRevenues.Visible = false;
+                btnDebts.Visible = false;
+                btnAddPatient.Visible = false;
+            }
+        }
+
+        private void BtnPayroll_Click(object sender, EventArgs e)
+        {
+            SetActiveButton(btnPayroll);
+            new PayrollManagementFormUI().ShowDialog();
+        }
+
+        private void BtnDebts_Click(object sender, EventArgs e)
+        {
+            SetActiveButton(btnDebts);
+            new DebtsManagementForm().ShowDialog();
+        }
+
+        private void BtnAddPatient_Click(object sender, EventArgs e)
+        {
+            using (var form = new AddPatientFormUI())
+            {
+                form.ShowDialog(this);
             }
         }
 

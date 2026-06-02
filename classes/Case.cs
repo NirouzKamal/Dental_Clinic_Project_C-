@@ -26,6 +26,8 @@ namespace DentalClinicProject.classes
         public DateTime OpenedDate { get; set; } = DateTime.Now;
         public DateTime? ClosedAt { get; set; }
         public bool SentToReception { get; set; } = false;
+        /// <summary>Groups multiple services saved together in one doctor visit.</summary>
+        public string VisitBatchId { get; set; }
         // سجل ملاحظات الطبيب (append-only)
         public List<string> DoctorNotes { get; set; } = new List<string>();
         public decimal TotalFee { get; internal set; }

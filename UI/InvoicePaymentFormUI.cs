@@ -1,57 +1,60 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using DentalClinicProject.classes;
 using DentalClinicProject.data;
+using DentalClinicProject.Reports;
 
 namespace DentalClinicProject.UI
 {
     public partial class InvoicePaymentFormUI : System.Windows.Forms.Form
     {
-        private readonly string _caseId;
+        private readonly string _anchorCaseId;
+        private List<Case> _visitCases = new List<Case>();
 
         public InvoicePaymentFormUI(string caseId = "")
         {
-            _caseId = caseId;
+            _anchorCaseId = caseId;
             InitializeComponent();
             SetupLogic();
         }
 
         private void SetupLogic()
         {
-            var clinicCase = DataStore.Cases.FirstOrDefault(c => c.CaseId == _caseId);
+            var anchor = DataStore.Cases.FirstOrDefault(c => c.CaseId == _anchorCaseId);
+            if (anchor != null)
+                _visitCases = CaseVisitGrouping.GetPendingVisitCases(anchor);
 
             this.Load += (s, e) =>
             {
                 cmbMethod.Items.AddRange(new string[] { "نقدي", "بطاقة ائتمان", "حوالة مصرفية" });
                 cmbMethod.SelectedIndex = 0;
 
-                if (clinicCase != null)
+                if (_visitCases.Count > 0)
                 {
-                    txtPatient.Text = clinicCase.PatientName;
-                    txtTotal.Text = clinicCase.FinalPrice.ToString("F2");
-                    txtPaid.Text = clinicCase.FinalPrice.ToString("F2"); // Default to full payment
+                    var first = _visitCases[0];
+                    txtPatient.Text = first.PatientName;
+                    decimal total = CaseVisitGrouping.SumFinalPrice(_visitCases);
+                    txtTotal.Text = total.ToString("F2");
+                    txtPaid.Text = total.ToString("F2");
                     UpdateRemaining();
                 }
             };
 
             txtPaid.TextChanged += (s, e) => UpdateRemaining();
             txtPaid.KeyPress += AllowOnlyNumbers;
-
             btnConfirm.Click += BtnIssueInvoice_Click;
         }
 
         private void UpdateRemaining()
         {
-            var clinicCase = DataStore.Cases.FirstOrDefault(c => c.CaseId == _caseId);
-            if (clinicCase == null) return;
+            if (_visitCases.Count == 0) return;
 
-            decimal total = clinicCase.FinalPrice;
+            decimal total = CaseVisitGrouping.SumFinalPrice(_visitCases);
             decimal.TryParse(txtPaid.Text, out decimal paid);
-
             decimal remaining = total - paid;
             if (remaining < 0) remaining = 0;
-
             txtRemaining.Text = $"{remaining:F2}";
         }
 
@@ -63,12 +66,21 @@ namespace DentalClinicProject.UI
                 e.Handled = true;
         }
 
+        private static string GetReceptionistName()
+        {
+            if (DataStore.CurrentUser == null)
+                return "";
+            return !string.IsNullOrWhiteSpace(DataStore.CurrentUser.FullName)
+                ? DataStore.CurrentUser.FullName
+                : DataStore.CurrentUser.Username ?? "";
+        }
+
         private void BtnIssueInvoice_Click(object sender, EventArgs e)
         {
-            var clinicCase = DataStore.Cases.FirstOrDefault(c => c.CaseId == _caseId);
-            if (clinicCase == null) return;
+            if (_visitCases.Count == 0) return;
 
-            decimal total = clinicCase.FinalPrice;
+            var primary = _visitCases[0];
+            decimal total = CaseVisitGrouping.SumFinalPrice(_visitCases);
             decimal.TryParse(txtPaid.Text, out decimal paid);
 
             if (paid < 0)
@@ -77,36 +89,67 @@ namespace DentalClinicProject.UI
                 return;
             }
 
+            if (paid > total)
+            {
+                MessageBox.Show("المبلغ المدفوع أكبر من إجمالي الفاتورة", "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DateTime paymentTime = DateTime.Now;
+            string paymentMethod = cmbMethod.SelectedItem?.ToString() ?? cmbMethod.Text ?? "";
+            decimal remaining = total - paid;
+            if (remaining < 0) remaining = 0;
+
+            string invoiceId = DataStore.NextInvoiceId();
             var invoice = new Invoice
             {
-                InvoiceId = DataStore.NextInvoiceId(),
-                CaseId = clinicCase.CaseId,
-                PatientId = clinicCase.PatientId,
+                InvoiceId = invoiceId,
+                CaseId = primary.CaseId,
+                PatientId = primary.PatientId,
                 TotalAmount = total,
-                IssuedDate = DateTime.Now,
+                IssuedDate = paymentTime,
                 IsPaid = paid >= total
             };
             DataStore.Invoices.Add(invoice);
 
             if (paid > 0)
             {
-                var payment = new Payment
+                DataStore.Payments.Add(new Payment
                 {
                     PaymentId = DataStore.NextPaymentId(),
                     InvoiceId = invoice.InvoiceId,
                     AmountPaid = paid,
-                    PaymentDate = DateTime.Now
-                };
-                DataStore.Payments.Add(payment);
+                    PaymentDate = paymentTime,
+                    Method = paymentMethod
+                });
             }
 
-            clinicCase.Status = CaseStatus.Completed;
+            foreach (var c in _visitCases)
+            {
+                c.Status = CaseStatus.Completed;
+                c.ClosedAt = paymentTime;
+            }
 
-            // Mock print receipt
-            MessageBox.Show("تم إصدار الفاتورة وتأكيد الدفع بنجاح!", "نجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            string receptionistName = GetReceptionistName();
+            var printModel = PaymentReceiptPrintModel.FromVisitCases(
+                _visitCases,
+                invoiceId,
+                paid,
+                remaining,
+                receptionistName,
+                paymentMethod,
+                paymentTime);
 
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            CrystalReceiptPrinter.PrintPaymentReceipt(printModel, showPreview: true);
+
+            MessageBox.Show(
+                $"تم إصدار الفاتورة وتأكيد الدفع بنجاح!\n({_visitCases.Count} خدمة في إيصال واحد)",
+                "نجاح",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+
+            DialogResult = DialogResult.OK;
+            Close();
         }
     }
 }

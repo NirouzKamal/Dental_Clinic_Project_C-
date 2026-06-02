@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DsPaymentReceipt" targetNamespace="http://tempuri.org/DsPaymentReceipt.xsd" xmlns:mstns="http://tempuri.org/DsPaymentReceipt.xsd" xmlns="http://tempuri.org/DsPaymentReceipt.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:element name="DsPaymentReceipt" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="PaymentReceipt">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ReceiptNumber" type="xs:string" minOccurs="0" />
+              <xs:element name="PatientName" type="xs:string" minOccurs="0" />
+              <xs:element name="FileNumber" type="xs:string" minOccurs="0" />
+              <xs:element name="DoctorName" type="xs:string" minOccurs="0" />
+              <xs:element name="ReceptionistName" type="xs:string" minOccurs="0" />
+              <xs:element name="Signature" type="xs:string" minOccurs="0" />
+              <xs:element name="PaymentMethod" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalPrice" type="xs:decimal" minOccurs="0" />
+              <xs:element name="Discount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TotalAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PaidAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="RemainingAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CreatedDate" type="xs:string" minOccurs="0" />
+              <xs:element name="CreatedTime" type="xs:string" minOccurs="0" />
+              <xs:element name="PaymentDate" type="xs:string" minOccurs="0" />
+              <xs:element name="PaymentDateTime" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalPriceText" type="xs:string" minOccurs="0" />
+              <xs:element name="DiscountText" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalAmountText" type="xs:string" minOccurs="0" />
+              <xs:element name="PaidAmountText" type="xs:string" minOccurs="0" />
+              <xs:element name="RemainingAmountText" type="xs:string" minOccurs="0" />
+              <xs:element name="AmountInWords" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="PaymentReceiptLine">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ReceiptNumber" type="xs:string" minOccurs="0" />
+              <xs:element name="LineNumber" type="xs:int" minOccurs="0" />
+              <xs:element name="Treatment" type="xs:string" minOccurs="0" />
+              <xs:element name="Quantity" type="xs:int" minOccurs="0" />
+              <xs:element name="UnitPrice" type="xs:decimal" minOccurs="0" />
+              <xs:element name="LineTotal" type="xs:decimal" minOccurs="0" />
+              <xs:element name="LineTotalText" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

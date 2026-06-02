@@ -19,7 +19,9 @@ namespace DentalClinicProject.UI
         {
             this.panelSidebar = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnDebts = new System.Windows.Forms.Button();
             this.btnPayroll = new System.Windows.Forms.Button();
+            this.btnAddPatient = new System.Windows.Forms.Button();
             this.btnStaff = new System.Windows.Forms.Button();
             this.btnRevenues = new System.Windows.Forms.Button();
             this.btnRecords = new System.Windows.Forms.Button();
@@ -39,11 +41,13 @@ namespace DentalClinicProject.UI
             // 
             this.panelSidebar.BackColor = System.Drawing.Color.White;
             this.panelSidebar.Controls.Add(this.btnLogout);
+            this.panelSidebar.Controls.Add(this.btnDebts);
             this.panelSidebar.Controls.Add(this.btnPayroll);
             this.panelSidebar.Controls.Add(this.btnStaff);
             this.panelSidebar.Controls.Add(this.btnRevenues);
             this.panelSidebar.Controls.Add(this.btnRecords);
             this.panelSidebar.Controls.Add(this.btnAppointments);
+            this.panelSidebar.Controls.Add(this.btnAddPatient);
             this.panelSidebar.Controls.Add(this.btnDashboard);
             this.panelSidebar.Controls.Add(this.lblLogo);
             this.panelSidebar.Dock = System.Windows.Forms.DockStyle.Left;
@@ -172,6 +176,42 @@ namespace DentalClinicProject.UI
             this.btnPayroll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPayroll.UseVisualStyleBackColor = false;
             // 
+            // btnDebts
+            // 
+            this.btnDebts.BackColor = System.Drawing.Color.White;
+            this.btnDebts.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDebts.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDebts.FlatAppearance.BorderSize = 0;
+            this.btnDebts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDebts.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnDebts.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
+            this.btnDebts.Location = new System.Drawing.Point(0, 330);
+            this.btnDebts.Name = "btnDebts";
+            this.btnDebts.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnDebts.Size = new System.Drawing.Size(250, 50);
+            this.btnDebts.TabIndex = 8;
+            this.btnDebts.Text = "إدارة الديون";
+            this.btnDebts.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDebts.UseVisualStyleBackColor = false;
+            // 
+            // btnAddPatient
+            // 
+            this.btnAddPatient.BackColor = System.Drawing.Color.White;
+            this.btnAddPatient.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddPatient.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAddPatient.FlatAppearance.BorderSize = 0;
+            this.btnAddPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddPatient.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.btnAddPatient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
+            this.btnAddPatient.Location = new System.Drawing.Point(0, 130);
+            this.btnAddPatient.Name = "btnAddPatient";
+            this.btnAddPatient.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnAddPatient.Size = new System.Drawing.Size(250, 50);
+            this.btnAddPatient.TabIndex = 9;
+            this.btnAddPatient.Text = "إضافة مريض جديد";
+            this.btnAddPatient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddPatient.UseVisualStyleBackColor = false;
+            // 
             // btnLogout
             // 
             this.btnLogout.BackColor = System.Drawing.Color.White;
@@ -274,6 +314,8 @@ namespace DentalClinicProject.UI
         private System.Windows.Forms.Button btnRevenues;
         private System.Windows.Forms.Button btnStaff;
         private System.Windows.Forms.Button btnPayroll;
+        private System.Windows.Forms.Button btnDebts;
+        private System.Windows.Forms.Button btnAddPatient;
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Panel panelHeader;
         private System.Windows.Forms.Panel panelHeaderBorder;

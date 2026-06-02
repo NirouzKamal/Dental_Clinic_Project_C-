@@ -37,7 +37,6 @@ namespace DentalClinicProject.UI
             txtSearch.Leave += searchCmb_Leave;
             txtSearch.TextChanged += (s, e) => PerformSearch(); 
 
-            btnAddPatient.Click += (s, e) => { var f = new UI.AddPatientFormUI(); f.ShowDialog(); };
             btnAddAppointment.Click += AddNewPatientbtn_Click;
             btnDeleteAppointment.Click += NewBtn_Click;
 

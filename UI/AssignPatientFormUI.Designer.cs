@@ -51,7 +51,7 @@
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
             this.panelHeader.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1659, 69);
+            this.panelHeader.Size = new System.Drawing.Size(1786, 69);
             this.panelHeader.TabIndex = 2;
             // 
             // lblTitle
@@ -73,7 +73,7 @@
             this.panelHeaderBorder.Location = new System.Drawing.Point(0, 68);
             this.panelHeaderBorder.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.panelHeaderBorder.Name = "panelHeaderBorder";
-            this.panelHeaderBorder.Size = new System.Drawing.Size(1659, 1);
+            this.panelHeaderBorder.Size = new System.Drawing.Size(1786, 1);
             this.panelHeaderBorder.TabIndex = 1;
             // 
             // panelBottomBar
@@ -85,7 +85,7 @@
             this.panelBottomBar.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.panelBottomBar.Name = "panelBottomBar";
             this.panelBottomBar.Padding = new System.Windows.Forms.Padding(26, 15, 26, 15);
-            this.panelBottomBar.Size = new System.Drawing.Size(1659, 89);
+            this.panelBottomBar.Size = new System.Drawing.Size(1786, 89);
             this.panelBottomBar.TabIndex = 1;
             // 
             // btnSave
@@ -97,7 +97,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(1313, 16);
+            this.btnSave.Location = new System.Drawing.Point(1440, 16);
             this.btnSave.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(320, 58);
@@ -112,7 +112,7 @@
             this.panelBottomBorder.Location = new System.Drawing.Point(26, 15);
             this.panelBottomBorder.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.panelBottomBorder.Name = "panelBottomBorder";
-            this.panelBottomBorder.Size = new System.Drawing.Size(1607, 1);
+            this.panelBottomBorder.Size = new System.Drawing.Size(1734, 1);
             this.panelBottomBorder.TabIndex = 1;
             // 
             // panelContent
@@ -123,7 +123,7 @@
             this.panelContent.Location = new System.Drawing.Point(0, 69);
             this.panelContent.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(1659, 586);
+            this.panelContent.Size = new System.Drawing.Size(1786, 586);
             this.panelContent.TabIndex = 0;
             // 
             // panelMain
@@ -134,8 +134,9 @@
             this.panelMain.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.panelMain.Name = "panelMain";
             this.panelMain.Padding = new System.Windows.Forms.Padding(38, 20, 26, 20);
-            this.panelMain.Size = new System.Drawing.Size(1359, 586);
+            this.panelMain.Size = new System.Drawing.Size(1327, 586);
             this.panelMain.TabIndex = 1;
+            this.panelMain.Paint += new System.Windows.Forms.PaintEventHandler(this.panelMain_Paint);
             // 
             // tlpInputs
             // 
@@ -165,7 +166,7 @@
             this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tlpInputs.Size = new System.Drawing.Size(1295, 546);
+            this.tlpInputs.Size = new System.Drawing.Size(1263, 546);
             this.tlpInputs.TabIndex = 0;
             // 
             // lblFileNumber
@@ -173,7 +174,7 @@
             this.lblFileNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFileNumber.AutoSize = true;
             this.lblFileNumber.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblFileNumber.Location = new System.Drawing.Point(980, 22);
+            this.lblFileNumber.Location = new System.Drawing.Point(948, 22);
             this.lblFileNumber.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblFileNumber.Name = "lblFileNumber";
             this.lblFileNumber.Size = new System.Drawing.Size(310, 46);
@@ -190,7 +191,7 @@
             this.txtFileNumber.Margin = new System.Windows.Forms.Padding(13, 7, 13, 7);
             this.txtFileNumber.Name = "txtFileNumber";
             this.txtFileNumber.ReadOnly = true;
-            this.txtFileNumber.Size = new System.Drawing.Size(949, 52);
+            this.txtFileNumber.Size = new System.Drawing.Size(917, 52);
             this.txtFileNumber.TabIndex = 1;
             // 
             // lblPatientName
@@ -198,7 +199,7 @@
             this.lblPatientName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPatientName.AutoSize = true;
             this.lblPatientName.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblPatientName.Location = new System.Drawing.Point(980, 113);
+            this.lblPatientName.Location = new System.Drawing.Point(948, 113);
             this.lblPatientName.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblPatientName.Name = "lblPatientName";
             this.lblPatientName.Size = new System.Drawing.Size(310, 46);
@@ -208,14 +209,12 @@
             // 
             // cmbPatient
             // 
-            this.cmbPatient.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
             this.cmbPatient.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbPatient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
             this.cmbPatient.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cmbPatient.Location = new System.Drawing.Point(13, 98);
             this.cmbPatient.Margin = new System.Windows.Forms.Padding(13, 7, 13, 7);
             this.cmbPatient.Name = "cmbPatient";
-            this.cmbPatient.Size = new System.Drawing.Size(949, 53);
+            this.cmbPatient.Size = new System.Drawing.Size(917, 53);
             this.cmbPatient.TabIndex = 3;
             // 
             // lblDoctorName
@@ -223,7 +222,7 @@
             this.lblDoctorName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDoctorName.AutoSize = true;
             this.lblDoctorName.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblDoctorName.Location = new System.Drawing.Point(980, 204);
+            this.lblDoctorName.Location = new System.Drawing.Point(948, 204);
             this.lblDoctorName.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblDoctorName.Name = "lblDoctorName";
             this.lblDoctorName.Size = new System.Drawing.Size(310, 46);
@@ -239,7 +238,7 @@
             this.cmbDoctor.Location = new System.Drawing.Point(13, 189);
             this.cmbDoctor.Margin = new System.Windows.Forms.Padding(13, 7, 13, 7);
             this.cmbDoctor.Name = "cmbDoctor";
-            this.cmbDoctor.Size = new System.Drawing.Size(949, 53);
+            this.cmbDoctor.Size = new System.Drawing.Size(917, 53);
             this.cmbDoctor.TabIndex = 5;
             // 
             // lblVisitType
@@ -247,7 +246,7 @@
             this.lblVisitType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblVisitType.AutoSize = true;
             this.lblVisitType.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblVisitType.Location = new System.Drawing.Point(980, 295);
+            this.lblVisitType.Location = new System.Drawing.Point(948, 295);
             this.lblVisitType.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblVisitType.Name = "lblVisitType";
             this.lblVisitType.Size = new System.Drawing.Size(310, 46);
@@ -263,7 +262,7 @@
             this.cmbVisitType.Location = new System.Drawing.Point(13, 280);
             this.cmbVisitType.Margin = new System.Windows.Forms.Padding(13, 7, 13, 7);
             this.cmbVisitType.Name = "cmbVisitType";
-            this.cmbVisitType.Size = new System.Drawing.Size(949, 53);
+            this.cmbVisitType.Size = new System.Drawing.Size(917, 53);
             this.cmbVisitType.TabIndex = 7;
             // 
             // lblPrice
@@ -271,7 +270,7 @@
             this.lblPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPrice.AutoSize = true;
             this.lblPrice.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblPrice.Location = new System.Drawing.Point(980, 386);
+            this.lblPrice.Location = new System.Drawing.Point(948, 386);
             this.lblPrice.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(310, 46);
@@ -286,7 +285,7 @@
             this.txtPrice.Location = new System.Drawing.Point(13, 371);
             this.txtPrice.Margin = new System.Windows.Forms.Padding(13, 7, 13, 7);
             this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(949, 52);
+            this.txtPrice.Size = new System.Drawing.Size(917, 52);
             this.txtPrice.TabIndex = 9;
             // 
             // lblPaid
@@ -294,7 +293,7 @@
             this.lblPaid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPaid.AutoSize = true;
             this.lblPaid.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblPaid.Location = new System.Drawing.Point(980, 477);
+            this.lblPaid.Location = new System.Drawing.Point(948, 477);
             this.lblPaid.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblPaid.Name = "lblPaid";
             this.lblPaid.Size = new System.Drawing.Size(310, 46);
@@ -309,7 +308,7 @@
             this.txtPaid.Location = new System.Drawing.Point(13, 462);
             this.txtPaid.Margin = new System.Windows.Forms.Padding(13, 7, 13, 7);
             this.txtPaid.Name = "txtPaid";
-            this.txtPaid.Size = new System.Drawing.Size(949, 52);
+            this.txtPaid.Size = new System.Drawing.Size(917, 52);
             this.txtPaid.TabIndex = 11;
             // 
             // panelSide
@@ -320,12 +319,13 @@
             this.panelSide.Controls.Add(this.txtTotalDebt);
             this.panelSide.Controls.Add(this.btnPatientRecords);
             this.panelSide.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelSide.Location = new System.Drawing.Point(1359, 0);
+            this.panelSide.Location = new System.Drawing.Point(1327, 0);
             this.panelSide.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.panelSide.Name = "panelSide";
             this.panelSide.Padding = new System.Windows.Forms.Padding(26, 20, 26, 20);
-            this.panelSide.Size = new System.Drawing.Size(300, 586);
+            this.panelSide.Size = new System.Drawing.Size(459, 586);
             this.panelSide.TabIndex = 0;
+            this.panelSide.Paint += new System.Windows.Forms.PaintEventHandler(this.panelSide_Paint);
             // 
             // panelSideBorder
             // 
@@ -341,7 +341,7 @@
             // 
             this.lblTotalDebt.AutoSize = true;
             this.lblTotalDebt.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblTotalDebt.Location = new System.Drawing.Point(26, 30);
+            this.lblTotalDebt.Location = new System.Drawing.Point(98, 66);
             this.lblTotalDebt.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblTotalDebt.Name = "lblTotalDebt";
             this.lblTotalDebt.Size = new System.Drawing.Size(306, 46);
@@ -355,11 +355,11 @@
             this.txtTotalDebt.BackColor = System.Drawing.Color.White;
             this.txtTotalDebt.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.txtTotalDebt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.txtTotalDebt.Location = new System.Drawing.Point(26, 79);
+            this.txtTotalDebt.Location = new System.Drawing.Point(127, 127);
             this.txtTotalDebt.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.txtTotalDebt.Name = "txtTotalDebt";
             this.txtTotalDebt.ReadOnly = true;
-            this.txtTotalDebt.Size = new System.Drawing.Size(248, 56);
+            this.txtTotalDebt.Size = new System.Drawing.Size(207, 56);
             this.txtTotalDebt.TabIndex = 4;
             this.txtTotalDebt.Text = "0.00 د.ل";
             this.txtTotalDebt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -372,12 +372,12 @@
             this.btnPatientRecords.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPatientRecords.FlatAppearance.BorderSize = 0;
             this.btnPatientRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPatientRecords.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnPatientRecords.Font = new System.Drawing.Font("Times New Roman", 9.900001F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPatientRecords.ForeColor = System.Drawing.Color.White;
-            this.btnPatientRecords.Location = new System.Drawing.Point(26, 160);
+            this.btnPatientRecords.Location = new System.Drawing.Point(57, 209);
             this.btnPatientRecords.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.btnPatientRecords.Name = "btnPatientRecords";
-            this.btnPatientRecords.Size = new System.Drawing.Size(248, 60);
+            this.btnPatientRecords.Size = new System.Drawing.Size(375, 60);
             this.btnPatientRecords.TabIndex = 7;
             this.btnPatientRecords.Text = "سجل المريض";
             this.btnPatientRecords.UseVisualStyleBackColor = false;
@@ -387,7 +387,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1659, 744);
+            this.ClientSize = new System.Drawing.Size(1786, 744);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.panelBottomBar);
             this.Controls.Add(this.panelHeader);
@@ -400,6 +400,7 @@
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "إنشاء حالة جديدة";
+            this.Load += new System.EventHandler(this.AssignPatientFormUI_Load);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             this.panelBottomBar.ResumeLayout(false);

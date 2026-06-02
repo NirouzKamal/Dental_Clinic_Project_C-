@@ -295,7 +295,7 @@ namespace DentalClinicProject.UI
             this.btnMyPatients.Name = "btnMyPatients";
             this.btnMyPatients.Size = new System.Drawing.Size(320, 95);
             this.btnMyPatients.TabIndex = 2;
-            this.btnMyPatients.Text = "مرضاي";
+            this.btnMyPatients.Text = "حالات الإنتظار";
             this.btnMyPatients.UseVisualStyleBackColor = false;
             // 
             // panelBtnSpacer2
@@ -319,10 +319,11 @@ namespace DentalClinicProject.UI
             this.btnPendingInvoices.Location = new System.Drawing.Point(1664, 48);
             this.btnPendingInvoices.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.btnPendingInvoices.Name = "btnPendingInvoices";
-            this.btnPendingInvoices.Size = new System.Drawing.Size(347, 95);
+            this.btnPendingInvoices.Size = new System.Drawing.Size(500, 95);
             this.btnPendingInvoices.TabIndex = 1;
-            this.btnPendingInvoices.Text = "الفواتير المعلقة";
+            this.btnPendingInvoices.Text = "الحالات المحولة من الدكتور";
             this.btnPendingInvoices.UseVisualStyleBackColor = false;
+            this.btnPendingInvoices.Click += new System.EventHandler(this.btnPendingInvoices_Click);
             // 
             // panelBtnSpacer1
             // 
@@ -469,7 +470,6 @@ namespace DentalClinicProject.UI
             this.panelKPI3.ResumeLayout(false);
             this.panelKPI4.ResumeLayout(false);
             this.panelActionBar.ResumeLayout(false);
-            this.panelActionBar.PerformLayout();
             this.panelGridArea.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTodayAppointments)).EndInit();
             this.ResumeLayout(false);

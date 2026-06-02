@@ -1,0 +1,18 @@
+Crystal Report: Reports\PaymentReceipt.rpt (optional)
+============================================
+
+If PaymentReceipt.rpt is NOT present, the app prints automatically using
+the built-in invoice layout (similar to Al-Salam receipt, without logo).
+
+To use Crystal Reports later:
+1) Add Blank Report: PaymentReceipt.rpt under Reports\
+2) Database Expert > ADO.NET (XML) > DsPaymentReceipt.xsd
+3) Add tables: PaymentReceipt (header) + PaymentReceiptLine (detail rows)
+4) Link detail on ReceiptNumber; put PaymentReceiptLine in Details band
+5) Copy to Output Directory = Copy always
+
+Header fields: ReceiptNumber, PatientName, FileNumber, DoctorName,
+ReceptionistName, Signature, TotalPriceText, DiscountText, TotalAmountText,
+PaidAmountText, RemainingAmountText, AmountInWords, CreatedDate, CreatedTime
+
+Detail fields: LineNumber, Treatment, Quantity, LineTotalText

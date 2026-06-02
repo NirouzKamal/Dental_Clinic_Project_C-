@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="classes\Appointment .cs" />
     <Compile Include="classes\Case.cs" />
+    <Compile Include="classes\CaseVisitGrouping.cs" />
     <Compile Include="classes\CaseFormMode.cs" />
     <Compile Include="classes\Doctor.cs" />
     <Compile Include="classes\DoctorWorkSchedule.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="classes\PrintManager.cs" />
     <Compile Include="classes\CrystalReceiptPrinter.cs" />
     <Compile Include="Reports\KashfReceiptPrintModel.cs" />
+    <Compile Include="Reports\PaymentReceiptPrintModel.cs" />
     <Compile Include="classes\Payment.cs" />
     <Compile Include="classes\ThemeManager.cs" />
     <Compile Include="Data\DataStore.cs" />
@@ -99,6 +101,9 @@
     <EmbeddedResource Include="UI\AddStaffFormUI.resx">
       <DependentUpon>AddStaffFormUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\AppointmentsControlUI.resx">
+      <DependentUpon>AppointmentsControlUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\AssignPatientFormUI.resx">
       <DependentUpon>AssignPatientFormUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -108,11 +113,23 @@
     <EmbeddedResource Include="UI\DashboardControlUI.resx">
       <DependentUpon>DashboardControlUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\DebtsManagementForm.resx">
+      <DependentUpon>DebtsManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\DoctorServiceFormUI.resx">
+      <DependentUpon>DoctorServiceFormUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\InvoicePaymentFormUI.resx">
       <DependentUpon>InvoicePaymentFormUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\MyPatientsFormUI.resx">
+      <DependentUpon>MyPatientsFormUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\PatientRecordsControlUI.resx">
       <DependentUpon>PatientRecordsControlUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PendingInvoicesFormUI.resx">
+      <DependentUpon>PendingInvoicesFormUI.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
@@ -196,6 +213,12 @@
     <Compile Include="UI\PendingInvoicesFormUI.Designer.cs">
       <DependentUpon>PendingInvoicesFormUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\DebtsManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\DebtsManagementForm.Designer.cs">
+      <DependentUpon>DebtsManagementForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\MyPatientsFormUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,6 +256,18 @@
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Reports\DsKashfReceipt.xsc">
+      <DependentUpon>DsKashfReceipt.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DsKashfReceipt.xss">
+      <DependentUpon>DsKashfReceipt.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DsPaymentReceipt.xsc">
+      <DependentUpon>DsPaymentReceipt.xsd</DependentUpon>
+    </None>
+    <None Include="Reports\DsPaymentReceipt.xss">
+      <DependentUpon>DsPaymentReceipt.xsd</DependentUpon>
+    </None>
     <None Include="Resources\photo_2025-12-05_21-58-46.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -395,7 +430,13 @@
     <None Include="Reports\DsKashfReceipt.xsd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="Reports\DsPaymentReceipt.xsd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Reports\KashfReceipt_REPORT_SETUP.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Reports\PaymentReceipt_REPORT_SETUP.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

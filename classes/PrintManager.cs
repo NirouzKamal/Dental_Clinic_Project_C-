@@ -175,6 +175,165 @@ namespace DentalClinicProject.classes
             g.DrawString("شكراً لزيارتكم", normalFont, Brushes.Black, new RectangleF(0, y, width, 30), centerFormat);
         }
 
+        public static void PrintPaymentReceipt(PaymentReceiptPrintModel model, bool showPreview = true)
+        {
+            if (model == null) return;
+
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += (sender, e) => PrintPaymentReceiptPage(e, model);
+
+            if (!showPreview)
+            {
+                pd.Print();
+                return;
+            }
+
+            using (var preview = new PrintPreviewDialog
+            {
+                Document = pd,
+                Width = 600,
+                Height = 800,
+                ShowIcon = false,
+                Text = "معاينة إيصال الدفع"
+            })
+            {
+                preview.ShowDialog();
+            }
+        }
+
+        private static void PrintPaymentReceiptPage(PrintPageEventArgs e, PaymentReceiptPrintModel model)
+        {
+            Graphics g = e.Graphics;
+            int width = e.PageBounds.Width;
+            int margin = 50;
+            int contentWidth = width - (2 * margin);
+            int y = 30;
+            var linePen = Pens.Black;
+
+            // --- Header (no logo) ---
+            g.DrawString("عيادة DentCare للأسنان", headerFont, Brushes.Black, new RectangleF(0, y, width, 36), centerFormat);
+            y += 32;
+            g.DrawString("Dental Clinic — Payment Invoice", normalFont, Brushes.Gray, new RectangleF(0, y, width, 22), centerFormat);
+            y += 36;
+            g.DrawLine(linePen, margin, y, width - margin, y);
+            y += 18;
+
+            // --- Patient block (right side labels like reference invoice) ---
+            DrawLabelValue(g, "رقم الإيصال:", model.ReceiptNumber, margin, ref y, contentWidth, boldFont);
+            DrawLabelValue(g, "رقم الملف:", model.FileNumber, margin, ref y, contentWidth, normalFont);
+            DrawLabelValue(g, "اسم الحالة:", model.PatientName, margin, ref y, contentWidth, boldFont);
+            DrawLabelValue(g, "اسم الطبيب:", model.DoctorName, margin, ref y, contentWidth, normalFont);
+            y += 10;
+
+            // --- Services table ---
+            int tableRight = width - margin;
+            int[] colW = { 70, 200, 60, 90 }; // البند | العلاج | العدد | القيمة (RTL)
+            int tableLeft = tableRight - colW[0] - colW[1] - colW[2] - colW[3];
+            int rowH = 28;
+
+            string[] headers = { "البند", "العلاج", "العدد", "القيمة" };
+            int hx = tableRight;
+            g.DrawLine(linePen, tableLeft, y, tableRight, y);
+            y += 4;
+            for (int i = 0; i < headers.Length; i++)
+            {
+                hx -= colW[i];
+                g.DrawString(headers[i], boldFont, Brushes.Black, new RectangleF(hx, y, colW[i], rowH), centerFormat);
+            }
+            y += rowH;
+            g.DrawLine(linePen, tableLeft, y, tableRight, y);
+            g.DrawLine(linePen, tableLeft, y - rowH - 4, tableLeft, y);
+            g.DrawLine(linePen, tableRight, y - rowH - 4, tableRight, y);
+            y += 4;
+
+            if (model.Lines != null && model.Lines.Count > 0)
+            {
+                foreach (var line in model.Lines)
+                {
+                    int rx = tableRight;
+                    string[] cells =
+                    {
+                        line.LineNumber.ToString(),
+                        line.Treatment ?? "",
+                        line.Quantity.ToString(),
+                        line.LineTotal.ToString("N2")
+                    };
+                    for (int i = 0; i < cells.Length; i++)
+                    {
+                        rx -= colW[i];
+                        g.DrawString(cells[i], normalFont, Brushes.Black, new RectangleF(rx, y, colW[i], rowH), centerFormat);
+                        g.DrawLine(linePen, rx, y, rx, y + rowH);
+                    }
+                    g.DrawLine(linePen, tableLeft, y + rowH, tableRight, y + rowH);
+                    y += rowH;
+                }
+            }
+            else
+            {
+                int rx = tableRight - colW[0] - colW[1] - colW[2] - colW[3];
+                g.DrawString("1", normalFont, Brushes.Black, new RectangleF(tableRight - colW[0], y, colW[0], rowH), centerFormat);
+                g.DrawString("-", normalFont, Brushes.Black, new RectangleF(rx + colW[1] + colW[2], y, colW[1], rowH), centerFormat);
+                y += rowH;
+                g.DrawLine(linePen, tableLeft, y, tableRight, y);
+            }
+
+            y += 16;
+            g.DrawLine(linePen, margin, y, width - margin, y);
+            y += 20;
+
+            // --- Totals (right block like reference) ---
+            int totalsX = width - margin - 280;
+            DrawTotalRow(g, "الإجمالي العام", model.TotalPrice, totalsX, ref y, contentWidth);
+            DrawTotalRow(g, "التخفيض", model.Discount, totalsX, ref y, contentWidth);
+            DrawTotalRow(g, "قيمة الإيصال", model.TotalAmount, totalsX, ref y, contentWidth, boldFont);
+            DrawTotalRow(g, "المدفوع", model.PaidAmount, totalsX, ref y, contentWidth, boldFont);
+            DrawTotalRow(g, "المتبقي", model.RemainingAmount, totalsX, ref y, contentWidth, boldFont, Brushes.DarkRed);
+
+            y += 8;
+            g.DrawString("القيمة بالحروف: " + (model.AmountInWords ?? ""), normalFont, Brushes.Black,
+                new RectangleF(margin, y, contentWidth, 40), rtlFormat);
+            y += 44;
+
+            // --- Footer: preparer + signature (left area in reference) ---
+            g.DrawString($"مُعد الإيصال: {model.ReceptionistName}", normalFont, Brushes.Black,
+                new RectangleF(margin, y, contentWidth / 2, 25), rtlFormat);
+            y += 36;
+            g.DrawString("التوقيع:", normalFont, Brushes.Black, new RectangleF(margin, y, 80, 25), rtlFormat);
+            g.DrawLine(linePen, margin + 70, y + 18, margin + 320, y + 18);
+            if (!string.IsNullOrWhiteSpace(model.Signature))
+                g.DrawString(model.Signature, normalFont, Brushes.DarkBlue, new RectangleF(margin + 75, y, 240, 25), rtlFormat);
+
+            y += 50;
+            g.DrawString($"طريقة الدفع: {model.PaymentMethod}", normalFont, Brushes.Black,
+                new RectangleF(margin, y, contentWidth, 22), rtlFormat);
+            y += 24;
+            g.DrawString($"تاريخ الإنشاء: {model.CreatedDateTime:yyyy-MM-dd}    وقت الإنشاء: {model.CreatedDateTime:HH:mm}",
+                normalFont, Brushes.Gray, new RectangleF(margin, y, contentWidth, 22), rtlFormat);
+            y += 22;
+            g.DrawString(model.PaymentDateTime.ToString("dddd, dd MMMM yyyy", new System.Globalization.CultureInfo("ar-LY")),
+                normalFont, Brushes.Gray, new RectangleF(margin, y, contentWidth, 22), rtlFormat);
+        }
+
+        private static void DrawLabelValue(Graphics g, string label, string value, int margin, ref int y, int contentWidth, Font valueFont)
+        {
+            g.DrawString(label, boldFont, Brushes.Black, new RectangleF(margin, y, 120, 24), rtlFormat);
+            float vx = margin + contentWidth - 280;
+            g.DrawLine(new Pen(Color.Gray) { DashStyle = System.Drawing.Drawing2D.DashStyle.Dot },
+                vx, y + 20, margin + contentWidth, y + 20);
+            g.DrawString(value ?? "", valueFont, Brushes.Black, new RectangleF(vx, y, 280, 24), rtlFormat);
+            y += 30;
+        }
+
+        private static void DrawTotalRow(Graphics g, string label, decimal amount, int x, ref int y, int width,
+            Font font = null, Brush brush = null)
+        {
+            font = font ?? normalFont;
+            brush = brush ?? Brushes.Black;
+            g.DrawString(label, font, brush, new RectangleF(x, y, 140, 24), rtlFormat);
+            g.DrawString(amount.ToString("N2"), font, brush, new RectangleF(x + width - 280, y, 120, 24), rtlFormat);
+            y += 28;
+        }
+
         // --- Patient Report Printing ---
         public static void PrintPatientReport(string patientId)
         {

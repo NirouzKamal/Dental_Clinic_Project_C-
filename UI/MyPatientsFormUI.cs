@@ -21,9 +21,9 @@ namespace DentalClinicProject.UI
         {
             this.Load += (s, e) => LoadPatients();
 
-            txtSearch.TextChanged += (s, e) => LoadPatients(txtSearch.Text);
-            txtSearch.Enter += (s, e) => { if (txtSearch.Text == "ابحث عن مريض...") txtSearch.Text = ""; };
-            txtSearch.Leave += (s, e) => { if (string.IsNullOrWhiteSpace(txtSearch.Text)) txtSearch.Text = "ابحث عن مريض..."; };
+            //txtSearch.TextChanged += (s, e) => LoadPatients(txtSearch.Text);
+            //txtSearch.Enter += (s, e) => { if (txtSearch.Text == "ابحث عن مريض...") txtSearch.Text = ""; };
+            //txtSearch.Leave += (s, e) => { if (string.IsNullOrWhiteSpace(txtSearch.Text)) txtSearch.Text = "ابحث عن مريض..."; };
 
             dgvPatients.CellDoubleClick += DgvPatients_CellDoubleClick;
         }

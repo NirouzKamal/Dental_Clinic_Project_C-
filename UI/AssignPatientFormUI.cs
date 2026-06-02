@@ -443,5 +443,20 @@ namespace DentalClinicProject.UI
             DialogResult = DialogResult.OK;
             Close();
         }
+
+        private void AssignPatientFormUI_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelSide_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelMain_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

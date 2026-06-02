@@ -200,6 +200,8 @@ namespace DentalClinicProject.UI
 
             var patient = DataStore.Patients.FirstOrDefault(p => p.PatientId == _patientId);
             var doctor = DataStore.Doctors.FirstOrDefault(d => d.DoctorId == _doctorId);
+            string visitBatchId = CaseVisitGrouping.NewVisitBatchId();
+            DateTime visitTime = DateTime.Now;
 
             foreach (DataGridViewRow row in dgvServices.Rows)
             {
@@ -228,8 +230,9 @@ namespace DentalClinicProject.UI
                     Discount = discount,
                     Notes = "تم إضافتها من قبل الطبيب",
                     Status = CaseStatus.Waiting,
-                    OpenedDate = DateTime.Now,
-                    SentToReception = true
+                    OpenedDate = visitTime,
+                    SentToReception = true,
+                    VisitBatchId = visitBatchId
                 };
                 DataStore.Cases.Add(newCase);
             }
@@ -247,6 +250,21 @@ namespace DentalClinicProject.UI
             MessageBox.Show($"تم إرسال {_grandTotal:F2} د.ل إلى الاستقبال بنجاح وإصدار الفاتورة", "تمت العملية", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void tlpAddService_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelTop_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -13,6 +13,7 @@ namespace DentalClinicProject.UI
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelHeaderBorder = new System.Windows.Forms.Panel();
             this.panelBottomBar = new System.Windows.Forms.Panel();
+            this.btnBookAppointment = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.panelBottomBorder = new System.Windows.Forms.Panel();
             this.panelInputArea = new System.Windows.Forms.Panel();
@@ -53,12 +54,26 @@ namespace DentalClinicProject.UI
             // 
             // panelBottomBar
             // 
+            this.panelBottomBar.Controls.Add(this.btnBookAppointment);
             this.panelBottomBar.Controls.Add(this.btnSave);
             this.panelBottomBar.Controls.Add(this.panelBottomBorder);
             this.panelBottomBar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelBottomBar.Name = "panelBottomBar";
             this.panelBottomBar.Padding = new System.Windows.Forms.Padding(10);
             this.panelBottomBar.Size = new System.Drawing.Size(584, 60);
+            // btnBookAppointment
+            this.btnBookAppointment.BackColor = System.Drawing.Color.FromArgb(62, 125, 83);
+            this.btnBookAppointment.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBookAppointment.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnBookAppointment.FlatAppearance.BorderSize = 0;
+            this.btnBookAppointment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBookAppointment.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnBookAppointment.ForeColor = System.Drawing.Color.White;
+            this.btnBookAppointment.Margin = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.btnBookAppointment.Name = "btnBookAppointment";
+            this.btnBookAppointment.Size = new System.Drawing.Size(140, 38);
+            this.btnBookAppointment.Text = "حجز موعد";
+            this.btnBookAppointment.UseVisualStyleBackColor = false;
             // btnSave
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(0, 75, 155);
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -67,6 +82,7 @@ namespace DentalClinicProject.UI
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Margin = new System.Windows.Forms.Padding(8, 0, 0, 0);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(120, 38);
             this.btnSave.Text = "حفظ";
@@ -149,6 +165,7 @@ namespace DentalClinicProject.UI
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel panelHeaderBorder;
         private System.Windows.Forms.Panel panelBottomBar;
+        private System.Windows.Forms.Button btnBookAppointment;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Panel panelBottomBorder;
         private System.Windows.Forms.Panel panelInputArea;

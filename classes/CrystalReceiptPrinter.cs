@@ -8,13 +8,14 @@ using DentalClinicProject.Reports;
 namespace DentalClinicProject.classes
 {
     /// <summary>
-    /// Prints كشف receipt using Crystal Reports (KashfReceipt.rpt).
+    /// Prints receipts using Crystal Reports (.rpt).
     /// Uses reflection so the solution builds without Crystal DLLs on machines that only design code.
     /// </summary>
     public static class CrystalReceiptPrinter
     {
         private const string VisitKashf = "كشف";
-        private const string ReportFileName = "KashfReceipt.rpt";
+        private const string KashfReportFileName = "KashfReceipt.rpt";
+        private const string PaymentReportFileName = "PaymentReceipt.rpt";
 
         public static bool ShouldPrint(string visitType)
         {
@@ -27,12 +28,12 @@ namespace DentalClinicProject.classes
             if (model == null || !ShouldPrint(model.VisitType))
                 return;
 
-            if (!TryPrintWithCrystal(model, showPreview))
+            if (!TryPrintCrystalReport(KashfReportFileName, (object)model.ToDataTable(), "معاينة إيصال الكشف", showPreview))
             {
                 var result = MessageBox.Show(
                     "تعذر فتح تقرير Crystal Reports.\r\n\r\n" +
                     "تأكد من تثبيت Crystal Reports runtime ووجود الملف:\r\n" +
-                    $"Reports\\{ReportFileName}\r\n\r\n" +
+                    $"Reports\\{KashfReportFileName}\r\n\r\n" +
                     "هل تريد الطباعة بالتنسيق البديل (معاينة عادية)؟",
                     "Crystal Reports",
                     MessageBoxButtons.YesNo,
@@ -43,24 +44,37 @@ namespace DentalClinicProject.classes
             }
         }
 
-        public static string GetReportPath()
+        /// <summary>Print combined payment invoice after تأكيد الدفع.</summary>
+        public static void PrintPaymentReceipt(PaymentReceiptPrintModel model, bool showPreview = true)
         {
-            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Reports", ReportFileName);
-        }
+            if (model == null)
+                return;
 
-        private static bool TryPrintWithCrystal(KashfReceiptPrintModel model, bool showPreview)
-        {
-            string reportPath = GetReportPath();
+            string reportPath = GetReportPath(PaymentReportFileName);
             if (!File.Exists(reportPath))
             {
-                MessageBox.Show(
-                    $"ملف التقرير غير موجود:\r\n{reportPath}\r\n\r\n" +
-                    "راجع Reports\\KashfReceipt_REPORT_SETUP.txt لإنشاء التقرير.",
-                    "Crystal Reports",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                return false;
+                PrintManager.PrintPaymentReceipt(model, showPreview);
+                return;
             }
+
+            if (!TryPrintCrystalReport(PaymentReportFileName, model.ToDataSet(), "معاينة فاتورة الدفع", showPreview))
+                PrintManager.PrintPaymentReceipt(model, showPreview);
+        }
+
+        public static string GetReportPath(string reportFileName)
+        {
+            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Reports", reportFileName);
+        }
+
+        private static bool TryPrintCrystalReport(
+            string reportFileName,
+            object dataSource,
+            string previewTitle,
+            bool showPreview)
+        {
+            string reportPath = GetReportPath(reportFileName);
+            if (!File.Exists(reportPath))
+                return false;
 
             try
             {
@@ -76,12 +90,11 @@ namespace DentalClinicProject.classes
                 reportType.GetMethod("Load", new[] { typeof(string) })
                     ?.Invoke(report, new object[] { reportPath });
 
-                DataTable data = model.ToDataTable();
                 reportType.GetMethod("SetDataSource", new[] { typeof(object) })
-                    ?.Invoke(report, new object[] { data });
+                    ?.Invoke(report, new object[] { dataSource });
 
                 if (showPreview)
-                    ShowCrystalPreview(report, engineAsm);
+                    ShowCrystalPreview(report, engineAsm, previewTitle);
                 else
                     reportType.GetMethod("PrintToPrinter", Type.EmptyTypes)?.Invoke(report, null);
 
@@ -89,18 +102,13 @@ namespace DentalClinicProject.classes
                 reportType.GetMethod("Dispose")?.Invoke(report, null);
                 return true;
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(
-                    "خطأ أثناء طباعة Crystal Report:\r\n" + ex.Message,
-                    "Crystal Reports",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
                 return false;
             }
         }
 
-        private static void ShowCrystalPreview(object report, Assembly engineAsm)
+        private static void ShowCrystalPreview(object report, Assembly engineAsm, string previewTitle)
         {
             Assembly winFormsAsm = LoadCrystalAssembly(
                 "CrystalDecisions.Windows.Forms",
@@ -116,7 +124,7 @@ namespace DentalClinicProject.classes
 
             Form previewForm = new Form
             {
-                Text = "معاينة إيصال الكشف",
+                Text = previewTitle ?? "معاينة التقرير",
                 Width = 900,
                 Height = 700,
                 StartPosition = FormStartPosition.CenterScreen,
@@ -127,7 +135,7 @@ namespace DentalClinicProject.classes
             Type viewerType = winFormsAsm.GetType("CrystalDecisions.Windows.Forms.CrystalReportViewer", true);
             Control viewer = (Control)Activator.CreateInstance(viewerType);
             viewer.Dock = DockStyle.Fill;
-            viewerType.GetProperty("ToolPanelView")?.SetValue(viewer, 0); // None
+            viewerType.GetProperty("ToolPanelView")?.SetValue(viewer, 0);
             viewerType.GetProperty("ReportSource")?.SetValue(viewer, report);
             previewForm.Controls.Add(viewer);
             previewForm.ShowDialog();

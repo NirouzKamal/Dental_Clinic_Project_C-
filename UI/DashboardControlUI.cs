@@ -161,5 +161,10 @@ namespace DentalClinicProject.UI
                 default: return "معلق";
             }
         }
+
+        private void btnPendingInvoices_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

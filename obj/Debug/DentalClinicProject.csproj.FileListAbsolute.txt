@@ -135,3 +135,10 @@ C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicPr
 C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\bin\Debug\Reports\KashfReceipt_REPORT_SETUP.txt
 C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.UI.PatientRecordsControlUI.resources
 C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.UI.InvoicePaymentFormUI.resources
+C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.UI.DoctorServiceFormUI.resources
+C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.UI.PendingInvoicesFormUI.resources
+C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\bin\Debug\Reports\DsPaymentReceipt.xsd
+C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\bin\Debug\Reports\PaymentReceipt_REPORT_SETUP.txt
+C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.UI.MyPatientsFormUI.resources
+C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.UI.AppointmentsControlUI.resources
+C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.UI.DebtsManagementForm.resources

@@ -30,31 +30,33 @@ namespace DentalClinicProject.UI
         {
             dgvInvoices.Rows.Clear();
 
-            var pendingCases = DataStore.Cases
-                .Where(c => c.SentToReception == true && c.Status == CaseStatus.Waiting)
-                .OrderBy(c => c.OpenedDate)
-                .ToList();
-
-            foreach (var c in pendingCases)
+            foreach (var group in CaseVisitGrouping.GetPendingVisitGroups())
             {
+                var first = group.First();
+                string patientName = first.PatientName ?? "";
+                string fileNum = first.PatientFileNumber ?? "";
+
                 if (!string.IsNullOrEmpty(searchTerm) && searchTerm != "ابحث باسم المريض أو رقم الفاتورة...")
                 {
-                    if (!(c.PatientName != null && c.PatientName.Contains(searchTerm)) &&
-                        !(c.PatientFileNumber != null && c.PatientFileNumber.Contains(searchTerm)))
+                    if (!patientName.Contains(searchTerm) && !fileNum.Contains(searchTerm))
                         continue;
                 }
 
-                // Grid columns: colInvNum, colDate, colPatient, colTotal, colPaid, colRemaining, colCaseId (hidden if we add it)
-                // We'll add colCaseId dynamically if not present, or just store it in Tag
-                var rowIndex = dgvInvoices.Rows.Add(
-                    "غير مصدرة", // No invoice number yet
-                    c.OpenedDate.ToString("yyyy/MM/dd hh:mm tt"),
-                    c.PatientName ?? "",
-                    c.FinalPrice.ToString("F2") + " د.ل",
+                decimal total = CaseVisitGrouping.SumFinalPrice(group);
+                string servicesSummary = string.Join("، ", group.Select(c => c.Treatment).Take(3));
+                if (group.Count > 3)
+                    servicesSummary += $" (+{group.Count - 3})";
+
+                int rowIndex = dgvInvoices.Rows.Add(
+                    "غير مصدرة",
+                    first.OpenedDate.ToString("yyyy/MM/dd hh:mm tt"),
+                    patientName,
+                    $"{total:F2} د.ل ({group.Count} خدمة)",
                     "0.00 د.ل",
-                    c.FinalPrice.ToString("F2") + " د.ل"
+                    $"{total:F2} د.ل"
                 );
-                dgvInvoices.Rows[rowIndex].Tag = c.CaseId;
+                dgvInvoices.Rows[rowIndex].Tag = first.CaseId;
+                dgvInvoices.Rows[rowIndex].Cells[2].ToolTipText = servicesSummary;
             }
         }
 
@@ -67,9 +69,7 @@ namespace DentalClinicProject.UI
 
             var invoiceForm = new InvoicePaymentFormUI(caseId);
             if (invoiceForm.ShowDialog() == DialogResult.OK)
-            {
-                LoadPendingCases(); // Refresh list after payment
-            }
+                LoadPendingCases();
         }
 
         private void DgvInvoices_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

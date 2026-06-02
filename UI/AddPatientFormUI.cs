@@ -9,9 +9,9 @@ namespace DentalClinicProject.UI
 {
     public partial class AddPatientFormUI : System.Windows.Forms.Form
     {
-        private ErrorProvider errorProvider = new ErrorProvider();
-
-        private string _patientId;
+        private readonly ErrorProvider errorProvider = new ErrorProvider();
+        private readonly string _patientId;
+        private string _lastSavedPatientId;
 
         public AddPatientFormUI(string patientId = null)
         {
@@ -22,8 +22,12 @@ namespace DentalClinicProject.UI
 
         private void SetupLogic()
         {
-            this.Load += (s, e) => {
-                if (!string.IsNullOrEmpty(_patientId))
+            bool isNewPatient = string.IsNullOrEmpty(_patientId);
+            btnBookAppointment.Visible = isNewPatient;
+
+            this.Load += (s, e) =>
+            {
+                if (!isNewPatient)
                 {
                     var p = DataStore.Patients.FirstOrDefault(x => x.PatientId == _patientId);
                     if (p != null)
@@ -32,7 +36,7 @@ namespace DentalClinicProject.UI
                         txtName.Text = p.FullName;
                         txtPhone.Text = p.Phone;
                         cmbGender.Text = p.Gender;
-                        txtAge.Text = p.Age.ToString();
+                        txtAge.Text = p.Age > 0 ? p.Age.ToString() : "";
                         txtAddress.Text = p.Address;
                         btnSave.Text = "حفظ التعديلات";
                     }
@@ -43,7 +47,8 @@ namespace DentalClinicProject.UI
                 }
             };
 
-            txtName.KeyPress += (s, e) => {
+            txtName.KeyPress += (s, e) =>
+            {
                 if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
                 {
                     if (!(e.KeyChar >= 0x0600 && e.KeyChar <= 0x06FF))
@@ -56,7 +61,8 @@ namespace DentalClinicProject.UI
                 errorProvider.SetError(txtName, "");
             };
 
-            txtPhone.KeyPress += (s, e) => {
+            txtPhone.KeyPress += (s, e) =>
+            {
                 if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
                 {
                     e.Handled = true;
@@ -68,49 +74,100 @@ namespace DentalClinicProject.UI
                 }
             };
 
-            txtAge.KeyPress += (s, e) => {
+            txtAge.KeyPress += (s, e) =>
+            {
                 if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-                {
                     e.Handled = true;
-                }
             };
 
-            btnSave.Click += (s, e) => {
-                if (!ValidateForm())
-                {
-                    MessageBox.Show("الرجاء تصحيح الأخطاء في النموذج", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            btnSave.Click += (s, e) =>
+            {
+                if (!TrySavePatient(out _))
                     return;
-                }
-
-                if (string.IsNullOrEmpty(_patientId))
-                {
-                    Patient p = new Patient();
-                    p.PatientId = DataStore.NextPatientId();
-                    p.FileNumber = "PAT-" + (DataStore.Patients.Count + 1001);
-                    p.FullName = txtName.Text;
-                    p.Phone = txtPhone.Text;
-                    p.Gender = cmbGender.Text;
-                    p.Age = int.Parse(txtAge.Text);
-                    p.Address = txtAddress.Text;
-                    DataStore.Patients.Add(p);
-                }
-                else
-                {
-                    Patient p = DataStore.Patients.FirstOrDefault(x => x.PatientId == _patientId);
-                    if (p != null)
-                    {
-                        p.FullName = txtName.Text;
-                        p.Phone = txtPhone.Text;
-                        p.Gender = cmbGender.Text;
-                        p.Age = int.Parse(txtAge.Text);
-                        p.Address = txtAddress.Text;
-                    }
-                }
 
                 MessageBox.Show("تم الحفظ بنجاح", "تم", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                DialogResult = DialogResult.OK;
+                Close();
             };
+
+            btnBookAppointment.Click += (s, e) =>
+            {
+                if (!TrySavePatient(out string savedPatientId))
+                    return;
+
+                MessageBox.Show("تم حفظ بيانات المريض بنجاح", "تم", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                using (var apptForm = new AddAppointmentFormUI(savedPatientId))
+                {
+                    apptForm.ShowDialog(this);
+                }
+
+                DialogResult = DialogResult.OK;
+                Close();
+            };
+        }
+
+        private bool TrySavePatient(out string patientId)
+        {
+            patientId = null;
+
+            if (!ValidateForm())
+            {
+                MessageBox.Show("الرجاء تصحيح الأخطاء في النموذج", "تنبيه",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (!TryParseAge(txtAge.Text, out int age))
+            {
+                errorProvider.SetError(txtAge, "العمر يجب أن يكون رقماً بين 0 و 150");
+                MessageBox.Show("الرجاء إدخال عمر صحيح (0–150)", "تنبيه",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(_patientId))
+            {
+                var p = new Patient
+                {
+                    PatientId = DataStore.NextPatientId(),
+                    FileNumber = "PAT-" + (DataStore.Patients.Count + 1001),
+                    FullName = txtName.Text.Trim(),
+                    Phone = txtPhone.Text.Trim(),
+                    Gender = cmbGender.Text,
+                    Age = age,
+                    Address = txtAddress.Text?.Trim() ?? ""
+                };
+                DataStore.Patients.Add(p);
+                patientId = p.PatientId;
+                _lastSavedPatientId = patientId;
+            }
+            else
+            {
+                var p = DataStore.Patients.FirstOrDefault(x => x.PatientId == _patientId);
+                if (p == null)
+                    return false;
+
+                p.FullName = txtName.Text.Trim();
+                p.Phone = txtPhone.Text.Trim();
+                p.Gender = cmbGender.Text;
+                p.Age = age;
+                p.Address = txtAddress.Text?.Trim() ?? "";
+                patientId = p.PatientId;
+                _lastSavedPatientId = patientId;
+            }
+
+            return true;
+        }
+
+        private static bool TryParseAge(string text, out int age)
+        {
+            age = 0;
+            if (string.IsNullOrWhiteSpace(text))
+                return false;
+            if (!int.TryParse(text.Trim(), out age))
+                return false;
+            return age >= 0 && age <= 150;
         }
 
         private bool ValidateForm()
@@ -138,9 +195,9 @@ namespace DentalClinicProject.UI
             }
             else errorProvider.SetError(cmbGender, "");
 
-            if (string.IsNullOrWhiteSpace(txtAge.Text))
+            if (!TryParseAge(txtAge.Text, out _))
             {
-                errorProvider.SetError(txtAge, "العمر مطلوب");
+                errorProvider.SetError(txtAge, "أدخل عمراً صحيحاً (0–150)");
                 isValid = false;
             }
             else errorProvider.SetError(txtAge, "");
