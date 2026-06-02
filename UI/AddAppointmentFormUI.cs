@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
+using System.Data;
+using System.Data.SqlClient;
 using DentalClinicProject.classes;
 using DentalClinicProject.data;
+using DentalClinicProject.Data;
 
 namespace DentalClinicProject.UI
 {
@@ -126,7 +129,9 @@ namespace DentalClinicProject.UI
                     "الطبيب لا يعمل في هذا اليوم (السبت، الأحد، الثلاثاء).\r\nتم إعادة التاريخ إلى اليوم.",
                     "يوم عطلة",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
+                    MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
 
                 _suppressDateChange = true;
                 dtpDate.Value = DateTime.Today;
@@ -144,7 +149,9 @@ namespace DentalClinicProject.UI
                     "لا توجد أوقات متاحة في هذا اليوم.",
                     "لا توجد مواعيد",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                    MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
                 return;
             }
 
@@ -197,7 +204,9 @@ namespace DentalClinicProject.UI
                 $"نوع الزيارة: {visitType}",
                 "ملخص الموعد",
                 MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+                MessageBoxIcon.Information,
+                MessageBoxDefaultButton.Button1,
+                MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
 
             PersistAppointmentIfPossible();
 
@@ -210,7 +219,9 @@ namespace DentalClinicProject.UI
             if (cmbPatient.SelectedIndex < 0)
             {
                 MessageBox.Show("الرجاء اختيار المريض.", "تنبيه",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
                 cmbPatient.Focus();
                 return false;
             }
@@ -218,7 +229,9 @@ namespace DentalClinicProject.UI
             if (cmbDoctor.SelectedIndex < 0)
             {
                 MessageBox.Show("الرجاء اختيار الطبيب.", "تنبيه",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
                 cmbDoctor.Focus();
                 return false;
             }
@@ -226,7 +239,9 @@ namespace DentalClinicProject.UI
             if (cmbVisitType.SelectedIndex < 0)
             {
                 MessageBox.Show("الرجاء اختيار نوع الزيارة.", "تنبيه",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
                 cmbVisitType.Focus();
                 return false;
             }
@@ -234,14 +249,16 @@ namespace DentalClinicProject.UI
             if (!cmbTimeSlots.Enabled || cmbTimeSlots.SelectedIndex < 0)
             {
                 MessageBox.Show("الرجاء اختيار وقت متاح بعد تحديد الطبيب والتاريخ.", "تنبيه",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
                 return false;
             }
 
             return true;
         }
 
-        /// <summary>Optional: save to in-memory store so the rest of DentCare can list the appointment.</summary>
+        /// <summary>Save to SQL Server database dbo.Appointments and synchronise local collection.</summary>
         private void PersistAppointmentIfPossible()
         {
             var patientItem = cmbPatient.SelectedItem as ComboItem;
@@ -253,17 +270,56 @@ namespace DentalClinicProject.UI
             if (DataStore.HasConflict(doctorItem.Id, dtpDate.Value.Date, slot.Value, slot.Value.Add(TimeSpan.FromHours(1))))
                 return;
 
-            DataStore.Appointments.Add(new Appointment
+            // Generate unique random ID for appointment (e.g. APT_4666)
+            string appointmentId = DataStore.GenerateUniqueRandomId("APT", "dbo.Appointments", "AppointmentNumber");
+
+            // Logged-in receptionist/admin UserId
+            string userId = DataStore.CurrentUser?.UserId ?? "ADM_2026_001";
+
+            const string sql = @"
+                INSERT INTO dbo.Appointments
+                    (AppointmentNumber, PatientId, DentistId, UserId, CaseNumber, AppointmentDate, AppointmentTime, Status)
+                VALUES
+                    (@AppId, @PatientId, @DentistId, @UserId, NULL, @Date, @Time, @Status)";
+
+            try
             {
-                AppointmentId = DataStore.NextAppointmentId(),
-                PatientId = patientItem.Id,
-                DoctorId = doctorItem.Id,
-                AppointmentDate = dtpDate.Value.Date,
-                StartTime = slot.Value,
-                EndTime = slot.Value.Add(TimeSpan.FromHours(1)),
-                Status = AppointmentStatus.Scheduled,
-                Notes = cmbVisitType.SelectedItem?.ToString() ?? ""
-            });
+                using (var conn = DbHelper.GetConnection())
+                using (var cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.Add(new SqlParameter("@AppId", SqlDbType.NVarChar, 50) { Value = appointmentId });
+                    cmd.Parameters.Add(new SqlParameter("@PatientId", SqlDbType.NVarChar, 50) { Value = patientItem.Id });
+                    cmd.Parameters.Add(new SqlParameter("@DentistId", SqlDbType.NVarChar, 50) { Value = doctorItem.Id });
+                    cmd.Parameters.Add(new SqlParameter("@UserId", SqlDbType.NVarChar, 50) { Value = userId });
+                    cmd.Parameters.Add(new SqlParameter("@Date", SqlDbType.Date) { Value = dtpDate.Value.Date });
+                    cmd.Parameters.Add(new SqlParameter("@Time", SqlDbType.Time) { Value = slot.Value });
+                    cmd.Parameters.Add(new SqlParameter("@Status", SqlDbType.VarChar, 20) { Value = "Scheduled" });
+                    cmd.ExecuteNonQuery();
+                }
+
+                // Add to cache
+                DataStore.Appointments.Add(new Appointment
+                {
+                    AppointmentId = appointmentId,
+                    PatientId = patientItem.Id,
+                    DoctorId = doctorItem.Id,
+                    AppointmentDate = dtpDate.Value.Date,
+                    StartTime = slot.Value,
+                    EndTime = slot.Value.Add(TimeSpan.FromHours(1)),
+                    Status = AppointmentStatus.Scheduled,
+                    Notes = cmbVisitType.SelectedItem?.ToString() ?? ""
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "حدث خطأ أثناء حفظ الموعد في قاعدة البيانات:\n" + ex.Message,
+                    "خطأ",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
+            }
         }
 
         private void LoadPatientsCombo()

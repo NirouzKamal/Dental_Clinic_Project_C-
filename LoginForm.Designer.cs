@@ -1,4 +1,4 @@
-﻿namespace DentalClinicProject
+namespace DentalClinicProject
 {
     partial class LoginForm
     {

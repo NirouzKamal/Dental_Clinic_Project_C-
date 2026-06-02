@@ -142,3 +142,4 @@ C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicPr
 C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.UI.MyPatientsFormUI.resources
 C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.UI.AppointmentsControlUI.resources
 C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.UI.DebtsManagementForm.resources
+C:\Users\Kamal\Downloads\Telegram Desktop\DentalClinicProject (7)\DentalClinicProject\DentalClinicProject\obj\Debug\DentalClinicProject.UI.AddPatientFormUI.resources

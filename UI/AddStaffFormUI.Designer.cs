@@ -3,380 +3,374 @@ namespace DentalClinicProject.UI
     partial class AddStaffFormUI
     {
         private System.ComponentModel.IContainer components = null;
-        protected override void Dispose(bool disposing) { if (disposing && (components != null)) { components.Dispose(); } base.Dispose(disposing); }
+        protected override void Dispose(bool disposing)
+        { if (disposing && components != null) components.Dispose(); base.Dispose(disposing); }
 
         #region Windows Form Designer generated code
-
         private void InitializeComponent()
         {
-            this.panelHeader = new System.Windows.Forms.Panel();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.panelHeaderBorder = new System.Windows.Forms.Panel();
-            this.panelBottomBar = new System.Windows.Forms.Panel();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.panelBottomBorder = new System.Windows.Forms.Panel();
-            this.panelInputArea = new System.Windows.Forms.Panel();
-            this.panelSchedule = new System.Windows.Forms.Panel();
-            this.tlpInputs = new System.Windows.Forms.TableLayoutPanel();
-            this.lblFullName = new System.Windows.Forms.Label();
-            this.txtFullName = new System.Windows.Forms.TextBox();
-            this.lblUsername = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.lblPassword = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.lblRole = new System.Windows.Forms.Label();
-            this.cmbRole = new System.Windows.Forms.ComboBox();
-            this.lblPhone = new System.Windows.Forms.Label();
-            this.txtPhone = new System.Windows.Forms.TextBox();
-            this.lblSalary = new System.Windows.Forms.Label();
-            this.txtSalary = new System.Windows.Forms.TextBox();
-            this.lblCommission = new System.Windows.Forms.Label();
-            this.txtCommission = new System.Windows.Forms.TextBox();
+            this.panelHeader          = new System.Windows.Forms.Panel();
+            this.lblTitle             = new System.Windows.Forms.Label();
+            this.panelHeaderLine      = new System.Windows.Forms.Panel();
+            this.panelMain            = new System.Windows.Forms.Panel();
+
+            // ── Basic Info ──
+            this.grpBasic             = new System.Windows.Forms.GroupBox();
+            this.tlpBasic             = new System.Windows.Forms.TableLayoutPanel();
+            this.txtFullName          = new System.Windows.Forms.TextBox();
+            this.txtUsername          = new System.Windows.Forms.TextBox();
+            this.txtPassword          = new System.Windows.Forms.TextBox();
+            this.cmbRole              = new System.Windows.Forms.ComboBox();
+            this.txtPhone             = new System.Windows.Forms.TextBox();
+            this.lblPhoneError        = new System.Windows.Forms.Label();
+            this.cmbGender            = new System.Windows.Forms.ComboBox();
+            this.lblHireDateValue     = new System.Windows.Forms.Label();
+
+            // ── Doctor Info ──
+            this.panelDoctorFields    = new System.Windows.Forms.Panel();
+            this.grpDoctor            = new System.Windows.Forms.GroupBox();
+            this.tlpDoctor            = new System.Windows.Forms.TableLayoutPanel();
+            this.cmbSpeciality        = new System.Windows.Forms.ComboBox();
+            this.cmbRoom              = new System.Windows.Forms.ComboBox();
+            this.txtPercentage        = new System.Windows.Forms.TextBox();
+            this.lblPercentageError   = new System.Windows.Forms.Label();
+            this.txtLicense           = new System.Windows.Forms.TextBox();
+            this.txtExperience        = new System.Windows.Forms.TextBox();
+
+            // ── Schedule ──
+            this.panelScheduleArea    = new System.Windows.Forms.Panel();
+            this.grpSchedule          = new System.Windows.Forms.GroupBox();
+            this.panelScheduleContent = new System.Windows.Forms.Panel();
+
+            // ── Footer ──
+            this.panelFooter          = new System.Windows.Forms.Panel();
+            this.panelFooterLine      = new System.Windows.Forms.Panel();
+            this.btnSave              = new System.Windows.Forms.Button();
+            this.btnCancel            = new System.Windows.Forms.Button();
+
             this.panelHeader.SuspendLayout();
-            this.panelBottomBar.SuspendLayout();
-            this.panelInputArea.SuspendLayout();
-            this.tlpInputs.SuspendLayout();
+            this.panelMain.SuspendLayout();
+            this.grpBasic.SuspendLayout();
+            this.tlpBasic.SuspendLayout();
+            this.panelDoctorFields.SuspendLayout();
+            this.grpDoctor.SuspendLayout();
+            this.tlpDoctor.SuspendLayout();
+            this.panelScheduleArea.SuspendLayout();
+            this.grpSchedule.SuspendLayout();
+            this.panelFooter.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panelHeader
-            // 
+
+            // ════════════════════════════
+            //  HEADER
+            // ════════════════════════════
+            this.panelHeader.BackColor = System.Drawing.Color.White;
             this.panelHeader.Controls.Add(this.lblTitle);
-            this.panelHeader.Controls.Add(this.panelHeaderBorder);
-            this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelHeader.Location = new System.Drawing.Point(0, 0);
-            this.panelHeader.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1600, 119);
-            this.panelHeader.TabIndex = 2;
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.lblTitle.Location = new System.Drawing.Point(53, 36);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(337, 54);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "إضافة موظف جديد";
-            // 
-            // panelHeaderBorder
-            // 
-            this.panelHeaderBorder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(226)))), ((int)(((byte)(230)))));
-            this.panelHeaderBorder.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelHeaderBorder.Location = new System.Drawing.Point(0, 117);
-            this.panelHeaderBorder.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.panelHeaderBorder.Name = "panelHeaderBorder";
-            this.panelHeaderBorder.Size = new System.Drawing.Size(1600, 2);
-            this.panelHeaderBorder.TabIndex = 1;
-            // 
-            // panelBottomBar
-            // 
-            this.panelBottomBar.Controls.Add(this.btnSave);
-            this.panelBottomBar.Controls.Add(this.panelBottomBorder);
-            this.panelBottomBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottomBar.Location = new System.Drawing.Point(0, 1645);
-            this.panelBottomBar.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.panelBottomBar.Name = "panelBottomBar";
-            this.panelBottomBar.Padding = new System.Windows.Forms.Padding(27, 24, 27, 24);
-            this.panelBottomBar.Size = new System.Drawing.Size(1600, 143);
-            this.panelBottomBar.TabIndex = 1;
-            // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(155)))));
-            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelHeader.Controls.Add(this.panelHeaderLine);
+            this.panelHeader.Dock    = System.Windows.Forms.DockStyle.Top;
+            this.panelHeader.Height  = 52;
+            this.panelHeader.Padding = new System.Windows.Forms.Padding(16, 0, 16, 0);
+
+            this.lblTitle.AutoSize  = true;
+            this.lblTitle.Dock      = System.Windows.Forms.DockStyle.Left;
+            this.lblTitle.Font      = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(0, 75, 155);
+            this.lblTitle.Text      = "إضافة موظف جديد";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+
+            this.panelHeaderLine.BackColor = System.Drawing.Color.FromArgb(0, 75, 155);
+            this.panelHeaderLine.Dock      = System.Windows.Forms.DockStyle.Bottom;
+            this.panelHeaderLine.Height    = 2;
+
+            // ════════════════════════════
+            //  SCROLLABLE MAIN
+            // ════════════════════════════
+            this.panelMain.AutoScroll = true;
+            this.panelMain.Dock       = System.Windows.Forms.DockStyle.Fill;
+            this.panelMain.Padding    = new System.Windows.Forms.Padding(14, 8, 14, 8);
+            this.panelMain.Controls.Add(this.panelScheduleArea);
+            this.panelMain.Controls.Add(this.panelDoctorFields);
+            this.panelMain.Controls.Add(this.grpBasic);
+
+            // ════════════════════════════
+            //  GROUP: المعلومات الأساسية
+            // ════════════════════════════
+            this.grpBasic.Dock      = System.Windows.Forms.DockStyle.Top;
+            this.grpBasic.Font      = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.grpBasic.ForeColor = System.Drawing.Color.FromArgb(0, 75, 155);
+            this.grpBasic.Text      = "المعلومات الأساسية";
+            this.grpBasic.Padding   = new System.Windows.Forms.Padding(8);
+            this.grpBasic.Height    = 250;
+            this.grpBasic.Controls.Add(this.tlpBasic);
+
+            // ── TableLayoutPanel: 4 cols × 4 rows ──
+            this.tlpBasic.Dock        = System.Windows.Forms.DockStyle.Fill;
+            this.tlpBasic.ColumnCount = 4;
+            this.tlpBasic.RowCount    = 4;
+            this.tlpBasic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115));
+            this.tlpBasic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50));
+            this.tlpBasic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115));
+            this.tlpBasic.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50));
+            this.tlpBasic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48));
+            this.tlpBasic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48));
+            this.tlpBasic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60)); // phone row (taller for error label)
+            this.tlpBasic.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 48));
+
+            // Row 0: الاسم الكامل | اسم المستخدم
+            this.tlpBasic.Controls.Add(MakeLbl("الاسم الكامل *"),    0, 0);
+            this.tlpBasic.Controls.Add(this.txtFullName,               1, 0);
+            this.tlpBasic.Controls.Add(MakeLbl("اسم المستخدم *"),    2, 0);
+            this.tlpBasic.Controls.Add(this.txtUsername,               3, 0);
+            // Row 1: كلمة المرور | الدور
+            this.tlpBasic.Controls.Add(MakeLbl("كلمة المرور *"),     0, 1);
+            this.tlpBasic.Controls.Add(this.txtPassword,               1, 1);
+            this.tlpBasic.Controls.Add(MakeLbl("الدور الوظيفي *"),   2, 1);
+            this.tlpBasic.Controls.Add(this.cmbRole,                   3, 1);
+            // Row 2: الهاتف (مع رسالة خطأ) | الجنس
+            this.tlpBasic.Controls.Add(MakeLbl("رقم الهاتف"),        0, 2);
+            this.tlpBasic.Controls.Add(this.BuildPhonePanel(),         1, 2);
+            this.tlpBasic.Controls.Add(MakeLbl("الجنس"),              2, 2);
+            this.tlpBasic.Controls.Add(this.cmbGender,                 3, 2);
+            // Row 3: تاريخ التعيين
+            this.tlpBasic.Controls.Add(MakeLbl("تاريخ التعيين"),     0, 3);
+            this.tlpBasic.Controls.Add(this.lblHireDateValue,          1, 3);
+
+            StyleTxt(this.txtFullName);
+            StyleTxt(this.txtUsername);
+            StyleTxt(this.txtPassword); this.txtPassword.PasswordChar = '*';
+            StyleCmb(this.cmbRole);
+            StyleCmb(this.cmbGender);
+
+            this.lblHireDateValue.Dock      = System.Windows.Forms.DockStyle.Fill;
+            this.lblHireDateValue.Font      = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblHireDateValue.ForeColor = System.Drawing.Color.FromArgb(0, 75, 155);
+            this.lblHireDateValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblHireDateValue.Margin    = new System.Windows.Forms.Padding(4);
+
+            // ════════════════════════════
+            //  GROUP: معلومات الطبيب
+            // ════════════════════════════
+            this.panelDoctorFields.Dock    = System.Windows.Forms.DockStyle.Top;
+            this.panelDoctorFields.Height  = 170;
+            this.panelDoctorFields.Visible = false;
+            this.panelDoctorFields.Controls.Add(this.grpDoctor);
+
+            this.grpDoctor.Dock      = System.Windows.Forms.DockStyle.Fill;
+            this.grpDoctor.Font      = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.grpDoctor.ForeColor = System.Drawing.Color.FromArgb(0, 75, 155);
+            this.grpDoctor.Text      = "معلومات الطبيب";
+            this.grpDoctor.Padding   = new System.Windows.Forms.Padding(8);
+            this.grpDoctor.Controls.Add(this.tlpDoctor);
+
+            this.tlpDoctor.Dock        = System.Windows.Forms.DockStyle.Fill;
+            this.tlpDoctor.ColumnCount = 6;
+            this.tlpDoctor.RowCount    = 2;
+            this.tlpDoctor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90));
+            this.tlpDoctor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34));
+            this.tlpDoctor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90));
+            this.tlpDoctor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33));
+            this.tlpDoctor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90));
+            this.tlpDoctor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33));
+            this.tlpDoctor.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50));
+            this.tlpDoctor.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 65)); // row with error label
+
+            // Row 0: التخصص | رقم الغرفة | نسبة الطبيب
+            this.tlpDoctor.Controls.Add(MakeLbl("التخصص *"),          0, 0);
+            this.tlpDoctor.Controls.Add(this.cmbSpeciality,             1, 0);
+            this.tlpDoctor.Controls.Add(MakeLbl("رقم الغرفة"),        2, 0);
+            this.tlpDoctor.Controls.Add(this.cmbRoom,                   3, 0);
+            this.tlpDoctor.Controls.Add(MakeLbl("نسبة الطبيب %"),     4, 0);
+            this.tlpDoctor.Controls.Add(this.BuildPercentagePanel(),    5, 0);
+            // Row 1: رقم الرخصة | سنوات الخبرة
+            this.tlpDoctor.Controls.Add(MakeLbl("رقم الرخصة"),        0, 1);
+            this.tlpDoctor.Controls.Add(this.txtLicense,                1, 1);
+            this.tlpDoctor.Controls.Add(MakeLbl("سنوات الخبرة"),      2, 1);
+            this.tlpDoctor.Controls.Add(this.txtExperience,             3, 1);
+
+            StyleCmb(this.cmbSpeciality);
+            StyleCmb(this.cmbRoom);
+            StyleTxt(this.txtLicense);
+            StyleTxt(this.txtExperience);
+
+            // ════════════════════════════
+            //  GROUP: جدول الدوام
+            // ════════════════════════════
+            this.panelScheduleArea.Dock    = System.Windows.Forms.DockStyle.Top;
+            this.panelScheduleArea.Height  = 300;
+            this.panelScheduleArea.Visible = false;
+            this.panelScheduleArea.Controls.Add(this.grpSchedule);
+
+            this.grpSchedule.Dock      = System.Windows.Forms.DockStyle.Fill;
+            this.grpSchedule.Font      = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.grpSchedule.ForeColor = System.Drawing.Color.FromArgb(0, 75, 155);
+            this.grpSchedule.Text      = "جدول أوقات الدوام الأسبوعي";
+            this.grpSchedule.Padding   = new System.Windows.Forms.Padding(8);
+            this.grpSchedule.Controls.Add(this.panelScheduleContent);
+
+            this.panelScheduleContent.Dock       = System.Windows.Forms.DockStyle.Fill;
+            this.panelScheduleContent.AutoScroll = true;
+            this.panelScheduleContent.Padding    = new System.Windows.Forms.Padding(4);
+
+            // ════════════════════════════
+            //  FOOTER
+            // ════════════════════════════
+            this.panelFooter.BackColor = System.Drawing.Color.White;
+            this.panelFooter.Controls.Add(this.btnSave);
+            this.panelFooter.Controls.Add(this.btnCancel);
+            this.panelFooter.Controls.Add(this.panelFooterLine);
+            this.panelFooter.Dock    = System.Windows.Forms.DockStyle.Bottom;
+            this.panelFooter.Height  = 54;
+            this.panelFooter.Padding = new System.Windows.Forms.Padding(14, 8, 14, 8);
+
+            this.panelFooterLine.BackColor = System.Drawing.Color.FromArgb(222, 226, 230);
+            this.panelFooterLine.Dock      = System.Windows.Forms.DockStyle.Top;
+            this.panelFooterLine.Height    = 1;
+
+            this.btnSave.BackColor                 = System.Drawing.Color.FromArgb(0, 75, 155);
+            this.btnSave.Cursor                    = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.Dock                      = System.Windows.Forms.DockStyle.Right;
             this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(1253, 26);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(320, 93);
-            this.btnSave.TabIndex = 0;
-            this.btnSave.Text = "حفظ";
-            this.btnSave.UseVisualStyleBackColor = false;
-            // 
-            // panelBottomBorder
-            // 
-            this.panelBottomBorder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(226)))), ((int)(((byte)(230)))));
-            this.panelBottomBorder.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelBottomBorder.Location = new System.Drawing.Point(27, 24);
-            this.panelBottomBorder.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.panelBottomBorder.Name = "panelBottomBorder";
-            this.panelBottomBorder.Size = new System.Drawing.Size(1546, 2);
-            this.panelBottomBorder.TabIndex = 1;
-            // 
-            // panelInputArea
-            // 
-            this.panelInputArea.AutoScroll = true;
-            this.panelInputArea.Controls.Add(this.panelSchedule);
-            this.panelInputArea.Controls.Add(this.tlpInputs);
-            this.panelInputArea.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelInputArea.Location = new System.Drawing.Point(0, 119);
-            this.panelInputArea.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.panelInputArea.Name = "panelInputArea";
-            this.panelInputArea.Padding = new System.Windows.Forms.Padding(80, 72, 80, 72);
-            this.panelInputArea.Size = new System.Drawing.Size(1600, 1526);
-            this.panelInputArea.TabIndex = 0;
-            // 
-            // panelSchedule
-            // 
-            this.panelSchedule.AutoSize = true;
-            this.panelSchedule.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSchedule.Location = new System.Drawing.Point(80, 907);
-            this.panelSchedule.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.panelSchedule.Name = "panelSchedule";
-            this.panelSchedule.Padding = new System.Windows.Forms.Padding(0, 48, 0, 48);
-            this.panelSchedule.Size = new System.Drawing.Size(1440, 96);
-            this.panelSchedule.TabIndex = 0;
-            this.panelSchedule.Visible = false;
-            // 
-            // tlpInputs
-            // 
-            this.tlpInputs.ColumnCount = 2;
-            this.tlpInputs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 347F));
-            this.tlpInputs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpInputs.Controls.Add(this.lblFullName, 0, 0);
-            this.tlpInputs.Controls.Add(this.txtFullName, 1, 0);
-            this.tlpInputs.Controls.Add(this.lblUsername, 0, 1);
-            this.tlpInputs.Controls.Add(this.txtUsername, 1, 1);
-            this.tlpInputs.Controls.Add(this.lblPassword, 0, 2);
-            this.tlpInputs.Controls.Add(this.txtPassword, 1, 2);
-            this.tlpInputs.Controls.Add(this.lblRole, 0, 3);
-            this.tlpInputs.Controls.Add(this.cmbRole, 1, 3);
-            this.tlpInputs.Controls.Add(this.lblPhone, 0, 4);
-            this.tlpInputs.Controls.Add(this.txtPhone, 1, 4);
-            this.tlpInputs.Controls.Add(this.lblSalary, 0, 5);
-            this.tlpInputs.Controls.Add(this.txtSalary, 1, 5);
-            this.tlpInputs.Controls.Add(this.lblCommission, 0, 6);
-            this.tlpInputs.Controls.Add(this.txtCommission, 1, 6);
-            this.tlpInputs.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tlpInputs.Location = new System.Drawing.Point(80, 72);
-            this.tlpInputs.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.tlpInputs.Name = "tlpInputs";
-            this.tlpInputs.RowCount = 7;
-            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28F));
-            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28F));
-            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28F));
-            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28F));
-            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28F));
-            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28F));
-            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28F));
-            this.tlpInputs.Size = new System.Drawing.Size(1440, 835);
-            this.tlpInputs.TabIndex = 1;
-            // 
-            // lblFullName
-            // 
-            this.lblFullName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblFullName.AutoSize = true;
-            this.lblFullName.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblFullName.Location = new System.Drawing.Point(1101, 36);
-            this.lblFullName.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.lblFullName.Name = "lblFullName";
-            this.lblFullName.Size = new System.Drawing.Size(331, 46);
-            this.lblFullName.TabIndex = 0;
-            this.lblFullName.Text = "الاسم الكامل";
-            this.lblFullName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtFullName
-            // 
-            this.txtFullName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtFullName.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtFullName.Location = new System.Drawing.Point(27, 24);
-            this.txtFullName.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
-            this.txtFullName.Name = "txtFullName";
-            this.txtFullName.Size = new System.Drawing.Size(1039, 52);
-            this.txtFullName.TabIndex = 1;
-            // 
-            // lblUsername
-            // 
-            this.lblUsername.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblUsername.Location = new System.Drawing.Point(1101, 155);
-            this.lblUsername.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(331, 46);
-            this.lblUsername.TabIndex = 2;
-            this.lblUsername.Text = "اسم المستخدم";
-            this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtUsername.Location = new System.Drawing.Point(27, 143);
-            this.txtUsername.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(1039, 52);
-            this.txtUsername.TabIndex = 3;
-            // 
-            // lblPassword
-            // 
-            this.lblPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblPassword.AutoSize = true;
-            this.lblPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblPassword.Location = new System.Drawing.Point(1101, 274);
-            this.lblPassword.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.lblPassword.Name = "lblPassword";
-            this.lblPassword.Size = new System.Drawing.Size(331, 46);
-            this.lblPassword.TabIndex = 4;
-            this.lblPassword.Text = "كلمة المرور";
-            this.lblPassword.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtPassword.Location = new System.Drawing.Point(27, 262);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(1039, 52);
-            this.txtPassword.TabIndex = 5;
-            // 
-            // lblRole
-            // 
-            this.lblRole.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblRole.AutoSize = true;
-            this.lblRole.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblRole.Location = new System.Drawing.Point(1101, 393);
-            this.lblRole.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.lblRole.Name = "lblRole";
-            this.lblRole.Size = new System.Drawing.Size(331, 46);
-            this.lblRole.TabIndex = 6;
-            this.lblRole.Text = "الدور الوظيفي";
-            this.lblRole.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // cmbRole
-            // 
-            this.cmbRole.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cmbRole.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbRole.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbRole.Location = new System.Drawing.Point(27, 381);
-            this.cmbRole.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
-            this.cmbRole.Name = "cmbRole";
-            this.cmbRole.Size = new System.Drawing.Size(1039, 53);
-            this.cmbRole.TabIndex = 7;
-            // 
-            // lblPhone
-            // 
-            this.lblPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblPhone.AutoSize = true;
-            this.lblPhone.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblPhone.Location = new System.Drawing.Point(1101, 512);
-            this.lblPhone.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.lblPhone.Name = "lblPhone";
-            this.lblPhone.Size = new System.Drawing.Size(331, 46);
-            this.lblPhone.TabIndex = 8;
-            this.lblPhone.Text = "رقم الهاتف";
-            this.lblPhone.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtPhone
-            // 
-            this.txtPhone.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtPhone.Location = new System.Drawing.Point(27, 500);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(1039, 52);
-            this.txtPhone.TabIndex = 9;
-            // 
-            // lblSalary
-            // 
-            this.lblSalary.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblSalary.AutoSize = true;
-            this.lblSalary.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblSalary.Location = new System.Drawing.Point(1101, 631);
-            this.lblSalary.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.lblSalary.Name = "lblSalary";
-            this.lblSalary.Size = new System.Drawing.Size(331, 46);
-            this.lblSalary.TabIndex = 10;
-            this.lblSalary.Text = "الراتب الأساسي";
-            this.lblSalary.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtSalary
-            // 
-            this.txtSalary.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtSalary.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtSalary.Location = new System.Drawing.Point(27, 619);
-            this.txtSalary.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
-            this.txtSalary.Name = "txtSalary";
-            this.txtSalary.Size = new System.Drawing.Size(1039, 52);
-            this.txtSalary.TabIndex = 11;
-            this.txtSalary.Text = "0";
-            // 
-            // lblCommission
-            // 
-            this.lblCommission.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCommission.AutoSize = true;
-            this.lblCommission.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblCommission.Location = new System.Drawing.Point(1101, 751);
-            this.lblCommission.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.lblCommission.Name = "lblCommission";
-            this.lblCommission.Size = new System.Drawing.Size(331, 46);
-            this.lblCommission.TabIndex = 12;
-            this.lblCommission.Text = "نسبة العمولة";
-            this.lblCommission.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtCommission
-            // 
-            this.txtCommission.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtCommission.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtCommission.Location = new System.Drawing.Point(27, 738);
-            this.txtCommission.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
-            this.txtCommission.Name = "txtCommission";
-            this.txtCommission.Size = new System.Drawing.Size(1039, 52);
-            this.txtCommission.TabIndex = 13;
-            this.txtCommission.Text = "0";
-            // 
-            // AddStaffFormUI
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1600, 1788);
-            this.Controls.Add(this.panelInputArea);
-            this.Controls.Add(this.panelBottomBar);
+            this.btnSave.FlatStyle                 = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font                      = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnSave.ForeColor                 = System.Drawing.Color.White;
+            this.btnSave.Text                      = "حفظ الموظف  ✓";
+            this.btnSave.Width                     = 155;
+            this.btnSave.UseVisualStyleBackColor   = false;
+
+            this.btnCancel.BackColor                 = System.Drawing.Color.FromArgb(240, 243, 246);
+            this.btnCancel.Cursor                    = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel.Dock                      = System.Windows.Forms.DockStyle.Right;
+            this.btnCancel.FlatAppearance.BorderSize = 0;
+            this.btnCancel.FlatStyle                 = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font                      = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnCancel.ForeColor                 = System.Drawing.Color.FromArgb(70, 70, 70);
+            this.btnCancel.Text                      = "إلغاء";
+            this.btnCancel.Width                     = 100;
+            this.btnCancel.Margin                    = new System.Windows.Forms.Padding(0, 0, 6, 0);
+            this.btnCancel.UseVisualStyleBackColor   = false;
+
+            // ════════════════════════════
+            //  FORM
+            // ════════════════════════════
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode       = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor           = System.Drawing.Color.FromArgb(243, 244, 246);
+            this.ClientSize          = new System.Drawing.Size(700, 480);
+            this.Controls.Add(this.panelMain);
+            this.Controls.Add(this.panelFooter);
             this.Controls.Add(this.panelHeader);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "AddStaffFormUI";
-            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.FormBorderStyle   = System.Windows.Forms.FormBorderStyle.Sizable;
+            this.MinimumSize       = new System.Drawing.Size(700, 480);
+            this.MaximizeBox       = false;
+            this.MinimizeBox       = false;
+            this.Name              = "AddStaffFormUI";
+            this.RightToLeft       = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "إضافة موظف جديد";
+            this.StartPosition     = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text              = "إضافة موظف جديد";
+
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
-            this.panelBottomBar.ResumeLayout(false);
-            this.panelInputArea.ResumeLayout(false);
-            this.panelInputArea.PerformLayout();
-            this.tlpInputs.ResumeLayout(false);
-            this.tlpInputs.PerformLayout();
+            this.panelMain.ResumeLayout(false);
+            this.grpBasic.ResumeLayout(false);
+            this.tlpBasic.ResumeLayout(false);
+            this.tlpBasic.PerformLayout();
+            this.panelDoctorFields.ResumeLayout(false);
+            this.grpDoctor.ResumeLayout(false);
+            this.tlpDoctor.ResumeLayout(false);
+            this.tlpDoctor.PerformLayout();
+            this.panelScheduleArea.ResumeLayout(false);
+            this.grpSchedule.ResumeLayout(false);
+            this.panelFooter.ResumeLayout(false);
             this.ResumeLayout(false);
+        }
 
+        // ── صنع حقل الهاتف مع رسالة الخطأ ──────────────────────────────
+        private System.Windows.Forms.Panel BuildPhonePanel()
+        {
+            var panel = new System.Windows.Forms.Panel { Dock = System.Windows.Forms.DockStyle.Fill, Margin = new System.Windows.Forms.Padding(4, 6, 4, 2) };
+            this.txtPhone.Dock          = System.Windows.Forms.DockStyle.Top;
+            this.txtPhone.Font          = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.txtPhone.BorderStyle   = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPhone.Height        = 26;
+            this.lblPhoneError.AutoSize = true;
+            this.lblPhoneError.Dock     = System.Windows.Forms.DockStyle.Top;
+            this.lblPhoneError.Font     = new System.Drawing.Font("Segoe UI", 8F);
+            this.lblPhoneError.ForeColor = System.Drawing.Color.FromArgb(200, 0, 0);
+            this.lblPhoneError.Text     = "* رقم الهاتف يجب أن يكون 10 أرقام";
+            this.lblPhoneError.Visible  = false;
+            panel.Controls.Add(this.lblPhoneError);
+            panel.Controls.Add(this.txtPhone);
+            return panel;
+        }
+
+        // ── صنع حقل النسبة مع رسالة الخطأ ──────────────────────────────
+        private System.Windows.Forms.Panel BuildPercentagePanel()
+        {
+            var panel = new System.Windows.Forms.Panel { Dock = System.Windows.Forms.DockStyle.Fill, Margin = new System.Windows.Forms.Padding(4, 6, 4, 2) };
+            this.txtPercentage.Dock        = System.Windows.Forms.DockStyle.Top;
+            this.txtPercentage.Font        = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.txtPercentage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPercentage.Text        = "40";
+            this.txtPercentage.Height      = 26;
+            this.lblPercentageError.AutoSize  = true;
+            this.lblPercentageError.Dock      = System.Windows.Forms.DockStyle.Top;
+            this.lblPercentageError.Font      = new System.Drawing.Font("Segoe UI", 8F);
+            this.lblPercentageError.ForeColor = System.Drawing.Color.FromArgb(200, 0, 0);
+            this.lblPercentageError.Text      = "* يجب أن تكون ≤ 100";
+            this.lblPercentageError.Visible   = false;
+            panel.Controls.Add(this.lblPercentageError);
+            panel.Controls.Add(this.txtPercentage);
+            return panel;
+        }
+
+        // ── مساعدات بناء الـ UI ─────────────────────────────────────────
+        private static System.Windows.Forms.Label MakeLbl(string text) =>
+            new System.Windows.Forms.Label
+            {
+                Text      = text,
+                Font      = new System.Drawing.Font("Segoe UI", 9F),
+                ForeColor = System.Drawing.Color.FromArgb(55, 65, 81),
+                Dock      = System.Windows.Forms.DockStyle.Fill,
+                TextAlign = System.Drawing.ContentAlignment.MiddleRight,
+                Margin    = new System.Windows.Forms.Padding(2)
+            };
+
+        private static void StyleTxt(System.Windows.Forms.TextBox t)
+        {
+            t.Dock        = System.Windows.Forms.DockStyle.Fill;
+            t.Font        = new System.Drawing.Font("Segoe UI", 9.5F);
+            t.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            t.Margin      = new System.Windows.Forms.Padding(4, 8, 4, 4);
+        }
+
+        private static void StyleCmb(System.Windows.Forms.ComboBox c)
+        {
+            c.Dock          = System.Windows.Forms.DockStyle.Fill;
+            c.Font          = new System.Drawing.Font("Segoe UI", 9.5F);
+            c.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            c.Margin        = new System.Windows.Forms.Padding(4, 8, 4, 4);
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panelHeader; private System.Windows.Forms.Label lblTitle; private System.Windows.Forms.Panel panelHeaderBorder;
-        private System.Windows.Forms.Panel panelBottomBar; private System.Windows.Forms.Button btnSave; private System.Windows.Forms.Panel panelBottomBorder;
-        private System.Windows.Forms.Panel panelInputArea; private System.Windows.Forms.TableLayoutPanel tlpInputs;
-        private System.Windows.Forms.Panel panelSchedule;
-        private System.Windows.Forms.Label lblFullName; private System.Windows.Forms.TextBox txtFullName;
-        private System.Windows.Forms.Label lblUsername; private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.Label lblPassword; private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Label lblRole; private System.Windows.Forms.ComboBox cmbRole;
-        private System.Windows.Forms.Label lblPhone; private System.Windows.Forms.TextBox txtPhone;
-        private System.Windows.Forms.Label lblSalary; private System.Windows.Forms.TextBox txtSalary;
-        private System.Windows.Forms.Label lblCommission; private System.Windows.Forms.TextBox txtCommission;
+        // ── Fields ──────────────────────────────────────────────────────
+        private System.Windows.Forms.Panel            panelHeader, panelHeaderLine, panelMain;
+        private System.Windows.Forms.Label            lblTitle;
+        private System.Windows.Forms.GroupBox         grpBasic;
+        private System.Windows.Forms.TableLayoutPanel tlpBasic;
+        private System.Windows.Forms.TextBox          txtFullName, txtUsername, txtPassword, txtPhone;
+        private System.Windows.Forms.Label            lblPhoneError, lblHireDateValue;
+        private System.Windows.Forms.ComboBox         cmbRole, cmbGender;
+        private System.Windows.Forms.Panel            panelDoctorFields;
+        private System.Windows.Forms.GroupBox         grpDoctor;
+        private System.Windows.Forms.TableLayoutPanel tlpDoctor;
+        private System.Windows.Forms.ComboBox         cmbSpeciality, cmbRoom;
+        private System.Windows.Forms.TextBox          txtPercentage, txtLicense, txtExperience;
+        private System.Windows.Forms.Label            lblPercentageError;
+        private System.Windows.Forms.Panel            panelScheduleArea;
+        private System.Windows.Forms.GroupBox         grpSchedule;
+        private System.Windows.Forms.Panel            panelScheduleContent;
+        private System.Windows.Forms.Panel            panelFooter, panelFooterLine;
+        private System.Windows.Forms.Button           btnSave, btnCancel;
     }
 }
-
-

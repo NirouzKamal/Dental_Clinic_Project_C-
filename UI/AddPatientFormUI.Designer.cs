@@ -24,6 +24,8 @@ namespace DentalClinicProject.UI
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.lblAge = new System.Windows.Forms.Label();
             this.txtAge = new System.Windows.Forms.TextBox();
+            this.lblGender = new System.Windows.Forms.Label();
+            this.cmbGender = new System.Windows.Forms.ComboBox();
             this.lblAddress = new System.Windows.Forms.Label();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.panelHeader.SuspendLayout();
@@ -37,20 +39,33 @@ namespace DentalClinicProject.UI
             this.panelHeader.Controls.Add(this.lblTitle);
             this.panelHeader.Controls.Add(this.panelHeaderBorder);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelHeader.Location = new System.Drawing.Point(0, 0);
+            this.panelHeader.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(584, 50);
+            this.panelHeader.Size = new System.Drawing.Size(1600, 119);
+            this.panelHeader.TabIndex = 2;
+            // 
             // lblTitle
+            // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(33, 37, 41);
-            this.lblTitle.Location = new System.Drawing.Point(20, 15);
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
+            this.lblTitle.Location = new System.Drawing.Point(53, 36);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(330, 54);
+            this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "إضافة مريض جديد";
+            // 
             // panelHeaderBorder
-            this.panelHeaderBorder.BackColor = System.Drawing.Color.FromArgb(222, 226, 230);
+            // 
+            this.panelHeaderBorder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(226)))), ((int)(((byte)(230)))));
             this.panelHeaderBorder.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelHeaderBorder.Location = new System.Drawing.Point(0, 117);
+            this.panelHeaderBorder.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.panelHeaderBorder.Name = "panelHeaderBorder";
-            this.panelHeaderBorder.Size = new System.Drawing.Size(584, 1);
+            this.panelHeaderBorder.Size = new System.Drawing.Size(1600, 2);
+            this.panelHeaderBorder.TabIndex = 1;
             // 
             // panelBottomBar
             // 
@@ -58,52 +73,72 @@ namespace DentalClinicProject.UI
             this.panelBottomBar.Controls.Add(this.btnSave);
             this.panelBottomBar.Controls.Add(this.panelBottomBorder);
             this.panelBottomBar.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelBottomBar.Location = new System.Drawing.Point(0, 811);
+            this.panelBottomBar.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.panelBottomBar.Name = "panelBottomBar";
-            this.panelBottomBar.Padding = new System.Windows.Forms.Padding(10);
-            this.panelBottomBar.Size = new System.Drawing.Size(584, 60);
+            this.panelBottomBar.Padding = new System.Windows.Forms.Padding(27, 24, 27, 24);
+            this.panelBottomBar.Size = new System.Drawing.Size(1600, 143);
+            this.panelBottomBar.TabIndex = 1;
+            // 
             // btnBookAppointment
-            this.btnBookAppointment.BackColor = System.Drawing.Color.FromArgb(62, 125, 83);
+            // 
+            this.btnBookAppointment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(125)))), ((int)(((byte)(83)))));
             this.btnBookAppointment.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBookAppointment.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnBookAppointment.FlatAppearance.BorderSize = 0;
             this.btnBookAppointment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBookAppointment.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnBookAppointment.ForeColor = System.Drawing.Color.White;
-            this.btnBookAppointment.Margin = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.btnBookAppointment.Location = new System.Drawing.Point(880, 26);
+            this.btnBookAppointment.Margin = new System.Windows.Forms.Padding(21, 0, 0, 0);
             this.btnBookAppointment.Name = "btnBookAppointment";
-            this.btnBookAppointment.Size = new System.Drawing.Size(140, 38);
+            this.btnBookAppointment.Size = new System.Drawing.Size(373, 93);
+            this.btnBookAppointment.TabIndex = 0;
             this.btnBookAppointment.Text = "حجز موعد";
             this.btnBookAppointment.UseVisualStyleBackColor = false;
+            // 
             // btnSave
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(0, 75, 155);
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(155)))));
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Margin = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            this.btnSave.Location = new System.Drawing.Point(1253, 26);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(21, 0, 0, 0);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(120, 38);
+            this.btnSave.Size = new System.Drawing.Size(320, 93);
+            this.btnSave.TabIndex = 1;
             this.btnSave.Text = "حفظ";
             this.btnSave.UseVisualStyleBackColor = false;
+            // 
             // panelBottomBorder
-            this.panelBottomBorder.BackColor = System.Drawing.Color.FromArgb(222, 226, 230);
+            // 
+            this.panelBottomBorder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(226)))), ((int)(((byte)(230)))));
             this.panelBottomBorder.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelBottomBorder.Location = new System.Drawing.Point(27, 24);
+            this.panelBottomBorder.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.panelBottomBorder.Name = "panelBottomBorder";
-            this.panelBottomBorder.Size = new System.Drawing.Size(584, 1);
+            this.panelBottomBorder.Size = new System.Drawing.Size(1546, 2);
+            this.panelBottomBorder.TabIndex = 2;
             // 
             // panelInputArea
             // 
             this.panelInputArea.Controls.Add(this.tlpInputs);
             this.panelInputArea.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelInputArea.Location = new System.Drawing.Point(0, 119);
+            this.panelInputArea.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.panelInputArea.Name = "panelInputArea";
-            this.panelInputArea.Padding = new System.Windows.Forms.Padding(30);
+            this.panelInputArea.Padding = new System.Windows.Forms.Padding(80, 72, 80, 72);
+            this.panelInputArea.Size = new System.Drawing.Size(1600, 692);
+            this.panelInputArea.TabIndex = 0;
             // 
             // tlpInputs
             // 
             this.tlpInputs.ColumnCount = 2;
-            this.tlpInputs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.tlpInputs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 347F));
             this.tlpInputs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpInputs.Controls.Add(this.lblName, 0, 0);
             this.tlpInputs.Controls.Add(this.txtName, 1, 0);
@@ -111,38 +146,143 @@ namespace DentalClinicProject.UI
             this.tlpInputs.Controls.Add(this.txtPhone, 1, 1);
             this.tlpInputs.Controls.Add(this.lblAge, 0, 2);
             this.tlpInputs.Controls.Add(this.txtAge, 1, 2);
-            this.lblGender = new System.Windows.Forms.Label();
-            this.cmbGender = new System.Windows.Forms.ComboBox();
             this.tlpInputs.Controls.Add(this.lblGender, 0, 3);
             this.tlpInputs.Controls.Add(this.cmbGender, 1, 3);
             this.tlpInputs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tlpInputs.Location = new System.Drawing.Point(80, 72);
+            this.tlpInputs.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.tlpInputs.Name = "tlpInputs";
             this.tlpInputs.RowCount = 4;
             this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            // Labels
-            this.lblName.Text = "الاسم الكامل"; this.lblName.AutoSize = true; this.lblName.Anchor = System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Left; this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft; this.lblName.Font = new System.Drawing.Font("Segoe UI", 10F); this.lblName.Name = "lblName";
-            this.lblPhone.Text = "رقم الهاتف"; this.lblPhone.AutoSize = true; this.lblPhone.Anchor = System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Left; this.lblPhone.TextAlign = System.Drawing.ContentAlignment.MiddleLeft; this.lblPhone.Font = new System.Drawing.Font("Segoe UI", 10F); this.lblPhone.Name = "lblPhone";
-            this.lblAge.Text = "العمر"; this.lblAge.AutoSize = true; this.lblAge.Anchor = System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Left; this.lblAge.TextAlign = System.Drawing.ContentAlignment.MiddleLeft; this.lblAge.Font = new System.Drawing.Font("Segoe UI", 10F); this.lblAge.Name = "lblAge";
-            this.lblGender.Text = "الجنس"; this.lblGender.AutoSize = true; this.lblGender.Anchor = System.Windows.Forms.AnchorStyles.Right | System.Windows.Forms.AnchorStyles.Left; this.lblGender.TextAlign = System.Drawing.ContentAlignment.MiddleLeft; this.lblGender.Font = new System.Drawing.Font("Segoe UI", 10F); this.lblGender.Name = "lblGender";
-            // TextBoxes & Comboboxes
-            this.txtName.Dock = System.Windows.Forms.DockStyle.Fill; this.txtName.Font = new System.Drawing.Font("Segoe UI", 10F); this.txtName.Margin = new System.Windows.Forms.Padding(10); this.txtName.Name = "txtName";
-            this.txtPhone.Dock = System.Windows.Forms.DockStyle.Fill; this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 10F); this.txtPhone.Margin = new System.Windows.Forms.Padding(10); this.txtPhone.Name = "txtPhone";
-            this.txtAge.Dock = System.Windows.Forms.DockStyle.Fill; this.txtAge.Font = new System.Drawing.Font("Segoe UI", 10F); this.txtAge.Margin = new System.Windows.Forms.Padding(10); this.txtAge.Name = "txtAge";
-            this.cmbGender.Dock = System.Windows.Forms.DockStyle.Fill; this.cmbGender.Font = new System.Drawing.Font("Segoe UI", 10F); this.cmbGender.Margin = new System.Windows.Forms.Padding(10); this.cmbGender.Name = "cmbGender"; this.cmbGender.Items.AddRange(new object[] { "ذكر", "أنثى" }); this.cmbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tlpInputs.Size = new System.Drawing.Size(1440, 548);
+            this.tlpInputs.TabIndex = 0;
+            // 
+            // lblName
+            // 
+            this.lblName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblName.AutoSize = true;
+            this.lblName.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblName.Location = new System.Drawing.Point(1101, 45);
+            this.lblName.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(331, 46);
+            this.lblName.TabIndex = 0;
+            this.lblName.Text = "الاسم الكامل";
+            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtName
+            // 
+            this.txtName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtName.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtName.Location = new System.Drawing.Point(27, 24);
+            this.txtName.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(1039, 52);
+            this.txtName.TabIndex = 1;
+            // 
+            // lblPhone
+            // 
+            this.lblPhone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPhone.AutoSize = true;
+            this.lblPhone.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblPhone.Location = new System.Drawing.Point(1101, 182);
+            this.lblPhone.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.lblPhone.Name = "lblPhone";
+            this.lblPhone.Size = new System.Drawing.Size(331, 46);
+            this.lblPhone.TabIndex = 2;
+            this.lblPhone.Text = "رقم الهاتف";
+            this.lblPhone.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtPhone
+            // 
+            this.txtPhone.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtPhone.Location = new System.Drawing.Point(27, 161);
+            this.txtPhone.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
+            this.txtPhone.MaxLength = 10;
+            this.txtPhone.Name = "txtPhone";
+            this.txtPhone.Size = new System.Drawing.Size(1039, 52);
+            this.txtPhone.TabIndex = 3;
+            // 
+            // lblAge
+            // 
+            this.lblAge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAge.AutoSize = true;
+            this.lblAge.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblAge.Location = new System.Drawing.Point(1101, 319);
+            this.lblAge.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.lblAge.Name = "lblAge";
+            this.lblAge.Size = new System.Drawing.Size(331, 46);
+            this.lblAge.TabIndex = 4;
+            this.lblAge.Text = "العمر";
+            this.lblAge.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtAge
+            // 
+            this.txtAge.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtAge.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtAge.Location = new System.Drawing.Point(27, 298);
+            this.txtAge.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
+            this.txtAge.MaxLength = 2;
+            this.txtAge.Name = "txtAge";
+            this.txtAge.Size = new System.Drawing.Size(1039, 52);
+            this.txtAge.TabIndex = 5;
+            // 
+            // lblGender
+            // 
+            this.lblGender.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblGender.AutoSize = true;
+            this.lblGender.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblGender.Location = new System.Drawing.Point(1101, 456);
+            this.lblGender.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.lblGender.Name = "lblGender";
+            this.lblGender.Size = new System.Drawing.Size(331, 46);
+            this.lblGender.TabIndex = 6;
+            this.lblGender.Text = "الجنس";
+            this.lblGender.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cmbGender
+            // 
+            this.cmbGender.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbGender.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbGender.Items.AddRange(new object[] {
+            "ذكر",
+            "أنثى"});
+            this.cmbGender.Location = new System.Drawing.Point(27, 435);
+            this.cmbGender.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
+            this.cmbGender.Name = "cmbGender";
+            this.cmbGender.Size = new System.Drawing.Size(1039, 53);
+            this.cmbGender.TabIndex = 7;
+            // 
+            // lblAddress
+            // 
+            this.lblAddress.Location = new System.Drawing.Point(0, 0);
+            this.lblAddress.Name = "lblAddress";
+            this.lblAddress.Size = new System.Drawing.Size(100, 23);
+            this.lblAddress.TabIndex = 0;
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(0, 0);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(100, 38);
+            this.txtAddress.TabIndex = 0;
             // 
             // AddPatientFormUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(600, 400);
+            this.ClientSize = new System.Drawing.Size(1600, 954);
             this.Controls.Add(this.panelInputArea);
             this.Controls.Add(this.panelBottomBar);
             this.Controls.Add(this.panelHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddPatientFormUI";
@@ -157,6 +297,7 @@ namespace DentalClinicProject.UI
             this.tlpInputs.ResumeLayout(false);
             this.tlpInputs.PerformLayout();
             this.ResumeLayout(false);
+
         }
 
         #endregion

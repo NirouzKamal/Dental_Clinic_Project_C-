@@ -1,9 +1,12 @@
 using System;
+using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using DentalClinicProject.classes;
 using DentalClinicProject.data;
+using DentalClinicProject.Data;
 
 namespace DentalClinicProject.UI
 {
@@ -60,6 +63,9 @@ namespace DentalClinicProject.UI
             Doctor selectedDoctor = (Doctor)cmbDoctor.SelectedItem;
             dgvAppointments.Rows.Clear();
 
+            // المزامنة من قاعدة البيانات لتحديث التعديلات من الشاشات الأخرى
+            DataStore.LoadAppointmentsFromDatabase();
+
             var appointments = DataStore.Appointments
                 .Where(a => a.DoctorId == selectedDoctor.DoctorId &&
                             a.AppointmentDate.Date >= startDate.Date &&
@@ -77,7 +83,7 @@ namespace DentalClinicProject.UI
                     appointment.AppointmentDate.ToString("dd/MM/yyyy"),
                     $"{appointment.StartTime:hh\\:mm} - {appointment.EndTime:hh\\:mm}",
                     patient?.FullName ?? "غير معروف",
-                    patient?.FileNumber ?? "",
+                    patient?.PatientId ?? "", // استخدام PatientId كرقم ملف
                     patient?.Phone ?? "",
                     GetStatusText(appointment.Status),
                     appointment.Notes ?? "",
@@ -108,13 +114,13 @@ namespace DentalClinicProject.UI
             foreach (var apt in filteredAppointments)
             {
                 var patient = DataStore.Patients.FirstOrDefault(p => p.PatientId == apt.PatientId);
-                if (patient != null && (patient.FullName.Contains(searchText) || patient.FileNumber.Contains(searchText)))
+                if (patient != null && (patient.FullName.Contains(searchText) || patient.PatientId.Contains(searchText)))
                 {
                     dgvAppointments.Rows.Add(
                         apt.AppointmentDate.ToString("dd/MM/yyyy"),
                         $"{apt.StartTime:hh\\:mm} - {apt.EndTime:hh\\:mm}",
                         patient.FullName,
-                        patient.FileNumber,
+                        patient.PatientId,
                         patient.Phone,
                         GetStatusText(apt.Status),
                         apt.Notes ?? "",
@@ -140,23 +146,62 @@ namespace DentalClinicProject.UI
 
                 string appointmentId = selectedRow.Cells[7].Value.ToString();
 
-                DialogResult result = MessageBox.Show("هل تريد حذف هذا الموعد نهائياً؟", "تأكيد الحذف",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult result = MessageBox.Show(
+                    "هل تريد حذف هذا الموعد نهائياً؟", 
+                    "تأكيد الحذف",
+                    MessageBoxButtons.YesNo, 
+                    MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button2,
+                    MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
 
                 if (result == DialogResult.Yes)
                 {
                     var appointment = DataStore.Appointments.FirstOrDefault(a => a.AppointmentId == appointmentId);
                     if (appointment != null)
                     {
-                        DataStore.Appointments.Remove(appointment);
-                        LoadAllAppointments();
-                        MessageBox.Show("تم حذف الموعد بنجاح", "تم", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        const string sql = "DELETE FROM dbo.Appointments WHERE AppointmentNumber = @AppId";
+                        try
+                        {
+                            using (var conn = DbHelper.GetConnection())
+                            using (var cmd = new SqlCommand(sql, conn))
+                            {
+                                cmd.Parameters.Add(new SqlParameter("@AppId", SqlDbType.NVarChar, 50) { Value = appointmentId });
+                                cmd.ExecuteNonQuery();
+                            }
+
+                            DataStore.Appointments.Remove(appointment);
+                            LoadAllAppointments();
+
+                            MessageBox.Show(
+                                "تم حذف الموعد بنجاح ✓", 
+                                "تم الحذف", 
+                                MessageBoxButtons.OK, 
+                                MessageBoxIcon.Information,
+                                MessageBoxDefaultButton.Button1,
+                                MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(
+                                "حدث خطأ أثناء حذف الموعد من قاعدة البيانات:\n" + ex.Message, 
+                                "خطأ",
+                                MessageBoxButtons.OK, 
+                                MessageBoxIcon.Error,
+                                MessageBoxDefaultButton.Button1,
+                                MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
+                        }
                     }
                 }
             }
             else
             {
-                MessageBox.Show("الرجاء اختيار صف من الجدول أولاً", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(
+                    "الرجاء اختيار صف من الجدول أولاً.", 
+                    "تنبيه", 
+                    MessageBoxButtons.OK, 
+                    MessageBoxIcon.Exclamation,
+                    MessageBoxDefaultButton.Button1,
+                    MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
             }
         }
 
@@ -169,17 +214,50 @@ namespace DentalClinicProject.UI
 
             if (!string.IsNullOrEmpty(appointmentId) && status == "مؤكد")
             {
-                DialogResult result = MessageBox.Show("هل تريد إلغاء هذا الموعد؟", "تأكيد الإلغاء",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show(
+                    "هل تريد إلغاء هذا الموعد؟", 
+                    "تأكيد الإلغاء",
+                    MessageBoxButtons.YesNo, 
+                    MessageBoxIcon.Question,
+                    MessageBoxDefaultButton.Button2,
+                    MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
 
                 if (result == DialogResult.Yes)
                 {
                     var appointment = DataStore.Appointments.FirstOrDefault(a => a.AppointmentId == appointmentId);
                     if (appointment != null)
                     {
-                        appointment.Status = AppointmentStatus.Cancelled;
-                        LoadAllAppointments();
-                        MessageBox.Show("تم إلغاء الموعد بنجاح", "تم", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        const string sql = "UPDATE dbo.Appointments SET Status = 'Cancelled' WHERE AppointmentNumber = @AppId";
+                        try
+                        {
+                            using (var conn = DbHelper.GetConnection())
+                            using (var cmd = new SqlCommand(sql, conn))
+                            {
+                                cmd.Parameters.Add(new SqlParameter("@AppId", SqlDbType.NVarChar, 50) { Value = appointmentId });
+                                cmd.ExecuteNonQuery();
+                            }
+
+                            appointment.Status = AppointmentStatus.Cancelled;
+                            LoadAllAppointments();
+
+                            MessageBox.Show(
+                                "تم إلغاء الموعد بنجاح ✓", 
+                                "تم الإلغاء", 
+                                MessageBoxButtons.OK, 
+                                MessageBoxIcon.Information,
+                                MessageBoxDefaultButton.Button1,
+                                MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(
+                                "حدث خطأ أثناء إلغاء الموعد في قاعدة البيانات:\n" + ex.Message, 
+                                "خطأ",
+                                MessageBoxButtons.OK, 
+                                MessageBoxIcon.Error,
+                                MessageBoxDefaultButton.Button1,
+                                MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
+                        }
                     }
                 }
             }
@@ -231,7 +309,71 @@ namespace DentalClinicProject.UI
 
             if (isChanged)
             {
-                MessageBox.Show("تم تعديل وحفظ البيانات بنجاح", "تحديث", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                try
+                {
+                    using (var conn = DbHelper.GetConnection())
+                    {
+                        if (e.ColumnIndex == 2 || e.ColumnIndex == 4) // Update Patient in DB
+                        {
+                            string firstName, middleName, lastName;
+                            DataStore.SplitFullName(patient.FullName, out firstName, out middleName, out lastName);
+
+                            const string sqlPatient = @"
+                                UPDATE dbo.Patients
+                                SET FirstName = @FirstName,
+                                    MiddleName = @MiddleName,
+                                    LastName = @LastName,
+                                    PatientPhone = @Phone
+                                WHERE PatientId = @PatientId";
+
+                            using (var cmd = new SqlCommand(sqlPatient, conn))
+                            {
+                                cmd.Parameters.Add(new SqlParameter("@FirstName", SqlDbType.NVarChar, 50) { Value = firstName });
+                                cmd.Parameters.Add(new SqlParameter("@MiddleName", SqlDbType.NVarChar, 50) { Value = string.IsNullOrEmpty(middleName) ? (object)DBNull.Value : middleName });
+                                cmd.Parameters.Add(new SqlParameter("@LastName", SqlDbType.NVarChar, 50) { Value = lastName });
+                                cmd.Parameters.Add(new SqlParameter("@Phone", SqlDbType.VarChar, 15) { Value = patient.Phone });
+                                cmd.Parameters.Add(new SqlParameter("@PatientId", SqlDbType.NVarChar, 50) { Value = patient.PatientId });
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                        else if (e.ColumnIndex == 5) // Update Appointment Status in DB
+                        {
+                            string dbStatus = "Scheduled";
+                            if (appointment.Status == AppointmentStatus.Completed) dbStatus = "Completed";
+                            else if (appointment.Status == AppointmentStatus.Cancelled) dbStatus = "Cancelled";
+
+                            const string sqlApp = @"
+                                UPDATE dbo.Appointments
+                                SET Status = @Status
+                                WHERE AppointmentNumber = @AppId";
+
+                            using (var cmd = new SqlCommand(sqlApp, conn))
+                            {
+                                cmd.Parameters.Add(new SqlParameter("@Status", SqlDbType.VarChar, 20) { Value = dbStatus });
+                                cmd.Parameters.Add(new SqlParameter("@AppId", SqlDbType.NVarChar, 50) { Value = appointment.AppointmentId });
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+
+                    MessageBox.Show(
+                        "تم تعديل وحفظ البيانات بنجاح ✓", 
+                        "تحديث", 
+                        MessageBoxButtons.OK, 
+                        MessageBoxIcon.Information,
+                        MessageBoxDefaultButton.Button1,
+                        MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        "حدث خطأ أثناء حفظ التعديلات في قاعدة البيانات:\n" + ex.Message, 
+                        "خطأ",
+                        MessageBoxButtons.OK, 
+                        MessageBoxIcon.Error,
+                        MessageBoxDefaultButton.Button1,
+                        MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
+                }
             }
         }
 

@@ -3,6 +3,7 @@
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -72,6 +73,8 @@
     <Compile Include="classes\ThemeManager.cs" />
     <Compile Include="Data\DataStore.cs" />
     <Compile Include="Data\ClinicServicePricing.cs" />
+    <Compile Include="Data\DbHelper.cs" />
+    <Compile Include="Data\UserRepository.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +100,9 @@
     </Compile>
     <EmbeddedResource Include="UI\AddAppointmentFormUI.resx">
       <DependentUpon>AddAppointmentFormUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AddPatientFormUI.resx">
+      <DependentUpon>AddPatientFormUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\AddStaffFormUI.resx">
       <DependentUpon>AddStaffFormUI.cs</DependentUpon>
