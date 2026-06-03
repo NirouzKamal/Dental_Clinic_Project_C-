@@ -62,10 +62,39 @@ namespace DentalClinicProject.UI
             txtTotal.KeyPress += AllowOnlyNumbers;
             txtPaid.KeyPress += AllowOnlyNumbers;
             btnSave.Click += BtnSave_Click;
+
+            cmbPatient.SelectedIndexChanged += (s, e) =>
+            {
+                if (_currentMode == CaseFormMode.Create)
+                {
+                    if (cmbPatient.SelectedValue != null)
+                    {
+                        string patientId = cmbPatient.SelectedValue.ToString();
+                        DataStore.LoadAppointmentsFromDatabase();
+                        var todayAppt = DataStore.Appointments.FirstOrDefault(a => a.PatientId == patientId && a.AppointmentDate.Date == DateTime.Today);
+                        if (todayAppt != null)
+                        {
+                            cmbDoctor.SelectedValue = todayAppt.DoctorId;
+                            cmbDoctor.Enabled = false;
+                        }
+                        else
+                        {
+                            cmbDoctor.SelectedIndex = -1;
+                            cmbDoctor.Enabled = true;
+                        }
+                    }
+                    else
+                    {
+                        cmbDoctor.SelectedIndex = -1;
+                        cmbDoctor.Enabled = true;
+                    }
+                }
+            };
         }
 
         private void LoadPatients()
         {
+            DataStore.LoadPatientsFromDatabase();
             cmbPatient.DisplayMember = "DisplayText";
             cmbPatient.ValueMember = "PatientId";
             cmbPatient.DataSource = DataStore.Patients
@@ -75,6 +104,7 @@ namespace DentalClinicProject.UI
 
         private void LoadDoctors()
         {
+            DataStore.LoadDoctorsFromDatabase();
             cmbDoctor.DisplayMember = "FullName";
             cmbDoctor.ValueMember = "DoctorId";
             cmbDoctor.DataSource = DataStore.Doctors.Where(d => d.IsActive).ToList();

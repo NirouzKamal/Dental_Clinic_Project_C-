@@ -37,12 +37,9 @@ namespace DentalClinicProject.UI
             "أخصائي تشخيص الفم"
         };
 
-        // ── أرقام غرف العيادة ────────────────────────────────────────────
         private static readonly string[] ClinicRooms =
         {
-            "عيادة 101", "عيادة 102", "عيادة 103", "عيادة 104",
-            "عيادة 201", "عيادة 202", "عيادة 203",
-            "غرفة الأشعة", "غرفة التعقيم", "غرفة الطوارئ"
+            "عيادة 201", "عيادة 202", "عيادة 203", "عيادة 204", "عيادة 205", "عيادة 206"
         };
 
         public AddStaffFormUI()
@@ -442,6 +439,20 @@ namespace DentalClinicProject.UI
 
                 if (!anyDaySelected)
                 { ShowError("يرجى اختيار يوم عمل واحد على الأقل للطبيب."); return false; }
+
+                // ── التحقق من تعارض حجز الغرفة مع أطباء آخرين ──
+                foreach (var r in _scheduleRows)
+                {
+                    if (r.Chk.Checked)
+                    {
+                        TimeSpan start = r.CmbPeriod.SelectedIndex == 0 ? new TimeSpan(9, 0, 0) : new TimeSpan(15, 0, 0);
+                        if (IsRoomConflict(cmbRoom.Text, r.DayEn, start))
+                        {
+                            ShowError($"غرفة العيادة ({cmbRoom.Text}) محجوزة بالفعل من قبل طبيب آخر يوم ({r.DayAr}) في الفترة المحددة.");
+                            return false;
+                        }
+                    }
+                }
             }
 
             return true;
@@ -450,6 +461,34 @@ namespace DentalClinicProject.UI
         private static void ShowError(string msg)
             => MessageBox.Show(msg, "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning,
                                MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
+
+        private bool IsRoomConflict(string roomNumber, string dayEn, TimeSpan startTime)
+        {
+            const string sql = @"
+                SELECT COUNT(*)
+                FROM dbo.Dentist d
+                INNER JOIN dbo.DentistSchedule ds ON d.DentistId = ds.DentistId
+                WHERE d.RoomNumber = @RoomNumber
+                  AND ds.DayOfWeek = @Day
+                  AND ds.StartTime = @Start";
+            try
+            {
+                using (var conn = DbHelper.GetConnection())
+                using (var cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.Add(new SqlParameter("@RoomNumber", SqlDbType.NVarChar, 20) { Value = roomNumber });
+                    cmd.Parameters.Add(new SqlParameter("@Day", SqlDbType.VarChar, 20) { Value = dayEn });
+                    cmd.Parameters.Add(new SqlParameter("@Start", SqlDbType.Time) { Value = startTime });
+
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    return count > 0;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
         // ════════════════════════════════════════════════════════════════
         //  التحقق من التكرار في قاعدة البيانات

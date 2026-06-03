@@ -30,6 +30,7 @@ namespace DentalClinicProject.UI
 
         private void LoadPatients(string searchTerm = "")
         {
+            DataStore.LoadAllFromDatabase();
             dgvPatients.Rows.Clear();
 
             var doctorAppointments = DataStore.Appointments

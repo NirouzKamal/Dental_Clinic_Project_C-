@@ -64,7 +64,7 @@ namespace DentalClinicProject.UI
             dgvAppointments.Rows.Clear();
 
             // المزامنة من قاعدة البيانات لتحديث التعديلات من الشاشات الأخرى
-            DataStore.LoadAppointmentsFromDatabase();
+            DataStore.LoadAllFromDatabase();
 
             var appointments = DataStore.Appointments
                 .Where(a => a.DoctorId == selectedDoctor.DoctorId &&

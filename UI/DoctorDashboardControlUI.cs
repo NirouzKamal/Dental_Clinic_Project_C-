@@ -22,10 +22,10 @@ namespace DentalClinicProject.UI
         {
             this.Load += (s, e) => LoadQueue();
 
-            txtSearch.TextChanged += (s, e) => LoadQueue(txtSearch.Text);
+            //txtSearch.TextChanged += (s, e) => LoadQueue(txtSearch.Text);
             
-            txtSearch.Enter += (s, e) => { if (txtSearch.Text == "ابحث عن حالة...") txtSearch.Text = ""; };
-            txtSearch.Leave += (s, e) => { if (string.IsNullOrWhiteSpace(txtSearch.Text)) txtSearch.Text = "ابحث عن حالة..."; };
+            //txtSearch.Enter += (s, e) => { if (txtSearch.Text == "ابحث عن حالة...") txtSearch.Text = ""; };
+            //txtSearch.Leave += (s, e) => { if (string.IsNullOrWhiteSpace(txtSearch.Text)) txtSearch.Text = "ابحث عن حالة..."; };
 
             btnMyPatients.Click += (s, e) => {
                 new UI.MyPatientsFormUI(_doctorId).ShowDialog();
@@ -35,6 +35,7 @@ namespace DentalClinicProject.UI
 
         private void LoadQueue(string searchTerm = "")
         {
+            DataStore.LoadAllFromDatabase();
             dgvDoctorQueue.Rows.Clear();
 
             var todayAppointments = DataStore.Appointments
@@ -61,17 +62,24 @@ namespace DentalClinicProject.UI
 
                 if (appt.Status == AppointmentStatus.Scheduled) waitingCount++;
 
+                string period = appt.StartTime.Hours >= 12 ? "مساءً" : "صباحاً";
+
                 dgvDoctorQueue.Rows.Add(
                     patient.FileNumber,
                     patient.FullName,
                     appt.StartTime.ToString(@"hh\:mm"),
-                    appt.Notes,
+                    period,
                     statusText
                 );
             }
 
             lblTotalTodayValue.Text = todayAppointments.Count.ToString();
             lblWaitingValue.Text = waitingCount.ToString();
+        }
+
+        private void btnMyPatients_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

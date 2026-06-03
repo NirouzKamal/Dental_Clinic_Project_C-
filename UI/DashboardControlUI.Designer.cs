@@ -17,6 +17,11 @@ namespace DentalClinicProject.UI
 
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tlpKPIs = new System.Windows.Forms.TableLayoutPanel();
             this.panelKPI1 = new System.Windows.Forms.Panel();
             this.lblTotalAppointmentsValue = new System.Windows.Forms.Label();
@@ -27,9 +32,6 @@ namespace DentalClinicProject.UI
             this.panelKPI3 = new System.Windows.Forms.Panel();
             this.lblCompletedCasesValue = new System.Windows.Forms.Label();
             this.lblCompletedCasesTitle = new System.Windows.Forms.Label();
-            this.panelKPI4 = new System.Windows.Forms.Panel();
-            this.lblTodayRevenueValue = new System.Windows.Forms.Label();
-            this.lblTodayRevenueTitle = new System.Windows.Forms.Label();
             this.panelActionBar = new System.Windows.Forms.Panel();
             this.panelLeftSpacer2 = new System.Windows.Forms.Panel();
             this.cmbDoctor = new System.Windows.Forms.ComboBox();
@@ -47,29 +49,27 @@ namespace DentalClinicProject.UI
             this.colDoctor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+
             this.tlpKPIs.SuspendLayout();
             this.panelKPI1.SuspendLayout();
             this.panelKPI2.SuspendLayout();
             this.panelKPI3.SuspendLayout();
-            this.panelKPI4.SuspendLayout();
             this.panelActionBar.SuspendLayout();
             this.panelGridArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTodayAppointments)).BeginInit();
+
             this.SuspendLayout();
             // 
             // tlpKPIs
             // 
-            this.tlpKPIs.ColumnCount = 4;
-            this.tlpKPIs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpKPIs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpKPIs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpKPIs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpKPIs.ColumnCount = 3;
+            this.tlpKPIs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            this.tlpKPIs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            this.tlpKPIs.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
             this.tlpKPIs.Controls.Add(this.panelKPI1, 0, 0);
             this.tlpKPIs.Controls.Add(this.panelKPI2, 1, 0);
             this.tlpKPIs.Controls.Add(this.panelKPI3, 2, 0);
-            this.tlpKPIs.Controls.Add(this.panelKPI4, 3, 0);
             this.tlpKPIs.Dock = System.Windows.Forms.DockStyle.Top;
             this.tlpKPIs.Location = new System.Drawing.Point(0, 0);
             this.tlpKPIs.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
@@ -95,7 +95,7 @@ namespace DentalClinicProject.UI
             // lblTotalAppointmentsValue
             // 
             this.lblTotalAppointmentsValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTotalAppointmentsValue.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.lblTotalAppointmentsValue.Font = new System.Drawing.Font("Times New Roman", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalAppointmentsValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(155)))));
             this.lblTotalAppointmentsValue.Location = new System.Drawing.Point(0, 72);
             this.lblTotalAppointmentsValue.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
@@ -108,7 +108,7 @@ namespace DentalClinicProject.UI
             // lblTotalAppointmentsTitle
             // 
             this.lblTotalAppointmentsTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblTotalAppointmentsTitle.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblTotalAppointmentsTitle.Font = new System.Drawing.Font("Times New Roman", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalAppointmentsTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
             this.lblTotalAppointmentsTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTotalAppointmentsTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
@@ -133,7 +133,7 @@ namespace DentalClinicProject.UI
             // lblWaitingCasesValue
             // 
             this.lblWaitingCasesValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblWaitingCasesValue.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.lblWaitingCasesValue.Font = new System.Drawing.Font("Times New Roman", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWaitingCasesValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(155)))));
             this.lblWaitingCasesValue.Location = new System.Drawing.Point(0, 72);
             this.lblWaitingCasesValue.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
@@ -146,7 +146,7 @@ namespace DentalClinicProject.UI
             // lblWaitingCasesTitle
             // 
             this.lblWaitingCasesTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblWaitingCasesTitle.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblWaitingCasesTitle.Font = new System.Drawing.Font("Times New Roman", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblWaitingCasesTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
             this.lblWaitingCasesTitle.Location = new System.Drawing.Point(0, 0);
             this.lblWaitingCasesTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
@@ -171,7 +171,7 @@ namespace DentalClinicProject.UI
             // lblCompletedCasesValue
             // 
             this.lblCompletedCasesValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCompletedCasesValue.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
+            this.lblCompletedCasesValue.Font = new System.Drawing.Font("Times New Roman", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCompletedCasesValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(155)))));
             this.lblCompletedCasesValue.Location = new System.Drawing.Point(0, 72);
             this.lblCompletedCasesValue.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
@@ -184,7 +184,7 @@ namespace DentalClinicProject.UI
             // lblCompletedCasesTitle
             // 
             this.lblCompletedCasesTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblCompletedCasesTitle.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblCompletedCasesTitle.Font = new System.Drawing.Font("Times New Roman", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCompletedCasesTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
             this.lblCompletedCasesTitle.Location = new System.Drawing.Point(0, 0);
             this.lblCompletedCasesTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
@@ -193,44 +193,6 @@ namespace DentalClinicProject.UI
             this.lblCompletedCasesTitle.TabIndex = 0;
             this.lblCompletedCasesTitle.Text = "حالات اكتملت";
             this.lblCompletedCasesTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panelKPI4
-            // 
-            this.panelKPI4.BackColor = System.Drawing.Color.White;
-            this.panelKPI4.Controls.Add(this.lblTodayRevenueValue);
-            this.panelKPI4.Controls.Add(this.lblTodayRevenueTitle);
-            this.panelKPI4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelKPI4.Location = new System.Drawing.Point(80, 72);
-            this.panelKPI4.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
-            this.panelKPI4.Name = "panelKPI4";
-            this.panelKPI4.Size = new System.Drawing.Size(543, 214);
-            this.panelKPI4.TabIndex = 3;
-            // 
-            // lblTodayRevenueValue
-            // 
-            this.lblTodayRevenueValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTodayRevenueValue.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
-            this.lblTodayRevenueValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(155)))));
-            this.lblTodayRevenueValue.Location = new System.Drawing.Point(0, 72);
-            this.lblTodayRevenueValue.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.lblTodayRevenueValue.Name = "lblTodayRevenueValue";
-            this.lblTodayRevenueValue.Size = new System.Drawing.Size(543, 142);
-            this.lblTodayRevenueValue.TabIndex = 1;
-            this.lblTodayRevenueValue.Text = "0 د.ل";
-            this.lblTodayRevenueValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblTodayRevenueTitle
-            // 
-            this.lblTodayRevenueTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblTodayRevenueTitle.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblTodayRevenueTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(108)))), ((int)(((byte)(117)))), ((int)(((byte)(125)))));
-            this.lblTodayRevenueTitle.Location = new System.Drawing.Point(0, 0);
-            this.lblTodayRevenueTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.lblTodayRevenueTitle.Name = "lblTodayRevenueTitle";
-            this.lblTodayRevenueTitle.Size = new System.Drawing.Size(543, 72);
-            this.lblTodayRevenueTitle.TabIndex = 0;
-            this.lblTodayRevenueTitle.Text = "إيرادات اليوم";
-            this.lblTodayRevenueTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelActionBar
             // 
@@ -264,12 +226,12 @@ namespace DentalClinicProject.UI
             this.cmbDoctor.Dock = System.Windows.Forms.DockStyle.Left;
             this.cmbDoctor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbDoctor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbDoctor.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbDoctor.Font = new System.Drawing.Font("Times New Roman", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbDoctor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
             this.cmbDoctor.Location = new System.Drawing.Point(106, 48);
             this.cmbDoctor.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.cmbDoctor.Name = "cmbDoctor";
-            this.cmbDoctor.Size = new System.Drawing.Size(527, 53);
+            this.cmbDoctor.Size = new System.Drawing.Size(527, 69);
             this.cmbDoctor.TabIndex = 3;
             // 
             // panelLeftSpacer
@@ -288,9 +250,9 @@ namespace DentalClinicProject.UI
             this.btnMyPatients.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnMyPatients.FlatAppearance.BorderSize = 0;
             this.btnMyPatients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMyPatients.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnMyPatients.Font = new System.Drawing.Font("Times New Roman", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMyPatients.ForeColor = System.Drawing.Color.White;
-            this.btnMyPatients.Location = new System.Drawing.Point(1317, 48);
+            this.btnMyPatients.Location = new System.Drawing.Point(1164, 48);
             this.btnMyPatients.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.btnMyPatients.Name = "btnMyPatients";
             this.btnMyPatients.Size = new System.Drawing.Size(320, 95);
@@ -301,7 +263,7 @@ namespace DentalClinicProject.UI
             // panelBtnSpacer2
             // 
             this.panelBtnSpacer2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelBtnSpacer2.Location = new System.Drawing.Point(1637, 48);
+            this.panelBtnSpacer2.Location = new System.Drawing.Point(1484, 48);
             this.panelBtnSpacer2.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.panelBtnSpacer2.Name = "panelBtnSpacer2";
             this.panelBtnSpacer2.Size = new System.Drawing.Size(27, 95);
@@ -314,9 +276,9 @@ namespace DentalClinicProject.UI
             this.btnPendingInvoices.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnPendingInvoices.FlatAppearance.BorderSize = 0;
             this.btnPendingInvoices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPendingInvoices.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnPendingInvoices.Font = new System.Drawing.Font("Times New Roman", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPendingInvoices.ForeColor = System.Drawing.Color.Black;
-            this.btnPendingInvoices.Location = new System.Drawing.Point(1664, 48);
+            this.btnPendingInvoices.Location = new System.Drawing.Point(1511, 48);
             this.btnPendingInvoices.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.btnPendingInvoices.Name = "btnPendingInvoices";
             this.btnPendingInvoices.Size = new System.Drawing.Size(500, 95);
@@ -341,7 +303,7 @@ namespace DentalClinicProject.UI
             this.btnAssignPatient.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnAssignPatient.FlatAppearance.BorderSize = 0;
             this.btnAssignPatient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAssignPatient.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnAssignPatient.Font = new System.Drawing.Font("Times New Roman", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAssignPatient.ForeColor = System.Drawing.Color.White;
             this.btnAssignPatient.Location = new System.Drawing.Point(2038, 48);
             this.btnAssignPatient.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
@@ -366,11 +328,21 @@ namespace DentalClinicProject.UI
             // 
             this.dgvTodayAppointments.AllowUserToAddRows = false;
             this.dgvTodayAppointments.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvTodayAppointments.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTodayAppointments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvTodayAppointments.BackgroundColor = System.Drawing.Color.White;
             this.dgvTodayAppointments.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvTodayAppointments.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvTodayAppointments.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTodayAppointments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvTodayAppointments.ColumnHeadersHeight = 40;
             this.dgvTodayAppointments.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colFileNum,
@@ -379,8 +351,15 @@ namespace DentalClinicProject.UI
             this.colDoctor,
             this.colTime,
             this.colPeriod,
-            this.colNotes,
             this.colStatus});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Times New Roman", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTodayAppointments.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTodayAppointments.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvTodayAppointments.EnableHeadersVisualStyles = false;
             this.dgvTodayAppointments.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(226)))), ((int)(((byte)(230)))));
@@ -389,8 +368,18 @@ namespace DentalClinicProject.UI
             this.dgvTodayAppointments.Name = "dgvTodayAppointments";
             this.dgvTodayAppointments.ReadOnly = true;
             this.dgvTodayAppointments.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTodayAppointments.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvTodayAppointments.RowHeadersVisible = false;
             this.dgvTodayAppointments.RowHeadersWidth = 102;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgvTodayAppointments.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvTodayAppointments.RowTemplate.Height = 45;
             this.dgvTodayAppointments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTodayAppointments.Size = new System.Drawing.Size(2385, 810);
@@ -438,19 +427,13 @@ namespace DentalClinicProject.UI
             this.colPeriod.Name = "colPeriod";
             this.colPeriod.ReadOnly = true;
             // 
-            // colNotes
-            // 
-            this.colNotes.HeaderText = "ملاحظات";
-            this.colNotes.MinimumWidth = 12;
-            this.colNotes.Name = "colNotes";
-            this.colNotes.ReadOnly = true;
-            // 
             // colStatus
             // 
             this.colStatus.HeaderText = "الحالة";
             this.colStatus.MinimumWidth = 12;
             this.colStatus.Name = "colStatus";
             this.colStatus.ReadOnly = true;
+
             // 
             // DashboardControlUI
             // 
@@ -468,10 +451,10 @@ namespace DentalClinicProject.UI
             this.panelKPI1.ResumeLayout(false);
             this.panelKPI2.ResumeLayout(false);
             this.panelKPI3.ResumeLayout(false);
-            this.panelKPI4.ResumeLayout(false);
             this.panelActionBar.ResumeLayout(false);
             this.panelGridArea.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTodayAppointments)).EndInit();
+
             this.ResumeLayout(false);
 
         }
@@ -488,9 +471,6 @@ namespace DentalClinicProject.UI
         private System.Windows.Forms.Panel panelKPI3;
         private System.Windows.Forms.Label lblCompletedCasesValue;
         private System.Windows.Forms.Label lblCompletedCasesTitle;
-        private System.Windows.Forms.Panel panelKPI4;
-        private System.Windows.Forms.Label lblTodayRevenueValue;
-        private System.Windows.Forms.Label lblTodayRevenueTitle;
         private System.Windows.Forms.Panel panelActionBar;
         private System.Windows.Forms.Button btnAssignPatient;
         private System.Windows.Forms.Panel panelBtnSpacer1;
@@ -508,8 +488,8 @@ namespace DentalClinicProject.UI
         private System.Windows.Forms.DataGridViewTextBoxColumn colDoctor;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn colPeriod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNotes;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
+
     }
 }
 

@@ -122,6 +122,9 @@
     <EmbeddedResource Include="UI\DebtsManagementForm.resx">
       <DependentUpon>DebtsManagementForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\DoctorDashboardControlUI.resx">
+      <DependentUpon>DoctorDashboardControlUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\DoctorServiceFormUI.resx">
       <DependentUpon>DoctorServiceFormUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -254,6 +257,12 @@
     </Compile>
     <Compile Include="UI\CaseCreationFormUI.Designer.cs">
       <DependentUpon>CaseCreationFormUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\DailyRevenueControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\DailyRevenueControl.Designer.cs">
+      <DependentUpon>DailyRevenueControl.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

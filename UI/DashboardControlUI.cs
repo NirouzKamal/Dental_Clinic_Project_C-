@@ -99,6 +99,7 @@ namespace DentalClinicProject.UI
 
         private void LoadTodayAppointments()
         {
+            DataStore.LoadAllFromDatabase();
             dgvTodayAppointments.Rows.Clear();
 
             string selectedDoctorId = "";
@@ -131,7 +132,6 @@ namespace DentalClinicProject.UI
                     doctor?.FullName ?? "",
                     appt.StartTime.ToString(@"hh\:mm"),
                     period,
-                    appt.Notes ?? "",
                     statusText
                 );
             }
@@ -148,7 +148,6 @@ namespace DentalClinicProject.UI
             lblTotalAppointmentsValue.Text = total.ToString();
             lblWaitingCasesValue.Text = waiting.ToString();
             lblCompletedCasesValue.Text = completed.ToString();
-            lblTodayRevenueValue.Text = "0 د.ل"; // Placeholder
         }
 
         private string GetStatusText(AppointmentStatus status)

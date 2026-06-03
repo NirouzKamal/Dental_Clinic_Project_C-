@@ -68,6 +68,7 @@ namespace DentalClinicProject.UI
 
         private void LoadPatientRecords(string searchTerm = "")
         {
+            DataStore.LoadAllFromDatabase();
             dgvPatientRecords.Rows.Clear();
 
             var cases = DataStore.Cases.AsEnumerable();

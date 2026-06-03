@@ -1,4 +1,4 @@
-﻿namespace DentalClinicProject
+namespace DentalClinicProject
 {
     partial class CaseCreation
     {
@@ -327,7 +327,7 @@
             // txtCaseNumber
             // 
             this.txtCaseNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(245)))), ((int)(((byte)(245)))));
-            this.txtCaseNumber.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0));
+            this.txtCaseNumber.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCaseNumber.Location = new System.Drawing.Point(929, 45);
             this.txtCaseNumber.Margin = new System.Windows.Forms.Padding(5, 2, 5, 2);
             this.txtCaseNumber.Multiline = true;

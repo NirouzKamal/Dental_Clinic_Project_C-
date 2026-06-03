@@ -45,9 +45,6 @@ namespace DentalClinicProject.UI
             this.btnSave = new System.Windows.Forms.Button();
             this.cmbApptStatus = new System.Windows.Forms.ComboBox();
             this.lblApptStatus = new System.Windows.Forms.Label();
-            this.patientName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.panelHeader.SuspendLayout();
             this.panelTop.SuspendLayout();
             this.grpAddService.SuspendLayout();
@@ -59,23 +56,24 @@ namespace DentalClinicProject.UI
             this.panelBottom.SuspendLayout();
             this.SuspendLayout();
             // 
+            // 
             // panelHeader
             // 
             this.panelHeader.Controls.Add(this.panelHeaderBorder);
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
-            this.panelHeader.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.panelHeader.Margin = new System.Windows.Forms.Padding(4);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(2133, 119);
+            this.panelHeader.Size = new System.Drawing.Size(950, 55);
             this.panelHeader.TabIndex = 3;
             // 
             // panelHeaderBorder
             // 
             this.panelHeaderBorder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(226)))), ((int)(((byte)(230)))));
             this.panelHeaderBorder.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelHeaderBorder.Location = new System.Drawing.Point(0, 117);
-            this.panelHeaderBorder.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.panelHeaderBorder.Location = new System.Drawing.Point(0, 53);
+            this.panelHeaderBorder.Margin = new System.Windows.Forms.Padding(4);
             this.panelHeaderBorder.Name = "panelHeaderBorder";
-            this.panelHeaderBorder.Size = new System.Drawing.Size(2133, 2);
+            this.panelHeaderBorder.Size = new System.Drawing.Size(950, 2);
             this.panelHeaderBorder.TabIndex = 1;
             // 
             // lblTitle
@@ -83,10 +81,10 @@ namespace DentalClinicProject.UI
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.lblTitle.Location = new System.Drawing.Point(8, 4);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.lblTitle.Location = new System.Drawing.Point(750, 10);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(399, 54);
+            this.lblTitle.Size = new System.Drawing.Size(160, 28);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "تسجيل خدمات المريض";
             // 
@@ -96,10 +94,10 @@ namespace DentalClinicProject.UI
             this.panelTop.Controls.Add(this.panelPatientDetails);
             this.panelTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTop.Location = new System.Drawing.Point(0, 0);
-            this.panelTop.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.panelTop.Margin = new System.Windows.Forms.Padding(4);
             this.panelTop.Name = "panelTop";
-            this.panelTop.Padding = new System.Windows.Forms.Padding(53, 48, 53, 48);
-            this.panelTop.Size = new System.Drawing.Size(1970, 763);
+            this.panelTop.Padding = new System.Windows.Forms.Padding(12, 10, 12, 10);
+            this.panelTop.Size = new System.Drawing.Size(950, 340);
             this.panelTop.TabIndex = 2;
             this.panelTop.Paint += new System.Windows.Forms.PaintEventHandler(this.panelTop_Paint);
             // 
@@ -107,12 +105,11 @@ namespace DentalClinicProject.UI
             // 
             this.grpAddService.Controls.Add(this.tlpAddService);
             this.grpAddService.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.grpAddService.Location = new System.Drawing.Point(53, 162);
-            this.grpAddService.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.grpAddService.MinimumSize = new System.Drawing.Size(0, 620);
+            this.grpAddService.Location = new System.Drawing.Point(12, 65);
+            this.grpAddService.Margin = new System.Windows.Forms.Padding(4);
             this.grpAddService.Name = "grpAddService";
-            this.grpAddService.Padding = new System.Windows.Forms.Padding(27, 24, 27, 24);
-            this.grpAddService.Size = new System.Drawing.Size(1871, 620);
+            this.grpAddService.Padding = new System.Windows.Forms.Padding(6);
+            this.grpAddService.Size = new System.Drawing.Size(926, 260);
             this.grpAddService.TabIndex = 0;
             this.grpAddService.TabStop = false;
             this.grpAddService.Text = "إضافة خدمة جديدة";
@@ -136,19 +133,18 @@ namespace DentalClinicProject.UI
             this.tlpAddService.Controls.Add(this.lblFinalPriceTitle, 0, 4);
             this.tlpAddService.Controls.Add(this.lblFinalPriceValue, 1, 4);
             this.tlpAddService.Controls.Add(this.btnAddService, 0, 5);
-            this.tlpAddService.Location = new System.Drawing.Point(27, 64);
-            this.tlpAddService.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.tlpAddService.MinimumSize = new System.Drawing.Size(0, 525);
+            this.tlpAddService.Location = new System.Drawing.Point(15, 25);
+            this.tlpAddService.Margin = new System.Windows.Forms.Padding(4);
             this.tlpAddService.Name = "tlpAddService";
             this.tlpAddService.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.tlpAddService.RowCount = 6;
-            this.tlpAddService.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 83F));
-            this.tlpAddService.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 83F));
-            this.tlpAddService.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 83F));
-            this.tlpAddService.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 83F));
-            this.tlpAddService.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 83F));
-            this.tlpAddService.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 107F));
-            this.tlpAddService.Size = new System.Drawing.Size(1807, 532);
+            this.tlpAddService.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tlpAddService.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tlpAddService.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tlpAddService.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tlpAddService.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tlpAddService.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tlpAddService.Size = new System.Drawing.Size(896, 220);
             this.tlpAddService.TabIndex = 0;
             this.tlpAddService.Paint += new System.Windows.Forms.PaintEventHandler(this.tlpAddService_Paint);
             // 
@@ -288,63 +284,56 @@ namespace DentalClinicProject.UI
             this.btnAddService.Text = "إضافة";
             this.btnAddService.UseVisualStyleBackColor = false;
             // 
+            // 
             // panelPatientDetails
             // 
-            this.panelPatientDetails.Controls.Add(this.label2);
-            this.panelPatientDetails.Controls.Add(this.label1);
-            this.panelPatientDetails.Controls.Add(this.patientName);
             this.panelPatientDetails.Controls.Add(this.lblTitle);
             this.panelPatientDetails.Controls.Add(this.lblPatientName);
             this.panelPatientDetails.Controls.Add(this.txtPatientName);
             this.panelPatientDetails.Controls.Add(this.lblFileNumber);
             this.panelPatientDetails.Controls.Add(this.txtFileNumber);
-            this.panelPatientDetails.Location = new System.Drawing.Point(53, 61);
-            this.panelPatientDetails.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.panelPatientDetails.Location = new System.Drawing.Point(12, 10);
+            this.panelPatientDetails.Margin = new System.Windows.Forms.Padding(4);
             this.panelPatientDetails.Name = "panelPatientDetails";
-            this.panelPatientDetails.Padding = new System.Windows.Forms.Padding(0, 19, 0, 0);
-            this.panelPatientDetails.Size = new System.Drawing.Size(1870, 101);
+            this.panelPatientDetails.Size = new System.Drawing.Size(926, 45);
             this.panelPatientDetails.TabIndex = 1;
             // 
             // lblPatientName
             // 
-            this.lblPatientName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPatientName.AutoSize = true;
-            this.lblPatientName.Location = new System.Drawing.Point(3123, 55);
-            this.lblPatientName.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.lblPatientName.Location = new System.Drawing.Point(20, 12);
+            this.lblPatientName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPatientName.Name = "lblPatientName";
-            this.lblPatientName.Size = new System.Drawing.Size(139, 32);
+            this.lblPatientName.Size = new System.Drawing.Size(90, 20);
             this.lblPatientName.TabIndex = 0;
             this.lblPatientName.Text = "اسم المريض:";
             // 
             // txtPatientName
             // 
-            this.txtPatientName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPatientName.Location = new System.Drawing.Point(2403, 48);
-            this.txtPatientName.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.txtPatientName.Location = new System.Drawing.Point(115, 8);
+            this.txtPatientName.Margin = new System.Windows.Forms.Padding(4);
             this.txtPatientName.Name = "txtPatientName";
             this.txtPatientName.ReadOnly = true;
-            this.txtPatientName.Size = new System.Drawing.Size(687, 38);
+            this.txtPatientName.Size = new System.Drawing.Size(400, 27);
             this.txtPatientName.TabIndex = 1;
             // 
             // lblFileNumber
             // 
-            this.lblFileNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFileNumber.AutoSize = true;
-            this.lblFileNumber.Location = new System.Drawing.Point(2190, 55);
-            this.lblFileNumber.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.lblFileNumber.Location = new System.Drawing.Point(530, 12);
+            this.lblFileNumber.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFileNumber.Name = "lblFileNumber";
-            this.lblFileNumber.Size = new System.Drawing.Size(113, 32);
+            this.lblFileNumber.Size = new System.Drawing.Size(80, 20);
             this.lblFileNumber.TabIndex = 2;
             this.lblFileNumber.Text = "رقم الملف:";
             // 
             // txtFileNumber
             // 
-            this.txtFileNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFileNumber.Location = new System.Drawing.Point(1240, 27);
-            this.txtFileNumber.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.txtFileNumber.Location = new System.Drawing.Point(615, 8);
+            this.txtFileNumber.Margin = new System.Windows.Forms.Padding(4);
             this.txtFileNumber.Name = "txtFileNumber";
             this.txtFileNumber.ReadOnly = true;
-            this.txtFileNumber.Size = new System.Drawing.Size(473, 38);
+            this.txtFileNumber.Size = new System.Drawing.Size(120, 27);
             this.txtFileNumber.TabIndex = 3;
             // 
             // colToothNumber
@@ -354,26 +343,27 @@ namespace DentalClinicProject.UI
             this.colToothNumber.Name = "colToothNumber";
             this.colToothNumber.ReadOnly = true;
             // 
+            // 
             // panelGridArea
             // 
             this.panelGridArea.Controls.Add(this.grpServices);
             this.panelGridArea.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelGridArea.Location = new System.Drawing.Point(0, 763);
-            this.panelGridArea.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.panelGridArea.Location = new System.Drawing.Point(0, 395);
+            this.panelGridArea.Margin = new System.Windows.Forms.Padding(4);
             this.panelGridArea.Name = "panelGridArea";
-            this.panelGridArea.Padding = new System.Windows.Forms.Padding(53, 0, 53, 0);
-            this.panelGridArea.Size = new System.Drawing.Size(1970, 635);
+            this.panelGridArea.Padding = new System.Windows.Forms.Padding(12, 0, 12, 0);
+            this.panelGridArea.Size = new System.Drawing.Size(950, 310);
             this.panelGridArea.TabIndex = 0;
             // 
             // grpServices
             // 
             this.grpServices.Controls.Add(this.dgvServices);
             this.grpServices.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.grpServices.Location = new System.Drawing.Point(53, 14);
-            this.grpServices.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.grpServices.Location = new System.Drawing.Point(12, 5);
+            this.grpServices.Margin = new System.Windows.Forms.Padding(4);
             this.grpServices.Name = "grpServices";
-            this.grpServices.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.grpServices.Size = new System.Drawing.Size(1870, 621);
+            this.grpServices.Padding = new System.Windows.Forms.Padding(4);
+            this.grpServices.Size = new System.Drawing.Size(926, 290);
             this.grpServices.TabIndex = 0;
             this.grpServices.TabStop = false;
             this.grpServices.Text = "الخدمات المضافة (اضغط زر Delete للحذف)";
@@ -395,8 +385,8 @@ namespace DentalClinicProject.UI
             this.colFinalPrice});
             this.dgvServices.EnableHeadersVisualStyles = false;
             this.dgvServices.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(226)))), ((int)(((byte)(230)))));
-            this.dgvServices.Location = new System.Drawing.Point(8, 74);
-            this.dgvServices.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.dgvServices.Location = new System.Drawing.Point(10, 25);
+            this.dgvServices.Margin = new System.Windows.Forms.Padding(4);
             this.dgvServices.Name = "dgvServices";
             this.dgvServices.ReadOnly = true;
             this.dgvServices.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -404,7 +394,7 @@ namespace DentalClinicProject.UI
             this.dgvServices.RowHeadersWidth = 102;
             this.dgvServices.RowTemplate.Height = 40;
             this.dgvServices.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvServices.Size = new System.Drawing.Size(1862, 554);
+            this.dgvServices.Size = new System.Drawing.Size(906, 255);
             this.dgvServices.TabIndex = 0;
             // 
             // colName
@@ -442,21 +432,21 @@ namespace DentalClinicProject.UI
             this.panelBottom.Controls.Add(this.cmbApptStatus);
             this.panelBottom.Controls.Add(this.lblApptStatus);
             this.panelBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBottom.Location = new System.Drawing.Point(0, 1398);
-            this.panelBottom.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.panelBottom.Location = new System.Drawing.Point(0, 705);
+            this.panelBottom.Margin = new System.Windows.Forms.Padding(4);
             this.panelBottom.Name = "panelBottom";
-            this.panelBottom.Size = new System.Drawing.Size(1970, 191);
+            this.panelBottom.Size = new System.Drawing.Size(950, 75);
             this.panelBottom.TabIndex = 1;
             // 
             // lblGrandTotal
             // 
             this.lblGrandTotal.AutoSize = true;
-            this.lblGrandTotal.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lblGrandTotal.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
             this.lblGrandTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(75)))), ((int)(((byte)(155)))));
-            this.lblGrandTotal.Location = new System.Drawing.Point(53, 52);
-            this.lblGrandTotal.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.lblGrandTotal.Location = new System.Drawing.Point(20, 22);
+            this.lblGrandTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGrandTotal.Name = "lblGrandTotal";
-            this.lblGrandTotal.Size = new System.Drawing.Size(448, 72);
+            this.lblGrandTotal.Size = new System.Drawing.Size(250, 30);
             this.lblGrandTotal.TabIndex = 0;
             this.lblGrandTotal.Text = "الإجمالي: 0.00 د.ل";
             // 
@@ -468,10 +458,10 @@ namespace DentalClinicProject.UI
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(553, 48);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.btnSave.Location = new System.Drawing.Point(300, 15);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(533, 95);
+            this.btnSave.Size = new System.Drawing.Size(250, 45);
             this.btnSave.TabIndex = 1;
             this.btnSave.Text = "حفظ وإصدار الفاتورة";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -483,64 +473,33 @@ namespace DentalClinicProject.UI
             this.cmbApptStatus.Items.AddRange(new object[] {
             "مكتمل",
             "قيد الانتظار"});
-            this.cmbApptStatus.Location = new System.Drawing.Point(1411, 85);
-            this.cmbApptStatus.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.cmbApptStatus.Location = new System.Drawing.Point(680, 15);
+            this.cmbApptStatus.Margin = new System.Windows.Forms.Padding(4);
             this.cmbApptStatus.Name = "cmbApptStatus";
-            this.cmbApptStatus.Size = new System.Drawing.Size(527, 39);
+            this.cmbApptStatus.Size = new System.Drawing.Size(200, 30);
             this.cmbApptStatus.TabIndex = 2;
             // 
             // lblApptStatus
             // 
             this.lblApptStatus.AutoSize = true;
-            this.lblApptStatus.Location = new System.Drawing.Point(1801, 33);
-            this.lblApptStatus.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.lblApptStatus.Location = new System.Drawing.Point(580, 22);
+            this.lblApptStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblApptStatus.Name = "lblApptStatus";
-            this.lblApptStatus.Size = new System.Drawing.Size(129, 32);
+            this.lblApptStatus.Size = new System.Drawing.Size(90, 20);
             this.lblApptStatus.TabIndex = 3;
             this.lblApptStatus.Text = "حالة الموعد:";
             // 
-            // patientName
-            // 
-            this.patientName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.patientName.Location = new System.Drawing.Point(628, 30);
-            this.patientName.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.patientName.Name = "patientName";
-            this.patientName.ReadOnly = true;
-            this.patientName.Size = new System.Drawing.Size(418, 38);
-            this.patientName.TabIndex = 4;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1729, 26);
-            this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 32);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "رقم الملف";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1062, 28);
-            this.label2.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 32);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "اسم الحالة";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
             // DoctorServiceFormUI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1970, 1589);
+            this.ClientSize = new System.Drawing.Size(950, 780);
             this.Controls.Add(this.panelGridArea);
             this.Controls.Add(this.panelBottom);
             this.Controls.Add(this.panelTop);
             this.Controls.Add(this.panelHeader);
-            this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DoctorServiceFormUI";
@@ -602,8 +561,5 @@ namespace DentalClinicProject.UI
         private System.Windows.Forms.Label lblApptStatus;
         private System.Windows.Forms.TableLayoutPanel tlpAddService;
         private System.Windows.Forms.Panel panelPatientDetails;
-        private System.Windows.Forms.TextBox patientName;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
     }
 }

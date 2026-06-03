@@ -310,7 +310,7 @@ namespace DentalClinicProject.UI
             this.txtPercentage.Dock        = System.Windows.Forms.DockStyle.Top;
             this.txtPercentage.Font        = new System.Drawing.Font("Segoe UI", 9.5F);
             this.txtPercentage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPercentage.Text        = "40";
+            this.txtPercentage.Text        = "60";
             this.txtPercentage.Height      = 26;
             this.lblPercentageError.AutoSize  = true;
             this.lblPercentageError.Dock      = System.Windows.Forms.DockStyle.Top;

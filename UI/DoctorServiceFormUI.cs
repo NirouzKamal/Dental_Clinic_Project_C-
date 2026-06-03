@@ -43,6 +43,7 @@ namespace DentalClinicProject.UI
         {
             this.Load += (s, e) =>
             {
+                DataStore.LoadAllFromDatabase();
                 var patient = DataStore.Patients.FirstOrDefault(p => p.PatientId == _patientId);
                 if (patient != null)
                 {
@@ -262,9 +263,5 @@ namespace DentalClinicProject.UI
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
