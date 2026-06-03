@@ -154,9 +154,9 @@ namespace DentalClinicProject.UI
 
                 const string sql = @"
                     INSERT INTO dbo.Patients
-                        (PatientId, FirstName, MiddleName, LastName, Age, Gender, RegistrationDate, PatientPhone)
+                        (PatientId, FirstName, MiddleName, LastName, Age, Gender, RegistrationDate, PatientPhone, Address)
                     VALUES
-                        (@PatientId, @FirstName, @MiddleName, @LastName, @Age, @Gender, @RegDate, @Phone)";
+                        (@PatientId, @FirstName, @MiddleName, @LastName, @Age, @Gender, @RegDate, @Phone, @Address)";
 
                 try
                 {
@@ -171,6 +171,7 @@ namespace DentalClinicProject.UI
                         cmd.Parameters.Add(new SqlParameter("@Gender", SqlDbType.NVarChar, 10) { Value = p.Gender });
                         cmd.Parameters.Add(new SqlParameter("@RegDate", SqlDbType.Date) { Value = DateTime.Today });
                         cmd.Parameters.Add(new SqlParameter("@Phone", SqlDbType.VarChar, 15) { Value = p.Phone });
+                        cmd.Parameters.Add(new SqlParameter("@Address", SqlDbType.NVarChar, 250) { Value = p.Address });
                         cmd.ExecuteNonQuery();
                     }
 
@@ -209,7 +210,8 @@ namespace DentalClinicProject.UI
                         LastName = @LastName,
                         Age = @Age,
                         Gender = @Gender,
-                        PatientPhone = @Phone
+                        PatientPhone = @Phone,
+                        Address = @Address
                     WHERE PatientId = @PatientId";
 
                 try
@@ -223,6 +225,7 @@ namespace DentalClinicProject.UI
                         cmd.Parameters.Add(new SqlParameter("@Age", SqlDbType.Int) { Value = p.Age });
                         cmd.Parameters.Add(new SqlParameter("@Gender", SqlDbType.NVarChar, 10) { Value = p.Gender });
                         cmd.Parameters.Add(new SqlParameter("@Phone", SqlDbType.VarChar, 15) { Value = p.Phone });
+                        cmd.Parameters.Add(new SqlParameter("@Address", SqlDbType.NVarChar, 250) { Value = p.Address });
                         cmd.Parameters.Add(new SqlParameter("@PatientId", SqlDbType.NVarChar, 50) { Value = patientId });
                         cmd.ExecuteNonQuery();
                     }

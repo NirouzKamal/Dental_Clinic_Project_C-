@@ -138,20 +138,23 @@ namespace DentalClinicProject.UI
                     return;
                 }
 
-                DataStore.Payments.Add(new Payment
+                var payment = new Payment
                 {
                     PaymentId = DataStore.NextPaymentId(),
                     InvoiceId = invoice.InvoiceId,
                     AmountPaid = amount,
                     PaymentDate = DateTime.Now,
                     Method = paymentDialog.PaymentMethod
-                });
+                };
+                DataStore.Payments.Add(payment);
+                DataStore.SavePaymentToDatabase(payment);
 
                 decimal totalPaid = DataStore.Payments
                     .Where(p => p.InvoiceId == invoice.InvoiceId)
                     .Sum(p => p.AmountPaid);
 
                 invoice.IsPaid = totalPaid >= invoice.TotalAmount;
+                DataStore.SaveInvoiceToDatabase(invoice);
 
                 MessageBox.Show("تم تسجيل الدفعة بنجاح", "نجاح",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);

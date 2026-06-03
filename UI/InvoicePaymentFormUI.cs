@@ -111,23 +111,28 @@ namespace DentalClinicProject.UI
                 IsPaid = paid >= total
             };
             DataStore.Invoices.Add(invoice);
+            DataStore.SaveInvoiceToDatabase(invoice);
 
             if (paid > 0)
             {
-                DataStore.Payments.Add(new Payment
+                var payment = new Payment
                 {
                     PaymentId = DataStore.NextPaymentId(),
                     InvoiceId = invoice.InvoiceId,
                     AmountPaid = paid,
                     PaymentDate = paymentTime,
                     Method = paymentMethod
-                });
+                };
+                DataStore.Payments.Add(payment);
+                DataStore.SavePaymentToDatabase(payment);
+                DataStore.SaveInvoiceToDatabase(invoice);
             }
 
             foreach (var c in _visitCases)
             {
                 c.Status = CaseStatus.Completed;
                 c.ClosedAt = paymentTime;
+                DataStore.SaveCaseToDatabase(c);
             }
 
             string receptionistName = GetReceptionistName();

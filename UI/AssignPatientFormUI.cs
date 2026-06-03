@@ -321,6 +321,9 @@ namespace DentalClinicProject.UI
 
         private void BtnPatientRecords_Click(object sender, EventArgs e)
         {
+            var patient = ResolveSelectedPatient();
+            string patientId = patient?.PatientId;
+
             using (var frm = new Form
             {
                 Text = "سجل المريض",
@@ -331,7 +334,12 @@ namespace DentalClinicProject.UI
                 BackColor = Color.White
             })
             {
-                frm.Controls.Add(new PatientRecordsControlUI { Dock = DockStyle.Fill });
+                var ctrl = new PatientRecordsControlUI { Dock = DockStyle.Fill };
+                if (!string.IsNullOrEmpty(patientId))
+                {
+                    ctrl.PreSelectedPatientId = patientId;
+                }
+                frm.Controls.Add(ctrl);
                 frm.ShowDialog(this);
             }
         }
@@ -375,10 +383,12 @@ namespace DentalClinicProject.UI
 
             DateTime visitDateTime = DateTime.Now;
 
+            string generatedCaseNumber = DataStore.GenerateUniqueRandomId("CASE", "dbo.Cases", "CaseNumber");
+
             var newCase = new Case
             {
-                CaseId = DataStore.NextCaseId(),
-                CaseNumber = patient.FileNumber ?? "",
+                CaseId = generatedCaseNumber,
+                CaseNumber = generatedCaseNumber,
                 PatientId = patientId,
                 PatientFileNumber = patient.FileNumber ?? "",
                 PatientName = patient.FullName ?? "",
@@ -394,6 +404,7 @@ namespace DentalClinicProject.UI
                 SentToReception = false
             };
             DataStore.Cases.Add(newCase);
+            DataStore.SaveCaseToDatabase(newCase);
 
             var invoice = new Invoice
             {
@@ -405,18 +416,23 @@ namespace DentalClinicProject.UI
                 IsPaid = false
             };
             DataStore.Invoices.Add(invoice);
+            DataStore.SaveInvoiceToDatabase(invoice);
 
             if (paidAmount > 0)
             {
-                DataStore.Payments.Add(new Payment
+                var payment = new Payment
                 {
                     PaymentId = DataStore.NextPaymentId(),
                     InvoiceId = invoice.InvoiceId,
                     AmountPaid = paidAmount,
                     PaymentDate = visitDateTime
-                });
+                };
+                DataStore.Payments.Add(payment);
                 if (paidAmount >= invoice.TotalAmount)
                     invoice.IsPaid = true;
+                
+                DataStore.SavePaymentToDatabase(payment);
+                DataStore.SaveInvoiceToDatabase(invoice);
             }
 
             if (visitType == VisitKashf)

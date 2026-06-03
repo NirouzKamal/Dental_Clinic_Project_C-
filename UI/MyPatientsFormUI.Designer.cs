@@ -1,4 +1,4 @@
-﻿namespace DentalClinicProject.UI
+namespace DentalClinicProject.UI
 {
     partial class MyPatientsFormUI
     {
@@ -14,16 +14,14 @@
             this.panelHeaderBorder = new System.Windows.Forms.Panel();
             this.panelGridArea = new System.Windows.Forms.Panel();
             this.dgvPatients = new System.Windows.Forms.DataGridView();
-            this.panelActionBar = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.colFileNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNotes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLastVisit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelActionBar = new System.Windows.Forms.Panel();
             this.panelHeader.SuspendLayout();
             this.panelGridArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
-            this.panelActionBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelHeader
@@ -32,9 +30,9 @@
             this.panelHeader.Controls.Add(this.panelHeaderBorder);
             this.panelHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHeader.Location = new System.Drawing.Point(0, 0);
-            this.panelHeader.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.panelHeader.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
             this.panelHeader.Name = "panelHeader";
-            this.panelHeader.Size = new System.Drawing.Size(1980, 119);
+            this.panelHeader.Size = new System.Drawing.Size(1800, 116);
             this.panelHeader.TabIndex = 2;
             // 
             // lblTitle
@@ -42,7 +40,7 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(37)))), ((int)(((byte)(41)))));
-            this.lblTitle.Location = new System.Drawing.Point(1690, 26);
+            this.lblTitle.Location = new System.Drawing.Point(40, 29);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(246, 54);
@@ -53,21 +51,21 @@
             // 
             this.panelHeaderBorder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(226)))), ((int)(((byte)(230)))));
             this.panelHeaderBorder.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelHeaderBorder.Location = new System.Drawing.Point(0, 117);
-            this.panelHeaderBorder.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.panelHeaderBorder.Location = new System.Drawing.Point(0, 112);
+            this.panelHeaderBorder.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
             this.panelHeaderBorder.Name = "panelHeaderBorder";
-            this.panelHeaderBorder.Size = new System.Drawing.Size(1980, 2);
+            this.panelHeaderBorder.Size = new System.Drawing.Size(1800, 4);
             this.panelHeaderBorder.TabIndex = 1;
             // 
             // panelGridArea
             // 
             this.panelGridArea.Controls.Add(this.dgvPatients);
             this.panelGridArea.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelGridArea.Location = new System.Drawing.Point(0, 226);
-            this.panelGridArea.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.panelGridArea.Location = new System.Drawing.Point(0, 213);
+            this.panelGridArea.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
             this.panelGridArea.Name = "panelGridArea";
-            this.panelGridArea.Padding = new System.Windows.Forms.Padding(53, 48, 53, 48);
-            this.panelGridArea.Size = new System.Drawing.Size(1980, 966);
+            this.panelGridArea.Padding = new System.Windows.Forms.Padding(40, 19, 40, 19);
+            this.panelGridArea.Size = new System.Drawing.Size(1800, 949);
             this.panelGridArea.TabIndex = 0;
             // 
             // dgvPatients
@@ -88,35 +86,17 @@
             this.dgvPatients.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPatients.EnableHeadersVisualStyles = false;
             this.dgvPatients.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(226)))), ((int)(((byte)(230)))));
-            this.dgvPatients.Location = new System.Drawing.Point(53, 48);
-            this.dgvPatients.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.dgvPatients.Location = new System.Drawing.Point(40, 19);
+            this.dgvPatients.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
             this.dgvPatients.Name = "dgvPatients";
             this.dgvPatients.ReadOnly = true;
             this.dgvPatients.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.dgvPatients.RowHeadersVisible = false;
-            this.dgvPatients.RowHeadersWidth = 102;
-            this.dgvPatients.RowTemplate.Height = 45;
+            this.dgvPatients.RowHeadersWidth = 51;
+            this.dgvPatients.RowTemplate.Height = 40;
             this.dgvPatients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPatients.Size = new System.Drawing.Size(1874, 870);
+            this.dgvPatients.Size = new System.Drawing.Size(1720, 911);
             this.dgvPatients.TabIndex = 0;
-            // 
-            // panelActionBar
-            // 
-            this.panelActionBar.Controls.Add(this.textBox1);
-            this.panelActionBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelActionBar.Location = new System.Drawing.Point(0, 119);
-            this.panelActionBar.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.panelActionBar.Name = "panelActionBar";
-            this.panelActionBar.Padding = new System.Windows.Forms.Padding(53, 48, 53, 48);
-            this.panelActionBar.Size = new System.Drawing.Size(1980, 107);
-            this.panelActionBar.TabIndex = 1;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(1189, 34);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(531, 38);
-            this.textBox1.TabIndex = 1;
             // 
             // colFileNum
             // 
@@ -146,17 +126,27 @@
             this.colLastVisit.Name = "colLastVisit";
             this.colLastVisit.ReadOnly = true;
             // 
+            // panelActionBar
+            // 
+            this.panelActionBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelActionBar.Location = new System.Drawing.Point(0, 116);
+            this.panelActionBar.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
+            this.panelActionBar.Name = "panelActionBar";
+            this.panelActionBar.Padding = new System.Windows.Forms.Padding(40, 19, 40, 19);
+            this.panelActionBar.Size = new System.Drawing.Size(1800, 97);
+            this.panelActionBar.TabIndex = 1;
+            // 
             // MyPatientsFormUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1980, 1192);
+            this.ClientSize = new System.Drawing.Size(1100, 650);
             this.Controls.Add(this.panelGridArea);
             this.Controls.Add(this.panelActionBar);
             this.Controls.Add(this.panelHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MyPatientsFormUI";
@@ -164,29 +154,26 @@
             this.RightToLeftLayout = true;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "مرضاي";
+            this.Load += new System.EventHandler(this.MyPatientsFormUI_Load);
             this.panelHeader.ResumeLayout(false);
             this.panelHeader.PerformLayout();
             this.panelGridArea.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).EndInit();
-            this.panelActionBar.ResumeLayout(false);
-            this.panelActionBar.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panelHeader; private System.Windows.Forms.Label lblTitle; private System.Windows.Forms.Panel panelHeaderBorder;
-        private System.Windows.Forms.Panel panelGridArea; private System.Windows.Forms.DataGridView dgvPatients;
+        private System.Windows.Forms.Panel panelHeader;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Panel panelHeaderBorder;
+        private System.Windows.Forms.Panel panelGridArea;
+        private System.Windows.Forms.DataGridView dgvPatients;
         private System.Windows.Forms.Panel panelActionBar;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colFileNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNotes;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLastVisit;
     }
 }
-
-
-
-

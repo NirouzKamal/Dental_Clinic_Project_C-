@@ -83,7 +83,7 @@ namespace DentalClinicProject.UI
                             if (invoice != null)
                             {
                                 decimal paidAmount = DataStore.Payments.Where(p => p.InvoiceId == invoice.InvoiceId).Sum(p => p.AmountPaid);
-                                commissionEarned += paidAmount * doctor.CommissionPct;
+                                commissionEarned += paidAmount * (doctor.CommissionPct / 100.0m);
                             }
                         }
                     }
@@ -168,6 +168,7 @@ namespace DentalClinicProject.UI
                 };
 
                 DataStore.PayrollRecords.Add(record);
+                DataStore.SavePayrollToDatabase(record);
                 MessageBox.Show("تم الصرف بنجاح وتم تسجيله كمصروف في حسابات العيادة.", "نجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 CalculatePayroll(); // Refresh grid
             }

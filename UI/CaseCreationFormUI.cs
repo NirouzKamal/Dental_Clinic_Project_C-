@@ -95,10 +95,31 @@ namespace DentalClinicProject.UI
         private void LoadPatients()
         {
             DataStore.LoadPatientsFromDatabase();
-            cmbPatient.DisplayMember = "DisplayText";
-            cmbPatient.ValueMember = "PatientId";
-            cmbPatient.DataSource = DataStore.Patients
-                .Select(p => new { p.PatientId, DisplayText = $"{p.FileNumber} — {p.FullName}" }).ToList();
+            if (_currentMode == CaseFormMode.Create)
+            {
+                DataStore.LoadAppointmentsFromDatabase();
+                var todayPatientIds = DataStore.Appointments
+                    .Where(a => a.AppointmentDate.Date == DateTime.Today)
+                    .Select(a => a.PatientId)
+                    .Distinct()
+                    .ToList();
+                
+                var todayPatients = DataStore.Patients
+                    .Where(p => todayPatientIds.Contains(p.PatientId))
+                    .Select(p => new { p.PatientId, DisplayText = $"{p.FileNumber} — {p.FullName}" })
+                    .ToList();
+
+                cmbPatient.DisplayMember = "DisplayText";
+                cmbPatient.ValueMember = "PatientId";
+                cmbPatient.DataSource = todayPatients;
+            }
+            else
+            {
+                cmbPatient.DisplayMember = "DisplayText";
+                cmbPatient.ValueMember = "PatientId";
+                cmbPatient.DataSource = DataStore.Patients
+                    .Select(p => new { p.PatientId, DisplayText = $"{p.FileNumber} — {p.FullName}" }).ToList();
+            }
             cmbPatient.SelectedIndex = -1;
         }
 
@@ -233,6 +254,7 @@ namespace DentalClinicProject.UI
                 _currentCase.Status = CaseStatus.Completed;
                 _currentCase.SentToReception = true;
                 _currentCase.ClosedAt = DateTime.Now;
+                DataStore.SaveCaseToDatabase(_currentCase);
 
                 // Create new treatment case
                 var treatmentCase = new Case
@@ -250,6 +272,7 @@ namespace DentalClinicProject.UI
                     SentToReception = true
                 };
                 DataStore.Cases.Add(treatmentCase);
+                DataStore.SaveCaseToDatabase(treatmentCase);
 
                 var newInvoice = new Invoice
                 {
@@ -260,6 +283,7 @@ namespace DentalClinicProject.UI
                     IssuedDate = DateTime.Now
                 };
                 DataStore.Invoices.Add(newInvoice);
+                DataStore.SaveInvoiceToDatabase(newInvoice);
 
                 MessageBox.Show("تم تسجيل العلاج بنجاح", "نجاح");
                 this.DialogResult = DialogResult.OK;
@@ -285,6 +309,7 @@ namespace DentalClinicProject.UI
                 SentToReception = false
             };
             DataStore.Cases.Add(newCase);
+            DataStore.SaveCaseToDatabase(newCase);
 
             var invoice = new Invoice
             {
@@ -296,6 +321,7 @@ namespace DentalClinicProject.UI
                 IsPaid = false
             };
             DataStore.Invoices.Add(invoice);
+            DataStore.SaveInvoiceToDatabase(invoice);
 
             decimal.TryParse(txtPaid.Text, out decimal paidAmount);
             if (paidAmount > 0)
@@ -309,6 +335,9 @@ namespace DentalClinicProject.UI
                 };
                 DataStore.Payments.Add(payment);
                 if (paidAmount >= invoice.TotalAmount) invoice.IsPaid = true;
+                
+                DataStore.SavePaymentToDatabase(payment);
+                DataStore.SaveInvoiceToDatabase(invoice);
             }
 
             MessageBox.Show("تم إنشاء الحالة بنجاح", "نجاح", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -335,6 +364,10 @@ namespace DentalClinicProject.UI
                 PaymentDate = DateTime.Now
             };
             DataStore.Payments.Add(payment);
+            DataStore.SavePaymentToDatabase(payment);
+
+            _invoice.IsPaid = GetTotalPaid() >= _invoice.TotalAmount;
+            DataStore.SaveInvoiceToDatabase(_invoice);
 
             MessageBox.Show("تم تسجيل الدفعة بنجاح", "تم الدفع", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.DialogResult = DialogResult.OK;

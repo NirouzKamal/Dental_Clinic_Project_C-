@@ -1,4 +1,4 @@
-﻿namespace DentalClinicProject.UI
+namespace DentalClinicProject.UI
 {
     partial class PendingInvoicesFormUI
     {
@@ -203,7 +203,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(2133, 1192);
+            this.ClientSize = new System.Drawing.Size(1100, 650);
             this.Controls.Add(this.panelGridArea);
             this.Controls.Add(this.panelActionBar);
             this.Controls.Add(this.panelHeader);

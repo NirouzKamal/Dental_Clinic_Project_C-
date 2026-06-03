@@ -50,7 +50,6 @@ namespace DentalClinicProject.UI
             this.colTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPeriod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-
             this.tlpKPIs.SuspendLayout();
             this.panelKPI1.SuspendLayout();
             this.panelKPI2.SuspendLayout();
@@ -58,7 +57,6 @@ namespace DentalClinicProject.UI
             this.panelActionBar.SuspendLayout();
             this.panelGridArea.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTodayAppointments)).BeginInit();
-
             this.SuspendLayout();
             // 
             // tlpKPIs
@@ -86,10 +84,10 @@ namespace DentalClinicProject.UI
             this.panelKPI1.Controls.Add(this.lblTotalAppointmentsValue);
             this.panelKPI1.Controls.Add(this.lblTotalAppointmentsTitle);
             this.panelKPI1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelKPI1.Location = new System.Drawing.Point(1869, 72);
+            this.panelKPI1.Location = new System.Drawing.Point(1670, 72);
             this.panelKPI1.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
             this.panelKPI1.Name = "panelKPI1";
-            this.panelKPI1.Size = new System.Drawing.Size(542, 214);
+            this.panelKPI1.Size = new System.Drawing.Size(741, 214);
             this.panelKPI1.TabIndex = 0;
             // 
             // lblTotalAppointmentsValue
@@ -100,7 +98,7 @@ namespace DentalClinicProject.UI
             this.lblTotalAppointmentsValue.Location = new System.Drawing.Point(0, 72);
             this.lblTotalAppointmentsValue.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblTotalAppointmentsValue.Name = "lblTotalAppointmentsValue";
-            this.lblTotalAppointmentsValue.Size = new System.Drawing.Size(542, 142);
+            this.lblTotalAppointmentsValue.Size = new System.Drawing.Size(741, 142);
             this.lblTotalAppointmentsValue.TabIndex = 1;
             this.lblTotalAppointmentsValue.Text = "0";
             this.lblTotalAppointmentsValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -113,7 +111,7 @@ namespace DentalClinicProject.UI
             this.lblTotalAppointmentsTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTotalAppointmentsTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblTotalAppointmentsTitle.Name = "lblTotalAppointmentsTitle";
-            this.lblTotalAppointmentsTitle.Size = new System.Drawing.Size(542, 72);
+            this.lblTotalAppointmentsTitle.Size = new System.Drawing.Size(741, 72);
             this.lblTotalAppointmentsTitle.TabIndex = 0;
             this.lblTotalAppointmentsTitle.Text = "مواعيد اليوم";
             this.lblTotalAppointmentsTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -124,10 +122,10 @@ namespace DentalClinicProject.UI
             this.panelKPI2.Controls.Add(this.lblWaitingCasesValue);
             this.panelKPI2.Controls.Add(this.lblWaitingCasesTitle);
             this.panelKPI2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelKPI2.Location = new System.Drawing.Point(1273, 72);
+            this.panelKPI2.Location = new System.Drawing.Point(875, 72);
             this.panelKPI2.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
             this.panelKPI2.Name = "panelKPI2";
-            this.panelKPI2.Size = new System.Drawing.Size(542, 214);
+            this.panelKPI2.Size = new System.Drawing.Size(741, 214);
             this.panelKPI2.TabIndex = 1;
             // 
             // lblWaitingCasesValue
@@ -138,7 +136,7 @@ namespace DentalClinicProject.UI
             this.lblWaitingCasesValue.Location = new System.Drawing.Point(0, 72);
             this.lblWaitingCasesValue.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblWaitingCasesValue.Name = "lblWaitingCasesValue";
-            this.lblWaitingCasesValue.Size = new System.Drawing.Size(542, 142);
+            this.lblWaitingCasesValue.Size = new System.Drawing.Size(741, 142);
             this.lblWaitingCasesValue.TabIndex = 1;
             this.lblWaitingCasesValue.Text = "0";
             this.lblWaitingCasesValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -151,7 +149,7 @@ namespace DentalClinicProject.UI
             this.lblWaitingCasesTitle.Location = new System.Drawing.Point(0, 0);
             this.lblWaitingCasesTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblWaitingCasesTitle.Name = "lblWaitingCasesTitle";
-            this.lblWaitingCasesTitle.Size = new System.Drawing.Size(542, 72);
+            this.lblWaitingCasesTitle.Size = new System.Drawing.Size(741, 72);
             this.lblWaitingCasesTitle.TabIndex = 0;
             this.lblWaitingCasesTitle.Text = "حالات الإنتظار";
             this.lblWaitingCasesTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -162,10 +160,10 @@ namespace DentalClinicProject.UI
             this.panelKPI3.Controls.Add(this.lblCompletedCasesValue);
             this.panelKPI3.Controls.Add(this.lblCompletedCasesTitle);
             this.panelKPI3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelKPI3.Location = new System.Drawing.Point(677, 72);
+            this.panelKPI3.Location = new System.Drawing.Point(80, 72);
             this.panelKPI3.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
             this.panelKPI3.Name = "panelKPI3";
-            this.panelKPI3.Size = new System.Drawing.Size(542, 214);
+            this.panelKPI3.Size = new System.Drawing.Size(741, 214);
             this.panelKPI3.TabIndex = 2;
             // 
             // lblCompletedCasesValue
@@ -176,7 +174,7 @@ namespace DentalClinicProject.UI
             this.lblCompletedCasesValue.Location = new System.Drawing.Point(0, 72);
             this.lblCompletedCasesValue.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblCompletedCasesValue.Name = "lblCompletedCasesValue";
-            this.lblCompletedCasesValue.Size = new System.Drawing.Size(542, 142);
+            this.lblCompletedCasesValue.Size = new System.Drawing.Size(741, 142);
             this.lblCompletedCasesValue.TabIndex = 1;
             this.lblCompletedCasesValue.Text = "0";
             this.lblCompletedCasesValue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -189,7 +187,7 @@ namespace DentalClinicProject.UI
             this.lblCompletedCasesTitle.Location = new System.Drawing.Point(0, 0);
             this.lblCompletedCasesTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblCompletedCasesTitle.Name = "lblCompletedCasesTitle";
-            this.lblCompletedCasesTitle.Size = new System.Drawing.Size(542, 72);
+            this.lblCompletedCasesTitle.Size = new System.Drawing.Size(741, 72);
             this.lblCompletedCasesTitle.TabIndex = 0;
             this.lblCompletedCasesTitle.Text = "حالات اكتملت";
             this.lblCompletedCasesTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -252,10 +250,10 @@ namespace DentalClinicProject.UI
             this.btnMyPatients.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMyPatients.Font = new System.Drawing.Font("Times New Roman", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMyPatients.ForeColor = System.Drawing.Color.White;
-            this.btnMyPatients.Location = new System.Drawing.Point(1164, 48);
+            this.btnMyPatients.Location = new System.Drawing.Point(788, 48);
             this.btnMyPatients.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.btnMyPatients.Name = "btnMyPatients";
-            this.btnMyPatients.Size = new System.Drawing.Size(320, 95);
+            this.btnMyPatients.Size = new System.Drawing.Size(480, 95);
             this.btnMyPatients.TabIndex = 2;
             this.btnMyPatients.Text = "حالات الإنتظار";
             this.btnMyPatients.UseVisualStyleBackColor = false;
@@ -263,7 +261,7 @@ namespace DentalClinicProject.UI
             // panelBtnSpacer2
             // 
             this.panelBtnSpacer2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelBtnSpacer2.Location = new System.Drawing.Point(1484, 48);
+            this.panelBtnSpacer2.Location = new System.Drawing.Point(1268, 48);
             this.panelBtnSpacer2.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.panelBtnSpacer2.Name = "panelBtnSpacer2";
             this.panelBtnSpacer2.Size = new System.Drawing.Size(27, 95);
@@ -278,10 +276,10 @@ namespace DentalClinicProject.UI
             this.btnPendingInvoices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPendingInvoices.Font = new System.Drawing.Font("Times New Roman", 15.9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPendingInvoices.ForeColor = System.Drawing.Color.Black;
-            this.btnPendingInvoices.Location = new System.Drawing.Point(1511, 48);
+            this.btnPendingInvoices.Location = new System.Drawing.Point(1295, 48);
             this.btnPendingInvoices.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.btnPendingInvoices.Name = "btnPendingInvoices";
-            this.btnPendingInvoices.Size = new System.Drawing.Size(500, 95);
+            this.btnPendingInvoices.Size = new System.Drawing.Size(716, 95);
             this.btnPendingInvoices.TabIndex = 1;
             this.btnPendingInvoices.Text = "الحالات المحولة من الدكتور";
             this.btnPendingInvoices.UseVisualStyleBackColor = false;
@@ -433,7 +431,6 @@ namespace DentalClinicProject.UI
             this.colStatus.MinimumWidth = 12;
             this.colStatus.Name = "colStatus";
             this.colStatus.ReadOnly = true;
-
             // 
             // DashboardControlUI
             // 
@@ -454,7 +451,6 @@ namespace DentalClinicProject.UI
             this.panelActionBar.ResumeLayout(false);
             this.panelGridArea.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTodayAppointments)).EndInit();
-
             this.ResumeLayout(false);
 
         }

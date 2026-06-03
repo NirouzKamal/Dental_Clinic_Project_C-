@@ -223,9 +223,607 @@ namespace DentalClinicProject.data
         // ====== Database Load Helpers ======
         public static void LoadAllFromDatabase()
         {
+            LoadUsersFromDatabase();
             LoadDoctorsFromDatabase();
             LoadPatientsFromDatabase();
             LoadAppointmentsFromDatabase();
+            LoadCasesFromDatabase();
+            LoadInvoicesFromDatabase();
+            LoadPaymentsFromDatabase();
+            LoadPayrollFromDatabase();
+        }
+
+        public static void LoadUsersFromDatabase()
+        {
+            const string sql = "SELECT UserId, FullName, UserName, PasswordHash, IsActive, Phone FROM dbo.Users";
+            try
+            {
+                using (var conn = DbHelper.GetConnection())
+                using (var cmd = new SqlCommand(sql, conn))
+                using (var rdr = cmd.ExecuteReader())
+                {
+                    Users.Clear();
+                    while (rdr.Read())
+                    {
+                        string uid = rdr["UserId"].ToString();
+                        string fullname = rdr["FullName"].ToString();
+                        string username = rdr["UserName"].ToString();
+                        string pass = rdr["PasswordHash"].ToString();
+                        bool active = Convert.ToBoolean(rdr["IsActive"]);
+                        string phone = rdr["Phone"] == DBNull.Value ? "" : rdr["Phone"].ToString();
+
+                        string roleCode = uid.Length >= 3 ? uid.Substring(0, 3).ToUpperInvariant() : "";
+                        UserRole role = UserRole.Receptionist;
+                        if (roleCode == "ADM") role = UserRole.Admin;
+                        else if (roleCode == "DOC") role = UserRole.Doctor;
+
+                        Users.Add(new User
+                        {
+                            UserId = uid,
+                            FullName = fullname,
+                            Username = username,
+                            PasswordHash = pass,
+                            IsActive = active,
+                            Phone = phone,
+                            Role = role
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error loading users: " + ex.Message);
+            }
+        }
+
+        public static void LoadCasesFromDatabase()
+        {
+            const string sql = @"
+                SELECT 
+                    c.CaseNumber, 
+                    c.PatientId, 
+                    c.UserId,
+                    c.DentistId, 
+                    c.VisitType, 
+                    c.Status, 
+                    c.SentToReception, 
+                    c.OpenedAt, 
+                    c.ClosedAt,
+                    ci.ToothNumber,
+                    ci.Discount,
+                    s.ServiceName,
+                    s.ServicePrice
+                FROM dbo.Cases c
+                LEFT JOIN dbo.CaseItems ci ON c.CaseNumber = ci.CaseNumber
+                LEFT JOIN dbo.Service s ON ci.ServiceCode = s.ServiceCode";
+            try
+            {
+                using (var conn = DbHelper.GetConnection())
+                {
+                    EnsureServicesSeeded(conn);
+
+                    using (var cmd = new SqlCommand(sql, conn))
+                    using (var rdr = cmd.ExecuteReader())
+                    {
+                        Cases.Clear();
+                        while (rdr.Read())
+                        {
+                            string caseNum = rdr["CaseNumber"].ToString();
+                            string patientId = rdr["PatientId"].ToString();
+                            string dentistId = rdr["DentistId"].ToString();
+                            string visitType = rdr["VisitType"].ToString();
+                            string statusStr = rdr["Status"].ToString();
+                            bool sentToRec = Convert.ToBoolean(rdr["SentToReception"]);
+                            DateTime openedAt = Convert.ToDateTime(rdr["OpenedAt"]);
+                            DateTime? closedAt = rdr["ClosedAt"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(rdr["ClosedAt"]);
+
+                            var pat = Patients.FirstOrDefault(p => p.PatientId == patientId);
+                            var doc = Doctors.FirstOrDefault(d => d.DoctorId == dentistId);
+
+                            string treatment = visitType;
+                            decimal price = 0;
+                            decimal discount = 0;
+                            int toothCount = 1;
+
+                            if (rdr["ServiceName"] != DBNull.Value)
+                            {
+                                treatment = rdr["ServiceName"].ToString();
+                                price = Convert.ToDecimal(rdr["ServicePrice"]);
+                                discount = Convert.ToDecimal(rdr["Discount"]);
+                                toothCount = Convert.ToInt32(rdr["ToothNumber"]);
+                            }
+                            else
+                            {
+                                price = ClinicServicePricing.GetPrice(visitType);
+                            }
+
+                            CaseStatus statusEnum = CaseStatus.Waiting;
+                            if (Enum.TryParse<CaseStatus>(statusStr, true, out var parsedStatus))
+                            {
+                                statusEnum = parsedStatus;
+                            }
+                            else
+                            {
+                                if (statusStr == "Completed" || statusStr == "مكتمل") statusEnum = CaseStatus.Completed;
+                                else if (statusStr == "Cancelled" || statusStr == "ملغي") statusEnum = CaseStatus.Cancelled;
+                            }
+
+                            Cases.Add(new Case
+                            {
+                                CaseId = caseNum, // Map CaseId to CaseNumber
+                                CaseNumber = caseNum,
+                                PatientId = patientId,
+                                PatientFileNumber = pat?.FileNumber ?? "",
+                                PatientName = pat?.FullName ?? "",
+                                DoctorId = dentistId,
+                                DoctorName = doc?.FullName ?? "",
+                                Treatment = treatment,
+                                ToothCount = toothCount,
+                                Price = price,
+                                Discount = discount,
+                                Status = statusEnum,
+                                OpenedDate = openedAt,
+                                Date = openedAt.Date,
+                                ClosedAt = closedAt,
+                                SentToReception = sentToRec,
+                                VisitBatchId = ""
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error loading cases: " + ex.Message);
+            }
+        }
+
+        public static void LoadInvoicesFromDatabase()
+        {
+            const string sql = "SELECT InvoiceId, CaseNumber, PatientId, TotalAmount, IssuedDate = InvoiceDate, Status FROM dbo.Invoice";
+            try
+            {
+                using (var conn = DbHelper.GetConnection())
+                using (var cmd = new SqlCommand(sql, conn))
+                using (var rdr = cmd.ExecuteReader())
+                {
+                    Invoices.Clear();
+                    while (rdr.Read())
+                    {
+                        string invId = rdr["InvoiceId"].ToString();
+                        string caseNum = rdr["CaseNumber"].ToString();
+                        string patId = rdr["PatientId"].ToString();
+                        decimal total = Convert.ToDecimal(rdr["TotalAmount"]);
+                        DateTime issued = Convert.ToDateTime(rdr["IssuedDate"]);
+                        string status = rdr["Status"].ToString();
+                        bool isPaid = status == "Paid" || status == "مكتمل";
+
+                        var c = Cases.FirstOrDefault(x => x.CaseNumber == caseNum);
+                        var doc = Doctors.FirstOrDefault(d => d.DoctorId == c?.DoctorId);
+                        decimal pct = doc != null ? doc.CommissionPct : 40;
+                        decimal docShare = total * (pct / 100);
+
+                        Invoices.Add(new Invoice
+                        {
+                            InvoiceId = invId,
+                            CaseId = caseNum,
+                            PatientId = patId,
+                            TotalAmount = total,
+                            DoctorShare = docShare,
+                            ClinicRevenue = total - docShare,
+                            IssuedDate = issued,
+                            IsPaid = isPaid
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error loading invoices: " + ex.Message);
+            }
+        }
+
+        public static void LoadPaymentsFromDatabase()
+        {
+            const string sql = "SELECT PaymentId, InvoiceId, PaymentDate, PaymentMethod, Amount FROM dbo.Payments";
+            try
+            {
+                using (var conn = DbHelper.GetConnection())
+                using (var cmd = new SqlCommand(sql, conn))
+                using (var rdr = cmd.ExecuteReader())
+                {
+                    Payments.Clear();
+                    while (rdr.Read())
+                    {
+                        string payId = rdr["PaymentId"].ToString();
+                        string invId = rdr["InvoiceId"].ToString();
+                        DateTime date = Convert.ToDateTime(rdr["PaymentDate"]);
+                        string method = rdr["PaymentMethod"]?.ToString() ?? "نقدي";
+                        decimal amount = Convert.ToDecimal(rdr["Amount"]);
+
+                        var p = new Payment
+                        {
+                            PaymentId = payId,
+                            InvoiceId = invId,
+                            AmountPaid = amount,
+                            PaymentDate = date,
+                            Method = method
+                        };
+
+                        var inv = Invoices.FirstOrDefault(i => i.InvoiceId == invId);
+                        if (inv != null) p.SetInvoiceTotal(inv.TotalAmount);
+
+                        Payments.Add(p);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error loading payments: " + ex.Message);
+            }
+        }
+
+        public static void LoadPayrollFromDatabase()
+        {
+            const string sql = "SELECT SalaryId, UserId, BaseSalary, TotalSalary, SalaryMonth, SalaryYear, PaidDate FROM dbo.Salary WHERE PaymentStatus = 'Paid'";
+            try
+            {
+                using (var conn = DbHelper.GetConnection())
+                using (var cmd = new SqlCommand(sql, conn))
+                using (var rdr = cmd.ExecuteReader())
+                {
+                    PayrollRecords.Clear();
+                    while (rdr.Read())
+                    {
+                        string salaryId = rdr["SalaryId"].ToString();
+                        string userId = rdr["UserId"].ToString();
+                        decimal baseSal = Convert.ToDecimal(rdr["BaseSalary"]);
+                        decimal totalSal = Convert.ToDecimal(rdr["TotalSalary"]);
+                        int month = Convert.ToInt32(rdr["SalaryMonth"]);
+                        int year = Convert.ToInt32(rdr["SalaryYear"]);
+                        DateTime paidDate = rdr["PaidDate"] == DBNull.Value ? DateTime.Now : Convert.ToDateTime(rdr["PaidDate"]);
+
+                        var user = Users.FirstOrDefault(u => u.UserId == userId);
+                        string fullName = user?.FullName ?? user?.Username ?? "";
+                        string role = user?.Role == UserRole.Doctor ? "طبيب" : (user?.Role == UserRole.Admin ? "مسؤول" : "استقبال");
+
+                        PayrollRecords.Add(new PayrollRecord
+                        {
+                            PayrollId = salaryId,
+                            UserId = userId,
+                            FullName = fullName,
+                            Role = role,
+                            Month = month,
+                            Year = year,
+                            BaseSalaryPaid = baseSal,
+                            CommissionPaid = totalSal - baseSal,
+                            Deductions = 0,
+                            NetPay = totalSal,
+                            IssueDate = paidDate
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error loading payroll: " + ex.Message);
+            }
+        }
+
+        public static void EnsureServicesSeeded(SqlConnection conn)
+        {
+            const string checkSql = "SELECT COUNT(*) FROM dbo.Service";
+            using (var cmd = new SqlCommand(checkSql, conn))
+            {
+                int count = Convert.ToInt32(cmd.ExecuteScalar());
+                if (count > 0) return;
+            }
+
+            const string insertSql = @"
+                INSERT INTO dbo.Service (ServiceCode, ServiceName, ServicePrice)
+                VALUES (@Code, @Name, @Price)";
+
+            var services = new Dictionary<string, decimal>
+            {
+                { "كشف", 40m },
+                { "مراجعة", 0m },
+                { "حشو عادي", 120m },
+                { "حشوة تجميلية", 150m },
+                { "خلع عادي", 100m },
+                { "خلع جراحي", 450m },
+                { "تغليف سن (Zirconia/E-max)", 600m },
+                { "(علاج عصب (خلفي /طواحن", 750m },
+                { "علاج عصب امامي", 500m },
+                { "فينير", 1200m },
+                { "علاج لثة عميق", 400m },
+                { "تنظيف جير وتلميع", 190m }
+            };
+
+            foreach (var kvp in services)
+            {
+                using (var cmd = new SqlCommand(insertSql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Code", kvp.Key);
+                    cmd.Parameters.AddWithValue("@Name", kvp.Key);
+                    cmd.Parameters.AddWithValue("@Price", kvp.Value);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static void SaveCaseToDatabase(Case c)
+        {
+            if (c == null) return;
+
+            string selectSql = "SELECT COUNT(*) FROM dbo.Cases WHERE CaseNumber = @CaseNumber";
+            string insertCaseSql = @"
+                INSERT INTO dbo.Cases (CaseNumber, PatientId, UserId, DentistId, VisitType, Status, SentToReception, OpenedAt, ClosedAt)
+                VALUES (@CaseNumber, @PatientId, @UserId, @DentistId, @VisitType, @Status, @SentToReception, @OpenedAt, @ClosedAt)";
+            string updateCaseSql = @"
+                UPDATE dbo.Cases
+                SET Status = @Status, SentToReception = @SentToReception, ClosedAt = @ClosedAt,
+                    OpenedAt = @OpenedAt, VisitType = @VisitType
+                WHERE CaseNumber = @CaseNumber";
+
+            try
+            {
+                using (var conn = DbHelper.GetConnection())
+                {
+                    EnsureServicesSeeded(conn);
+
+                    int count = 0;
+                    using (var cmd = new SqlCommand(selectSql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@CaseNumber", c.CaseNumber);
+                        count = Convert.ToInt32(cmd.ExecuteScalar());
+                    }
+
+                    string currentUserId = CurrentUser?.UserId ?? "ADM_2026_001";
+
+                    if (count == 0)
+                    {
+                        using (var cmd = new SqlCommand(insertCaseSql, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@CaseNumber", c.CaseNumber);
+                            cmd.Parameters.AddWithValue("@PatientId", c.PatientId);
+                            cmd.Parameters.AddWithValue("@UserId", currentUserId);
+                            cmd.Parameters.AddWithValue("@DentistId", c.DoctorId);
+                            cmd.Parameters.AddWithValue("@VisitType", c.Treatment ?? "");
+                            cmd.Parameters.AddWithValue("@Status", c.Status.ToString());
+                            cmd.Parameters.AddWithValue("@SentToReception", c.SentToReception);
+                            cmd.Parameters.AddWithValue("@OpenedAt", c.OpenedDate);
+                            cmd.Parameters.AddWithValue("@ClosedAt", (object)c.ClosedAt ?? DBNull.Value);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                    else
+                    {
+                        using (var cmd = new SqlCommand(updateCaseSql, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@CaseNumber", c.CaseNumber);
+                            cmd.Parameters.AddWithValue("@Status", c.Status.ToString());
+                            cmd.Parameters.AddWithValue("@SentToReception", c.SentToReception);
+                            cmd.Parameters.AddWithValue("@ClosedAt", (object)c.ClosedAt ?? DBNull.Value);
+                            cmd.Parameters.AddWithValue("@OpenedAt", c.OpenedDate);
+                            cmd.Parameters.AddWithValue("@VisitType", c.Treatment ?? "");
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    if (!string.IsNullOrEmpty(c.Treatment))
+                    {
+                        string serviceSql = "SELECT COUNT(*) FROM dbo.Service WHERE ServiceCode = @Code";
+                        bool serviceExists = false;
+                        using (var cmd = new SqlCommand(serviceSql, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@Code", c.Treatment);
+                            serviceExists = Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+                        }
+
+                        if (!serviceExists)
+                        {
+                            string insertService = "INSERT INTO dbo.Service (ServiceCode, ServiceName, ServicePrice) VALUES (@Code, @Name, @Price)";
+                            using (var cmd = new SqlCommand(insertService, conn))
+                            {
+                                cmd.Parameters.AddWithValue("@Code", c.Treatment);
+                                cmd.Parameters.AddWithValue("@Name", c.Treatment);
+                                cmd.Parameters.AddWithValue("@Price", c.Price);
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+
+                        string deleteItemSql = "DELETE FROM dbo.CaseItems WHERE CaseNumber = @CaseNumber AND ServiceCode = @Code";
+                        using (var cmd = new SqlCommand(deleteItemSql, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@CaseNumber", c.CaseNumber);
+                            cmd.Parameters.AddWithValue("@Code", c.Treatment);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        string insertItemSql = @"
+                            INSERT INTO dbo.CaseItems (ToothNumber, CaseNumber, ServiceCode, Discount, AddedAt)
+                            VALUES (@ToothNumber, @CaseNumber, @ServiceCode, @Discount, @AddedAt)";
+                        using (var cmd = new SqlCommand(insertItemSql, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@ToothNumber", c.ToothCount < 1 ? 1 : c.ToothCount);
+                            cmd.Parameters.AddWithValue("@CaseNumber", c.CaseNumber);
+                            cmd.Parameters.AddWithValue("@ServiceCode", c.Treatment);
+                            cmd.Parameters.AddWithValue("@Discount", c.Discount);
+                            cmd.Parameters.AddWithValue("@AddedAt", c.OpenedDate);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error saving case: " + ex.Message);
+            }
+        }
+
+        public static void SaveInvoiceToDatabase(Invoice inv)
+        {
+            if (inv == null) return;
+
+            string selectSql = "SELECT COUNT(*) FROM dbo.Invoice WHERE InvoiceId = @InvoiceId";
+            string insertSql = @"
+                INSERT INTO dbo.Invoice (InvoiceId, CaseNumber, PatientId, UserId, InvoiceDate, TotalAmount, DiscountAmount, Status)
+                VALUES (@InvoiceId, @CaseNumber, @PatientId, @UserId, @InvoiceDate, @TotalAmount, @DiscountAmount, @Status)";
+            string updateSql = @"
+                UPDATE dbo.Invoice
+                SET TotalAmount = @TotalAmount, Status = @Status
+                WHERE InvoiceId = @InvoiceId";
+
+            try
+            {
+                using (var conn = DbHelper.GetConnection())
+                {
+                    int count = 0;
+                    using (var cmd = new SqlCommand(selectSql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@InvoiceId", inv.InvoiceId);
+                        count = Convert.ToInt32(cmd.ExecuteScalar());
+                    }
+
+                    string currentUserId = CurrentUser?.UserId ?? "ADM_2026_001";
+                    string statusStr = inv.IsPaid ? "Paid" : "Unpaid";
+
+                    if (count == 0)
+                    {
+                        using (var cmd = new SqlCommand(insertSql, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@InvoiceId", inv.InvoiceId);
+                            cmd.Parameters.AddWithValue("@CaseNumber", inv.CaseId);
+                            cmd.Parameters.AddWithValue("@PatientId", inv.PatientId);
+                            cmd.Parameters.AddWithValue("@UserId", currentUserId);
+                            cmd.Parameters.AddWithValue("@InvoiceDate", inv.IssuedDate);
+                            cmd.Parameters.AddWithValue("@TotalAmount", inv.TotalAmount);
+                            cmd.Parameters.AddWithValue("@DiscountAmount", 0m);
+                            cmd.Parameters.AddWithValue("@Status", statusStr);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                    else
+                    {
+                        using (var cmd = new SqlCommand(updateSql, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@InvoiceId", inv.InvoiceId);
+                            cmd.Parameters.AddWithValue("@TotalAmount", inv.TotalAmount);
+                            cmd.Parameters.AddWithValue("@Status", statusStr);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error saving invoice: " + ex.Message);
+            }
+        }
+
+        public static void SavePaymentToDatabase(Payment p)
+        {
+            if (p == null) return;
+
+            string insertSql = @"
+                INSERT INTO dbo.Payments (PaymentId, InvoiceId, UserId, PaymentDate, PaymentMethod, Amount)
+                VALUES (@PaymentId, @InvoiceId, @UserId, @PaymentDate, @PaymentMethod, @Amount)";
+
+            try
+            {
+                using (var conn = DbHelper.GetConnection())
+                {
+                    string currentUserId = CurrentUser?.UserId ?? "ADM_2026_001";
+
+                    using (var cmd = new SqlCommand(insertSql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@PaymentId", p.PaymentId);
+                        cmd.Parameters.AddWithValue("@InvoiceId", p.InvoiceId);
+                        cmd.Parameters.AddWithValue("@UserId", currentUserId);
+                        cmd.Parameters.AddWithValue("@PaymentDate", p.PaymentDate);
+                        cmd.Parameters.AddWithValue("@PaymentMethod", p.Method ?? "نقدي");
+                        cmd.Parameters.AddWithValue("@Amount", p.AmountPaid);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    decimal totalPaid = 0;
+                    string sumSql = "SELECT SUM(Amount) FROM dbo.Payments WHERE InvoiceId = @InvoiceId";
+                    using (var cmd = new SqlCommand(sumSql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@InvoiceId", p.InvoiceId);
+                        var res = cmd.ExecuteScalar();
+                        if (res != DBNull.Value && res != null)
+                            totalPaid = Convert.ToDecimal(res);
+                    }
+
+                    decimal totalAmount = 0;
+                    string totalSql = "SELECT TotalAmount FROM dbo.Invoice WHERE InvoiceId = @InvoiceId";
+                    using (var cmd = new SqlCommand(totalSql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@InvoiceId", p.InvoiceId);
+                        var res = cmd.ExecuteScalar();
+                        if (res != DBNull.Value && res != null)
+                            totalAmount = Convert.ToDecimal(res);
+                    }
+
+                    if (totalPaid >= totalAmount)
+                    {
+                        string updateInvoiceSql = "UPDATE dbo.Invoice SET Status = 'Paid' WHERE InvoiceId = @InvoiceId";
+                        using (var cmd = new SqlCommand(updateInvoiceSql, conn))
+                        {
+                            cmd.Parameters.AddWithValue("@InvoiceId", p.InvoiceId);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error saving payment: " + ex.Message);
+            }
+        }
+
+        public static void SavePayrollToDatabase(PayrollRecord pr)
+        {
+            if (pr == null) return;
+
+            string insertSql = @"
+                INSERT INTO dbo.Salary (SalaryId, UserId, DentistId, BaseSalary, CommissionPercentage, TotalSalary, SalaryMonth, SalaryYear, PaymentStatus, PaidDate)
+                VALUES (@SalaryId, @UserId, @DentistId, @BaseSalary, @CommissionPercentage, @TotalSalary, @SalaryMonth, @SalaryYear, @PaymentStatus, @PaidDate)";
+
+            try
+            {
+                using (var conn = DbHelper.GetConnection())
+                {
+                    string dentistId = null;
+                    decimal commissionPct = 0;
+                    var doc = Doctors.FirstOrDefault(d => d.UserId == pr.UserId);
+                    if (doc != null)
+                    {
+                        dentistId = doc.DoctorId;
+                        commissionPct = doc.CommissionPct;
+                    }
+
+                    using (var cmd = new SqlCommand(insertSql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@SalaryId", pr.PayrollId);
+                        cmd.Parameters.AddWithValue("@UserId", pr.UserId);
+                        cmd.Parameters.AddWithValue("@DentistId", (object)dentistId ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@BaseSalary", pr.BaseSalaryPaid);
+                        cmd.Parameters.AddWithValue("@CommissionPercentage", commissionPct);
+                        cmd.Parameters.AddWithValue("@TotalSalary", pr.NetPay);
+                        cmd.Parameters.AddWithValue("@SalaryMonth", (byte)pr.Month);
+                        cmd.Parameters.AddWithValue("@SalaryYear", (short)pr.Year);
+                        cmd.Parameters.AddWithValue("@PaymentStatus", "Paid");
+                        cmd.Parameters.AddWithValue("@PaidDate", pr.IssueDate);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error saving payroll: " + ex.Message);
+            }
         }
 
         public static void LoadDoctorsFromDatabase()
@@ -264,7 +862,7 @@ namespace DentalClinicProject.data
 
         public static void LoadPatientsFromDatabase()
         {
-            const string sql = "SELECT PatientId, FirstName, MiddleName, LastName, Age, Gender, PatientPhone FROM dbo.Patients";
+            const string sql = "SELECT PatientId, FirstName, MiddleName, LastName, Age, Gender, PatientPhone, Address FROM dbo.Patients";
             try
             {
                 using (var conn = DbHelper.GetConnection())
@@ -281,6 +879,7 @@ namespace DentalClinicProject.data
                         string phone = rdr["PatientPhone"].ToString();
                         int age = Convert.ToInt32(rdr["Age"]);
                         string gender = rdr["Gender"].ToString();
+                        string address = rdr["Address"] == DBNull.Value ? "" : rdr["Address"].ToString();
 
                         string fullName = string.IsNullOrWhiteSpace(mname)
                             ? $"{fname} {lname}"
@@ -294,7 +893,7 @@ namespace DentalClinicProject.data
                             Phone = phone,
                             Age = age,
                             Gender = gender,
-                            Address = ""
+                            Address = address
                         });
                     }
                 }

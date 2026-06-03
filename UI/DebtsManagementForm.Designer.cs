@@ -19,17 +19,17 @@ namespace DentalClinicProject.UI
             this.lblSummary = new System.Windows.Forms.Label();
             this.panelGrid = new System.Windows.Forms.Panel();
             this.dgvDebts = new System.Windows.Forms.DataGridView();
-            this.panelBottom = new System.Windows.Forms.Panel();
-            this.flowButtons = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.btnRegisterPayment = new System.Windows.Forms.Button();
             this.colSessionNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPatient = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDoctor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colPaid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colRemaining = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panelBottom = new System.Windows.Forms.Panel();
+            this.flowButtons = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnRegisterPayment = new System.Windows.Forms.Button();
             this.panelSummary.SuspendLayout();
             this.panelGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDebts)).BeginInit();
@@ -102,6 +102,48 @@ namespace DentalClinicProject.UI
             this.dgvDebts.Size = new System.Drawing.Size(1458, 692);
             this.dgvDebts.TabIndex = 0;
             // 
+            // colSessionNumber
+            // 
+            this.colSessionNumber.HeaderText = "رقم الجلسة";
+            this.colSessionNumber.MinimumWidth = 100;
+            this.colSessionNumber.Name = "colSessionNumber";
+            this.colSessionNumber.ReadOnly = true;
+            // 
+            // colPatient
+            // 
+            this.colPatient.HeaderText = "اسم الحالة";
+            this.colPatient.MinimumWidth = 120;
+            this.colPatient.Name = "colPatient";
+            this.colPatient.ReadOnly = true;
+            // 
+            // colDoctor
+            // 
+            this.colDoctor.HeaderText = "الطبيب";
+            this.colDoctor.MinimumWidth = 120;
+            this.colDoctor.Name = "colDoctor";
+            this.colDoctor.ReadOnly = true;
+            // 
+            // colTotal
+            // 
+            this.colTotal.HeaderText = "الإجمالي";
+            this.colTotal.MinimumWidth = 90;
+            this.colTotal.Name = "colTotal";
+            this.colTotal.ReadOnly = true;
+            // 
+            // colPaid
+            // 
+            this.colPaid.HeaderText = "المدفوع";
+            this.colPaid.MinimumWidth = 90;
+            this.colPaid.Name = "colPaid";
+            this.colPaid.ReadOnly = true;
+            // 
+            // colRemaining
+            // 
+            this.colRemaining.HeaderText = "المتبقي";
+            this.colRemaining.MinimumWidth = 90;
+            this.colRemaining.Name = "colRemaining";
+            this.colRemaining.ReadOnly = true;
+            // 
             // panelBottom
             // 
             this.panelBottom.Controls.Add(this.flowButtons);
@@ -170,54 +212,12 @@ namespace DentalClinicProject.UI
             this.btnRegisterPayment.Text = "تسجيل دفعة";
             this.btnRegisterPayment.UseVisualStyleBackColor = false;
             // 
-            // colSessionNumber
-            // 
-            this.colSessionNumber.HeaderText = "رقم الجلسة";
-            this.colSessionNumber.MinimumWidth = 100;
-            this.colSessionNumber.Name = "colSessionNumber";
-            this.colSessionNumber.ReadOnly = true;
-            // 
-            // colPatient
-            // 
-            this.colPatient.HeaderText = "اسم الحالة";
-            this.colPatient.MinimumWidth = 120;
-            this.colPatient.Name = "colPatient";
-            this.colPatient.ReadOnly = true;
-            // 
-            // colDoctor
-            // 
-            this.colDoctor.HeaderText = "الطبيب";
-            this.colDoctor.MinimumWidth = 120;
-            this.colDoctor.Name = "colDoctor";
-            this.colDoctor.ReadOnly = true;
-            // 
-            // colTotal
-            // 
-            this.colTotal.HeaderText = "الإجمالي";
-            this.colTotal.MinimumWidth = 90;
-            this.colTotal.Name = "colTotal";
-            this.colTotal.ReadOnly = true;
-            // 
-            // colPaid
-            // 
-            this.colPaid.HeaderText = "المدفوع";
-            this.colPaid.MinimumWidth = 90;
-            this.colPaid.Name = "colPaid";
-            this.colPaid.ReadOnly = true;
-            // 
-            // colRemaining
-            // 
-            this.colRemaining.HeaderText = "المتبقي";
-            this.colRemaining.MinimumWidth = 90;
-            this.colRemaining.Name = "colRemaining";
-            this.colRemaining.ReadOnly = true;
-            // 
             // DebtsManagementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 41F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(244)))), ((int)(((byte)(246)))));
-            this.ClientSize = new System.Drawing.Size(1490, 923);
+            this.ClientSize = new System.Drawing.Size(1100, 650);
             this.Controls.Add(this.panelGrid);
             this.Controls.Add(this.panelBottom);
             this.Controls.Add(this.panelSummary);

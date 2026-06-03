@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 using DentalClinicProject.classes;
 using DentalClinicProject.data;
+using DentalClinicProject.Data;
 
 namespace DentalClinicProject.UI
 {
@@ -72,10 +74,49 @@ namespace DentalClinicProject.UI
             }
         }
 
+        private decimal GetTotalRevenueForPeriod(DateTime start, DateTime end)
+        {
+            const string sql = "SELECT SUM(Amount) FROM dbo.Payments WHERE PaymentDate BETWEEN @Start AND @End";
+            try
+            {
+                using (var conn = DbHelper.GetConnection())
+                using (var cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Start", start);
+                    cmd.Parameters.AddWithValue("@End", end);
+                    var res = cmd.ExecuteScalar();
+                    return res == DBNull.Value || res == null ? 0m : Convert.ToDecimal(res);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error calculating period revenue: " + ex.Message);
+                return 0m;
+            }
+        }
+
         private void CalculateFinancials()
         {
+            DataStore.LoadAllFromDatabase();
             SetupGridColumns();
             dgvRevenues.Rows.Clear();
+
+            // Calculate Today, Month, Year revenues
+            DateTime todayStart = DateTime.Today;
+            DateTime todayEnd = DateTime.Today.AddDays(1).AddTicks(-1);
+            decimal todayRevenue = GetTotalRevenueForPeriod(todayStart, todayEnd);
+
+            DateTime monthStart = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+            DateTime monthEnd = monthStart.AddMonths(1).AddTicks(-1);
+            decimal monthRevenue = GetTotalRevenueForPeriod(monthStart, monthEnd);
+
+            DateTime yearStart = new DateTime(DateTime.Today.Year, 1, 1);
+            DateTime yearEnd = yearStart.AddYears(1).AddTicks(-1);
+            decimal yearRevenue = GetTotalRevenueForPeriod(yearStart, yearEnd);
+
+            lblTodayRevenueValue.Text = todayRevenue.ToString("F2") + " د.ل";
+            lblMonthRevenueValue.Text = monthRevenue.ToString("F2") + " د.ل";
+            lblYearRevenueValue.Text = yearRevenue.ToString("F2") + " د.ل";
 
             DateTime start = dtpFrom.Value.Date;
             DateTime end = dtpTo.Value.Date.AddDays(1).AddTicks(-1);
@@ -106,7 +147,7 @@ namespace DentalClinicProject.UI
                 var doc = DataStore.Doctors.FirstOrDefault(docItem => docItem.DoctorId == c.DoctorId);
                 if (doc != null && c.Status == CaseStatus.Completed)
                 {
-                    totalPendingDues += paidForCase * doc.CommissionPct;
+                    totalPendingDues += paidForCase * (doc.CommissionPct / 100.0m);
                 }
 
                 // Add to Income grid

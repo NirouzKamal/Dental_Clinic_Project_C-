@@ -33,41 +33,31 @@ namespace DentalClinicProject.UI
             DataStore.LoadAllFromDatabase();
             dgvPatients.Rows.Clear();
 
-            var doctorAppointments = DataStore.Appointments
-                .Where(a => a.DoctorId == _doctorId && a.Status == AppointmentStatus.Scheduled)
-                .OrderByDescending(a => a.AppointmentDate)
-                .ThenBy(a => a.StartTime)
-                .ToList();
+            var cases = DataStore.Cases
+                .Where(c => c.DoctorId == _doctorId && c.Status == CaseStatus.Waiting && c.SentToReception == false);
 
-            foreach (var appt in doctorAppointments)
+            if (!string.IsNullOrEmpty(searchTerm) && searchTerm != "ابحث عن مريض...")
             {
-                var patient = DataStore.Patients.FirstOrDefault(p => p.PatientId == appt.PatientId);
-                if (patient == null) continue;
+                cases = cases.Where(c => 
+                    (c.PatientName != null && c.PatientName.Contains(searchTerm)) ||
+                    (c.PatientFileNumber != null && c.PatientFileNumber.Contains(searchTerm)) ||
+                    (c.CaseNumber != null && c.CaseNumber.Contains(searchTerm))
+                );
+            }
 
-                if (!string.IsNullOrEmpty(searchTerm) && searchTerm != "ابحث عن مريض...")
-                {
-                    if (!patient.FullName.Contains(searchTerm) &&
-                        !(patient.FileNumber != null && patient.FileNumber.Contains(searchTerm)) &&
-                        !(patient.Phone != null && patient.Phone.Contains(searchTerm)))
-                        continue;
-                }
+            var sortedCases = cases.OrderByDescending(c => c.OpenedDate).ToList();
 
-                string statusText;
-                switch (appt.Status)
-                {
-                    case AppointmentStatus.Completed: statusText = "مكتمل"; break;
-                    case AppointmentStatus.Cancelled: statusText = "ملغي"; break;
-                    default: statusText = "مؤكد"; break;
-                }
+            foreach (var c in sortedCases)
+            {
+                string statusText = "في الانتظار";
 
-                // Grid columns: colPatient, colDate, colTime, colStatus
                 var rowIndex = dgvPatients.Rows.Add(
-                    patient.FullName ?? "غير معروف",
-                    appt.AppointmentDate.ToString("yyyy/MM/dd"),
-                    appt.StartTime.ToString(@"hh\:mm"),
+                    c.PatientFileNumber ?? "",
+                    c.PatientName ?? "غير معروف",
+                    c.Treatment ?? "",
                     statusText
                 );
-                dgvPatients.Rows[rowIndex].Tag = new { PatientId = patient.PatientId, AppointmentId = appt.AppointmentId };
+                dgvPatients.Rows[rowIndex].Tag = new { PatientId = c.PatientId, CaseId = c.CaseId };
             }
         }
 
@@ -79,15 +69,20 @@ namespace DentalClinicProject.UI
             if (tag == null) return;
 
             string patientId = tag.PatientId;
-            string appointmentId = tag.AppointmentId;
+            string caseId = tag.CaseId;
 
             if (string.IsNullOrEmpty(patientId)) return;
 
-            var serviceForm = new DoctorServiceFormUI(patientId, _doctorId, appointmentId);
+            var serviceForm = new DoctorServiceFormUI(patientId, _doctorId, appointmentId: null, referralCaseId: caseId);
             if (serviceForm.ShowDialog() == DialogResult.OK)
             {
                 LoadPatients(); // Refresh after service is recorded
             }
+        }
+
+        private void MyPatientsFormUI_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

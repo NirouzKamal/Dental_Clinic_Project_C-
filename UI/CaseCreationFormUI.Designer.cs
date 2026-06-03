@@ -1,4 +1,4 @@
-﻿namespace DentalClinicProject.UI
+namespace DentalClinicProject.UI
 {
     partial class CaseCreationFormUI
     {
@@ -114,8 +114,8 @@
             this.panelInputArea.Location = new System.Drawing.Point(0, 119);
             this.panelInputArea.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.panelInputArea.Name = "panelInputArea";
-            this.panelInputArea.Padding = new System.Windows.Forms.Padding(80, 72, 80, 72);
-            this.panelInputArea.Size = new System.Drawing.Size(1600, 930);
+            this.panelInputArea.Padding = new System.Windows.Forms.Padding(30, 20, 30, 20);
+            this.panelInputArea.Size = new System.Drawing.Size(720, 338);
             this.panelInputArea.TabIndex = 0;
             // 
             // tlpInputs
@@ -296,7 +296,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1600, 1192);
+            this.ClientSize = new System.Drawing.Size(720, 600);
             this.Controls.Add(this.panelInputArea);
             this.Controls.Add(this.panelBottomBar);
             this.Controls.Add(this.panelHeader);

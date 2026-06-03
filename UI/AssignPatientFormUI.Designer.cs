@@ -1,4 +1,4 @@
-﻿namespace DentalClinicProject.UI
+namespace DentalClinicProject.UI
 {
     partial class AssignPatientFormUI
     {
@@ -387,7 +387,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1786, 744);
+            this.ClientSize = new System.Drawing.Size(1280, 700);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.panelBottomBar);
             this.Controls.Add(this.panelHeader);

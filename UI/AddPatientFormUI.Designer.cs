@@ -131,8 +131,8 @@ namespace DentalClinicProject.UI
             this.panelInputArea.Location = new System.Drawing.Point(0, 119);
             this.panelInputArea.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.panelInputArea.Name = "panelInputArea";
-            this.panelInputArea.Padding = new System.Windows.Forms.Padding(80, 72, 80, 72);
-            this.panelInputArea.Size = new System.Drawing.Size(1600, 692);
+            this.panelInputArea.Padding = new System.Windows.Forms.Padding(30, 20, 30, 20);
+            this.panelInputArea.Size = new System.Drawing.Size(720, 238);
             this.panelInputArea.TabIndex = 0;
             // 
             // tlpInputs
@@ -148,15 +148,18 @@ namespace DentalClinicProject.UI
             this.tlpInputs.Controls.Add(this.txtAge, 1, 2);
             this.tlpInputs.Controls.Add(this.lblGender, 0, 3);
             this.tlpInputs.Controls.Add(this.cmbGender, 1, 3);
+            this.tlpInputs.Controls.Add(this.lblAddress, 0, 4);
+            this.tlpInputs.Controls.Add(this.txtAddress, 1, 4);
             this.tlpInputs.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpInputs.Location = new System.Drawing.Point(80, 72);
             this.tlpInputs.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.tlpInputs.Name = "tlpInputs";
-            this.tlpInputs.RowCount = 4;
-            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpInputs.RowCount = 5;
+            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tlpInputs.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tlpInputs.Size = new System.Drawing.Size(1440, 548);
             this.tlpInputs.TabIndex = 0;
             // 
@@ -260,24 +263,33 @@ namespace DentalClinicProject.UI
             // 
             // lblAddress
             // 
-            this.lblAddress.Location = new System.Drawing.Point(0, 0);
+            this.lblAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAddress.AutoSize = true;
+            this.lblAddress.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblAddress.Location = new System.Drawing.Point(1101, 456);
+            this.lblAddress.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblAddress.Name = "lblAddress";
-            this.lblAddress.Size = new System.Drawing.Size(100, 23);
-            this.lblAddress.TabIndex = 0;
+            this.lblAddress.Size = new System.Drawing.Size(331, 46);
+            this.lblAddress.TabIndex = 8;
+            this.lblAddress.Text = "العنوان";
+            this.lblAddress.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtAddress
             // 
-            this.txtAddress.Location = new System.Drawing.Point(0, 0);
+            this.txtAddress.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtAddress.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtAddress.Location = new System.Drawing.Point(27, 435);
+            this.txtAddress.Margin = new System.Windows.Forms.Padding(27, 24, 27, 24);
             this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(100, 38);
-            this.txtAddress.TabIndex = 0;
+            this.txtAddress.Size = new System.Drawing.Size(1039, 52);
+            this.txtAddress.TabIndex = 9;
             // 
             // AddPatientFormUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1600, 954);
+            this.ClientSize = new System.Drawing.Size(720, 500);
             this.Controls.Add(this.panelInputArea);
             this.Controls.Add(this.panelBottomBar);
             this.Controls.Add(this.panelHeader);

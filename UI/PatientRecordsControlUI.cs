@@ -2,13 +2,17 @@ using System;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 using DentalClinicProject.classes;
 using DentalClinicProject.data;
+using DentalClinicProject.Data;
 
 namespace DentalClinicProject.UI
 {
     public partial class PatientRecordsControlUI : System.Windows.Forms.UserControl
     {
+        public string PreSelectedPatientId { get; set; }
+
         public PatientRecordsControlUI()
         {
             InitializeComponent();
@@ -17,28 +21,38 @@ namespace DentalClinicProject.UI
 
         private void SetupLogic()
         {
-            this.Load += (s, e) => LoadPatientRecords();
+            this.Load += (s, e) =>
+            {
+                LoadPatientCombo();
+                if (!string.IsNullOrEmpty(PreSelectedPatientId))
+                {
+                    cmbSelectPatient.SelectedValue = PreSelectedPatientId;
+                }
+                else
+                {
+                    LoadPatientRecords();
+                }
+            };
+
+            cmbSelectPatient.SelectedIndexChanged += (s, e) => LoadPatientRecords(txtSearch.Text);
 
             txtSearch.TextChanged += (s, e) => LoadPatientRecords(txtSearch.Text);
             
             txtSearch.Enter += (s, e) => { if (txtSearch.Text == "ابحث بالاسم أو رقم الملف...") txtSearch.Text = ""; };
             txtSearch.Leave += (s, e) => { if (string.IsNullOrWhiteSpace(txtSearch.Text)) txtSearch.Text = "ابحث بالاسم أو رقم الملف..."; };
 
+            dgvPatientRecords.SelectionChanged += DgvPatientRecords_SelectionChanged;
+
             btnEdit.Click += (s, e) => {
                 if (dgvPatientRecords.CurrentRow != null)
                 {
                     string caseNum = dgvPatientRecords.CurrentRow.Cells["colCaseNum"].Value?.ToString();
-                    var c = DataStore.Cases.FirstOrDefault(x => x.CaseNumber == caseNum);
-                    if (c != null)
+                    if (!string.IsNullOrEmpty(caseNum))
                     {
-                        var patient = DataStore.Patients.FirstOrDefault(p => p.FileNumber == c.PatientFileNumber);
-                        if (patient != null)
+                        using (var editForm = new UI.EditPatientRecordFormUI(caseNum))
                         {
-                            using (var editForm = new UI.AddPatientFormUI(patient.PatientId))
-                            {
-                                if (editForm.ShowDialog() == DialogResult.OK)
-                                    LoadPatientRecords(txtSearch.Text);
-                            }
+                            if (editForm.ShowDialog() == DialogResult.OK)
+                                LoadPatientRecords(txtSearch.Text);
                         }
                     }
                 }
@@ -47,6 +61,7 @@ namespace DentalClinicProject.UI
                     MessageBox.Show("الرجاء اختيار سجل أولاً لتعديله", "تنبيه", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             };
+
             btnPrint.Click += (s, e) => {
                 if (dgvPatientRecords.CurrentRow != null)
                 {
@@ -66,12 +81,82 @@ namespace DentalClinicProject.UI
             };
         }
 
+        private void LoadPatientCombo()
+        {
+            DataStore.LoadPatientsFromDatabase();
+            var list = DataStore.Patients
+                .Select(p => new { PatientId = p.PatientId, DisplayText = $"{p.FileNumber} — {p.FullName}" })
+                .ToList();
+
+            cmbSelectPatient.DisplayMember = "DisplayText";
+            cmbSelectPatient.ValueMember = "PatientId";
+            cmbSelectPatient.DataSource = list;
+            cmbSelectPatient.SelectedIndex = -1; // Default to empty
+        }
+
+        private void DgvPatientRecords_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvPatientRecords.CurrentRow != null)
+            {
+                string caseNum = dgvPatientRecords.CurrentRow.Cells["colCaseNum"].Value?.ToString();
+                var c = DataStore.Cases.FirstOrDefault(x => x.CaseNumber == caseNum);
+                if (c != null)
+                {
+                    decimal totalDebt = 0;
+                    try
+                    {
+                        using (var conn = DbHelper.GetConnection())
+                        {
+                            string sql = @"
+                                SELECT SUM(i.TotalAmount) - SUM(ISNULL(p.Amount, 0))
+                                FROM dbo.Invoice i
+                                LEFT JOIN (
+                                    SELECT InvoiceId, SUM(Amount) AS Amount
+                                    FROM dbo.Payments
+                                    GROUP BY InvoiceId
+                                ) p ON i.InvoiceId = p.InvoiceId
+                                WHERE i.PatientId = @PatientId";
+                            using (var cmd = new SqlCommand(sql, conn))
+                            {
+                                cmd.Parameters.AddWithValue("@PatientId", c.PatientId);
+                                var res = cmd.ExecuteScalar();
+                                if (res != DBNull.Value && res != null)
+                                    totalDebt = Convert.ToDecimal(res);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("Error calculating patient outstanding debt: " + ex.Message);
+                    }
+
+                    if (totalDebt < 0) totalDebt = 0;
+                    lblTotalDebt.Text = $"إجمالي ديون المريض ({c.PatientName}): {totalDebt:F2} د.ل";
+                }
+                else
+                {
+                    lblTotalDebt.Text = "إجمالي ديون المريض: 0.00 د.ل";
+                }
+            }
+            else
+            {
+                lblTotalDebt.Text = "إجمالي ديون المريض: 0.00 د.ل";
+            }
+        }
+
         private void LoadPatientRecords(string searchTerm = "")
         {
             DataStore.LoadAllFromDatabase();
             dgvPatientRecords.Rows.Clear();
 
-            var cases = DataStore.Cases.AsEnumerable();
+            if (cmbSelectPatient.SelectedValue == null)
+            {
+                lblTotalDebt.Text = "إجمالي ديون المريض: 0.00 د.ل";
+                return; // Grid remains blank as requested if no patient is selected
+            }
+
+            string selectedPatientId = cmbSelectPatient.SelectedValue.ToString();
+            var cases = DataStore.Cases.Where(c => c.PatientId == selectedPatientId);
 
             if (!string.IsNullOrEmpty(searchTerm) && searchTerm != "ابحث بالاسم أو رقم الملف...")
             {
@@ -120,6 +205,11 @@ namespace DentalClinicProject.UI
                 case CaseStatus.Cancelled: return "ملغي";
                 default: return status.ToString();
             }
+        }
+
+        private void crystalOpenFileDialog1_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
         }
     }
 }

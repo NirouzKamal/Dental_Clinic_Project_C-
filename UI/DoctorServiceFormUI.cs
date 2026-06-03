@@ -30,11 +30,14 @@ namespace DentalClinicProject.UI
             {"علاج لثة عميق", 400}, {"تنظيف جير وتلميع", 190}
         };
 
-        public DoctorServiceFormUI(string patientId = "", string doctorId = "", string appointmentId = null)
+        private readonly string _referralCaseId;
+
+        public DoctorServiceFormUI(string patientId = "", string doctorId = "", string appointmentId = null, string referralCaseId = null)
         {
             _patientId = patientId;
             _doctorId = doctorId;
             _appointmentId = appointmentId;
+            _referralCaseId = referralCaseId;
             InitializeComponent();
             SetupLogic();
         }
@@ -236,6 +239,19 @@ namespace DentalClinicProject.UI
                     VisitBatchId = visitBatchId
                 };
                 DataStore.Cases.Add(newCase);
+                DataStore.SaveCaseToDatabase(newCase);
+            }
+
+            if (!string.IsNullOrEmpty(_referralCaseId))
+            {
+                var refCase = DataStore.Cases.FirstOrDefault(c => c.CaseId == _referralCaseId || c.CaseNumber == _referralCaseId);
+                if (refCase != null)
+                {
+                    refCase.Status = CaseStatus.Completed;
+                    refCase.SentToReception = true;
+                    refCase.ClosedAt = DateTime.Now;
+                    DataStore.SaveCaseToDatabase(refCase);
+                }
             }
 
             if (!string.IsNullOrEmpty(_appointmentId))
